@@ -1,25 +1,19 @@
-using System.Collections.Generic;
 using UnityEngine;
-
-public class GameManager : Singleton<GameManager>
+using System.Collections.Generic;
+public partial class GameManager : Singleton<GameManager>
 {
-    [SerializeField] public ColorDataSO colorDataSO;
-    public MapManager mapManager;
-    public Player player;
     // TODO nên cache collider của character để tối ưu bộ nhớ 
     private Dictionary<Collider, Brick> brickDictionary = new Dictionary<Collider, Brick>();
-    public Dictionary<Collider, Character> characterDictionary = new Dictionary<Collider, Character>();
+    private Dictionary<Collider, Character> characterDictionary = new Dictionary<Collider, Character>();
+
+    [SerializeField] public List<Stage> stageList = new List<Stage>();
     public List<Character> listCharacters = new List<Character>();
-    [SerializeField] public List<GameObject> stageList = new List<GameObject>(); // lưu danh sách các stage
-    void Awake()
+
+    public Character GetCharacter(Collider collider)
     {
-        mapManager.LoadMap(stageList);
-        foreach (var character in listCharacters)
-        {
-            characterDictionary.Add(character.characterCollider, character);
-        }
+        return characterDictionary[collider];
     }
-    public void RegisterBrick(Collider collider, Brick brick)
+        public void RegisterBrick(Collider collider, Brick brick)
     {
         if (!brickDictionary.ContainsKey(collider))
         {
@@ -39,4 +33,10 @@ public class GameManager : Singleton<GameManager>
     {
         return brickDictionary[collider];
     }
+    public Material GetMaterial(ENUM_COLOR color)
+    {
+        return colorDataSO.GetMaterial(color);
+    }
+
+
 }

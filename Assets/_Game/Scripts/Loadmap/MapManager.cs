@@ -6,7 +6,7 @@ public class MapManager : MonoBehaviour
     private string path = Application.dataPath + "/_Game/Resources/Level_1/map.json";
     private Brick brickPrefab;
     private ColorDataSO colorDataSO;
-    public void LoadMap(List<GameObject> stageList)
+    public void LoadMap(List<Stage> stageList)
     {
         string json = System.IO.File.ReadAllText(path);
         mapData = JsonUtility.FromJson<MapData>(json);
@@ -17,10 +17,9 @@ public class MapManager : MonoBehaviour
         for(int i = 0 ; i < mapData.stages.Count; i++)
         {
             StageData stageData = mapData.stages[i];
-            GameObject stageRoot = stageList[i];
+            Stage stageRoot = stageList[i];
             foreach (var brickData in stageData.bricks)
             {
-
                 Brick unit = Instantiate(
                     brickPrefab, 
                     brickData.position, 
@@ -28,6 +27,7 @@ public class MapManager : MonoBehaviour
                     stageRoot.transform);
 
                 unit.SetColor(brickData.color, GameManager.Instance.colorDataSO.GetMaterial(brickData.color));
+                unit.stage = stageRoot;
                 
                 GameManager.Instance.RegisterBrick(unit.colliderBrick, unit);
             }

@@ -7,7 +7,8 @@ public class Character : MonoBehaviour
     [SerializeField] public ENUM_COLOR colorCharacter;
     [SerializeField] public Collider characterCollider;
     [SerializeField] public Transform rotatePart;
-    public List<Brick> listBricks = new List<Brick>();
+    [SerializeField] public CharacterBrick chBrickPrefab; // TODO dduaw vafo gamemanager de load 
+    public List<CharacterBrick> listBricks_copy = new List<CharacterBrick>();
     public int currentBrickCount = 0 ; 
     void OnInit()
     {
@@ -22,18 +23,22 @@ public class Character : MonoBehaviour
         {
             if(colorCharacter == GameManager.Instance.GetBrick(other).colorBrick)
             {
-                Brick brick = GameManager.Instance.GetBrick(other);
-                AddBrick(brick);
-                GameManager.Instance.UnregisterBrick(other);
+                // Brick brick = GameManager.Instance.GetBrick(other);
+                // AddBrick(brick);
+                // GameManager.Instance.UnregisterBrick(other);
             }
         }
     }    
     public void AddBrick(Brick brick)
     {
-        listBricks.Add(brick);
-        brick.transform.SetParent(parentBrick, false); 
-        brick.transform.localPosition = new Vector3(0, (currentBrickCount-1) * 0.15f, 0);
-        brick.transform.localRotation = Quaternion.identity;
+        CharacterBrick chBrick = Instantiate(chBrickPrefab, parentBrick , false);
+        listBricks_copy.Add(chBrick);
+        brick.OnCollect(); 
+        //TODO : cho vao oncollect cua brick
+        chBrick.transform.localPosition = new Vector3(0, (currentBrickCount) * 0.15f, 0);
+        chBrick.transform.localRotation = Quaternion.identity;
+        chBrick.OnCollect(brick.colorBrick, this);
+        
         currentBrickCount++;
     }
     public bool CheckCharacterGoUpStair()
@@ -49,7 +54,7 @@ public class Character : MonoBehaviour
         Vector2 cr = new Vector2(transform.position.x, transform.position.z);
         Vector2 st = new Vector2(stepTf.position.x, stepTf.position.z);
         float distance = Vector2.Distance(cr, st);
-        Debug.Log("CheckDistanceToStep: " + stepTf.gameObject.name + " distance: " + distance);
+        // Debug.Log("CheckDistanceToStep: " + stepTf.gameObject.name + " distance: " + distance);
         if(distance < 0.9f) 
         {
             return true;
@@ -60,11 +65,15 @@ public class Character : MonoBehaviour
     //TODO cho vào trong pool 
     public void RemoveBrick()
     {
-        if (listBricks.Count > 0)
+        if (listBricks_copy.Count > 0)
         {
-            listBricks[currentBrickCount - 1].gameObject.SetActive(false);
-            listBricks.RemoveAt(listBricks.Count - 1);
+            int index = listBricks_copy.Count - 1;
+
+            listBricks_copy[index].gameObject.SetActive(false); // TODO : cho vào pool
+            listBricks_copy.RemoveAt(index); 
+            
             currentBrickCount--;
+            
         }
     }
 }

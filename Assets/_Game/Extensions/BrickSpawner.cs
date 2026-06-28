@@ -34,7 +34,6 @@ public class BrickSpawner : MonoBehaviour
     {
         AddNavMeshSurface();
         stageData = new StageData();
-        Debug.Log("Spawn start");
         int i = -length/2; 
         int j = -width/2; 
         Vector3 spawnPoint = Vector3.up * 0.625f + root.position;
@@ -70,7 +69,7 @@ public class BrickSpawner : MonoBehaviour
     }
     public void SpawnAllStage()
     {
-        List<GameObject> stageList = GameManager.Instance.stageList;
+        List<Stage> stageList = GameManager.Instance.stageList;
         GameManager.Instance.mapManager.mapData.stages.Clear();
         foreach(var st in stageList)
         {

@@ -6,6 +6,7 @@ public class Stair : MonoBehaviour
     //Dictionary luu stopPoint theo tung mau 
     //public Dictionary<int , GameObject> stopPoints = new Dictionary<int, GameObject>();
     [SerializeField] public List<GameObject> stopPoints = new List<GameObject>(); // so in dex trung voi index cua ENUM_COLOR 
+    [SerializeField] public Stage stage;
     public Transform stopPoint;
     public void SetStopTransform(Vector3 position, Quaternion rotation)
     {
