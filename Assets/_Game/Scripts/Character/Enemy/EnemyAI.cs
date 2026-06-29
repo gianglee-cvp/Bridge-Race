@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public interface IEnemyState
 {
@@ -26,18 +27,6 @@ public class EnemyAI : Character
         {
             currentState.OnExecute(this);
         }
-        // Delete 
-        // if(Mouse.current.leftButton.wasPressedThisFrame)
-        // {
-        //     Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        //     RaycastHit hit;
-        //     if(Physics.Raycast(ray, out hit))
-        //     {
-        //         agent.SetDestination(hit.point);
-        //         Debug.Log("EnemyAI: Set destination to " + hit.point);
-        //     }
-        // }
-
     }
     public override bool CheckCharacterGoUpStair()
     {
@@ -72,16 +61,14 @@ public class EnemyAI : Character
     }
     public Stair ChooseStrategy()
     {
-        int randomIndex = Random.Range(0,2); // dung switch để mở rộng thêm strategy 
-        // Debug.Log("EnemyAI: ChooseStrategy called, randomIndex = " + randomIndex);
-        switch(randomIndex)
+        float random = Random.Range(0,2); 
+        if(random < 1)
         {
-            case 0:
-                return GetStairLeastOpponent();
-            case 1:
-                return GetStairMostPoint(colorCharacter);
-            default:
-                return GetStairLeastOpponent();
+            return GetStairLeastOpponent(); 
+        }
+        else
+        {
+            return GetStairMostPoint(colorCharacter); 
         }
     }
     public Stair GetStairLeastOpponent()
@@ -117,5 +104,18 @@ public class EnemyAI : Character
         }
 
         return mostPointStair;
+    }
+    public override void ReachNewStage(Stage newStage)
+    {
+        base.ReachNewStage(newStage);
+        ChangeState(new PatrolState()); 
+    }
+    
+    public override void ReachLastStep(Step st)
+    {
+        base.ReachLastStep(st);
+        Debug.Log("Enemy Reach Last Step");
+        Vector3 target = transform.position + transform.forward * 4f ;
+        SetAgentDestination(target); 
     }
 }

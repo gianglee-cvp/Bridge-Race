@@ -119,6 +119,118 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &11624474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 11624475}
+  - component: {fileID: 11624478}
+  - component: {fileID: 11624477}
+  - component: {fileID: 11624476}
+  m_Layer: 8
+  m_Name: StopPoint_Yellow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &11624475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11624474}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.050001, y: 0.029999971, z: -0}
+  m_LocalScale: {x: 0.050000045, y: 2.53, z: 3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2113634257}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &11624476
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11624474}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &11624477
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11624474}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &11624478
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11624474}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &19301534
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +245,7 @@ GameObject:
   - component: {fileID: 19301536}
   - component: {fileID: 19301535}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Door 2_3
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,12 +350,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19301534}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.84, y: 7.78, z: 27.29}
-  m_LocalScale: {x: 3.06, y: 2.49, z: 0.4}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -8.529995, y: 1.8400002, z: -5.840004}
+  m_LocalScale: {x: 3.0599992, y: 2.49, z: 0.39999992}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1702141630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &25265991
 Mesh:
@@ -1559,7 +1671,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1636,8 +1748,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   stairHolder: {fileID: 2113634258}
   colorStep: 0
-  frontPointOffset: {x: 0, y: 0, z: 0}
-  backPointOffset: {x: 0, y: 0, z: 0}
+  frontPointOffset: {x: -0.45, y: 2.5, z: 0}
+  backPointOffset: {x: 0.55, y: 2.5, z: 0}
   rotateOffset: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 168603747}
   isLastStep: 0
@@ -1823,7 +1935,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1900,8 +2012,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   stairHolder: {fileID: 2113634258}
   colorStep: 0
-  frontPointOffset: {x: 0, y: 0, z: 0}
-  backPointOffset: {x: 0, y: 0, z: 0}
+  frontPointOffset: {x: -0.45, y: 2.5, z: 0}
+  backPointOffset: {x: 0.55, y: 2.5, z: 0}
   rotateOffset: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 183078353}
   isLastStep: 0
@@ -2898,7 +3010,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2975,8 +3087,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   stairHolder: {fileID: 2113634258}
   colorStep: 0
-  frontPointOffset: {x: 0, y: 0, z: 0}
-  backPointOffset: {x: 0, y: 0, z: 0}
+  frontPointOffset: {x: -0.45, y: 2.5, z: 0}
+  backPointOffset: {x: 0.55, y: 2.5, z: 0}
   rotateOffset: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 321028096}
   isLastStep: 0
@@ -3529,7 +3641,7 @@ GameObject:
   - component: {fileID: 386695258}
   - component: {fileID: 386695259}
   m_Layer: 7
-  m_Name: Stair (2)
+  m_Name: Stair_0_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3866,7 +3978,7 @@ GameObject:
   - component: {fileID: 487686799}
   - component: {fileID: 487686798}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Door_2_2
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3971,12 +4083,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487686797}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.28, y: 7.78, z: 27.29}
-  m_LocalScale: {x: 3.06, y: 2.49, z: 0.4}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -8.529995, y: 1.8400002, z: 0.27999687}
+  m_LocalScale: {x: 3.0599992, y: 2.49, z: 0.39999992}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1702141630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &494195983
 GameObject:
@@ -4160,7 +4272,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -4237,8 +4349,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   stairHolder: {fileID: 2113634258}
   colorStep: 0
-  frontPointOffset: {x: 0, y: 0, z: 0}
-  backPointOffset: {x: 0, y: 0, z: 0}
+  frontPointOffset: {x: -0.45, y: 2.5, z: 0}
+  backPointOffset: {x: 0.55, y: 2.5, z: 0}
   rotateOffset: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 518335104}
   isLastStep: 0
@@ -4424,7 +4536,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -4501,8 +4613,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   stairHolder: {fileID: 2113634258}
   colorStep: 0
-  frontPointOffset: {x: 0, y: 0, z: 0}
-  backPointOffset: {x: 0, y: 0, z: 0}
+  frontPointOffset: {x: -0.45, y: 2.5, z: 0}
+  backPointOffset: {x: 0.55, y: 2.5, z: 0}
   rotateOffset: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 651792069}
   isLastStep: 0
@@ -5134,7 +5246,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -5211,8 +5323,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   stairHolder: {fileID: 2113634258}
   colorStep: 0
-  frontPointOffset: {x: 0, y: 0, z: 0}
-  backPointOffset: {x: 0, y: 0, z: 0}
+  frontPointOffset: {x: -0.45, y: 2.5, z: 0}
+  backPointOffset: {x: 0.55, y: 2.5, z: 0}
   rotateOffset: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 803319533}
   isLastStep: 0
@@ -5856,7 +5968,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -5933,8 +6045,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   stairHolder: {fileID: 2113634258}
   colorStep: 0
-  frontPointOffset: {x: 0, y: 0, z: 0}
-  backPointOffset: {x: 0, y: 0, z: 0}
+  frontPointOffset: {x: -0.45, y: 2.5, z: 0}
+  backPointOffset: {x: 0.55, y: 2.5, z: 0}
   rotateOffset: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 877805561}
   isLastStep: 0
@@ -6485,7 +6597,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -6562,8 +6674,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   stairHolder: {fileID: 2113634258}
   colorStep: 0
-  frontPointOffset: {x: 0, y: 0, z: 0}
-  backPointOffset: {x: 0, y: 0, z: 0}
+  frontPointOffset: {x: -0.45, y: 2.5, z: 0}
+  backPointOffset: {x: 0.55, y: 2.5, z: 0}
   rotateOffset: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 1098917466}
   isLastStep: 0
@@ -8430,7 +8542,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -8507,8 +8619,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   stairHolder: {fileID: 2113634258}
   colorStep: 0
-  frontPointOffset: {x: 0, y: 0, z: 0}
-  backPointOffset: {x: 0, y: 0, z: 0}
+  frontPointOffset: {x: -0.45, y: 2.5, z: 0}
+  backPointOffset: {x: 0.55, y: 2.5, z: 0}
   rotateOffset: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 1440941997}
   isLastStep: 0
@@ -8897,7 +9009,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -8974,8 +9086,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   stairHolder: {fileID: 2113634258}
   colorStep: 0
-  frontPointOffset: {x: 0, y: 0, z: 0}
-  backPointOffset: {x: 0, y: 0, z: 0}
+  frontPointOffset: {x: -0.45, y: 2.5, z: 0}
+  backPointOffset: {x: 0.55, y: 2.5, z: 0}
   rotateOffset: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 1530005167}
   isLastStep: 0
@@ -9161,7 +9273,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -9238,8 +9350,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   stairHolder: {fileID: 2113634258}
   colorStep: 0
-  frontPointOffset: {x: 0, y: 0, z: 0}
-  backPointOffset: {x: 0, y: 0, z: 0}
+  frontPointOffset: {x: -0.45, y: 2.5, z: 0}
+  backPointOffset: {x: 0.55, y: 2.5, z: 0}
   rotateOffset: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 1578571115}
   isLastStep: 0
@@ -10089,7 +10201,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -10166,8 +10278,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   stairHolder: {fileID: 2113634258}
   colorStep: 0
-  frontPointOffset: {x: 0, y: 0, z: 0}
-  backPointOffset: {x: 0, y: 0, z: 0}
+  frontPointOffset: {x: -0.45, y: 2.5, z: 0}
+  backPointOffset: {x: 0.55, y: 2.5, z: 0}
   rotateOffset: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 1689115359}
   isLastStep: 0
@@ -10209,6 +10321,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2113634257}
+  - {fileID: 2128610462}
+  - {fileID: 487686802}
+  - {fileID: 19301539}
   m_Father: {fileID: 943296802}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1702141631
@@ -11070,7 +11185,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -11147,8 +11262,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   stairHolder: {fileID: 2113634258}
   colorStep: 0
-  frontPointOffset: {x: 0, y: 0, z: 0}
-  backPointOffset: {x: 0, y: 0, z: 0}
+  frontPointOffset: {x: -0.45, y: 2.5, z: 0}
+  backPointOffset: {x: 0.55, y: 2.5, z: 0}
   rotateOffset: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 1815308664}
   isLastStep: 0
@@ -12234,7 +12349,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -12311,11 +12426,123 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   stairHolder: {fileID: 2113634258}
   colorStep: 0
-  frontPointOffset: {x: 0, y: 0, z: 0}
-  backPointOffset: {x: 0, y: 0, z: 0}
+  frontPointOffset: {x: -0.45, y: 2.5, z: 0}
+  backPointOffset: {x: 0.55, y: 2.5, z: 0}
   rotateOffset: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 1976313389}
   isLastStep: 0
+--- !u!1 &1988275013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1988275014}
+  - component: {fileID: 1988275017}
+  - component: {fileID: 1988275016}
+  - component: {fileID: 1988275015}
+  m_Layer: 8
+  m_Name: StopPoint_Red
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1988275014
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988275013}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.050001, y: 0.029999971, z: -0}
+  m_LocalScale: {x: 0.050000045, y: 2.53, z: 3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2113634257}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1988275015
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988275013}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1988275016
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988275013}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1988275017
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988275013}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2010604802
 GameObject:
   m_ObjectHideFlags: 0
@@ -12366,7 +12593,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -12443,8 +12670,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   stairHolder: {fileID: 2113634258}
   colorStep: 0
-  frontPointOffset: {x: 0, y: 0, z: 0}
-  backPointOffset: {x: 0, y: 0, z: 0}
+  frontPointOffset: {x: -0.45, y: 2.5, z: 0}
+  backPointOffset: {x: 0.55, y: 2.5, z: 0}
   rotateOffset: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 2010604805}
   isLastStep: 0
@@ -14004,7 +14231,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -14081,8 +14308,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Step
   stairHolder: {fileID: 2113634258}
   colorStep: 0
-  frontPointOffset: {x: 0, y: 0, z: 0}
-  backPointOffset: {x: 0, y: 0, z: 0}
+  frontPointOffset: {x: -0.45, y: 2.5, z: 0}
+  backPointOffset: {x: 0.55, y: 2.5, z: 0}
   rotateOffset: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 2099657249}
   isLastStep: 0
@@ -14117,6 +14344,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1529735158}
+  - {fileID: 1988275014}
+  - {fileID: 11624475}
   - {fileID: 2099657247}
   - {fileID: 2010604803}
   - {fileID: 1440941995}
@@ -14167,6 +14396,11 @@ MonoBehaviour:
   - {fileID: 1976313391}
   stopPoints:
   - {fileID: 1529735157}
+  - {fileID: 1529735157}
+  - {fileID: 1988275013}
+  - {fileID: 11624474}
+  - {fileID: 1529735157}
+  - {fileID: 1529735157}
   stage: {fileID: 1702141638}
   stopPoint: {fileID: 0}
 --- !u!1 &2128610457
@@ -14183,7 +14417,7 @@ GameObject:
   - component: {fileID: 2128610459}
   - component: {fileID: 2128610458}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Door_2_1
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14288,12 +14522,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128610457}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.38, y: 7.78, z: 27.29}
-  m_LocalScale: {x: 3.06, y: 2.49, z: 0.4}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -8.529995, y: 1.8400002, z: 5.3799973}
+  m_LocalScale: {x: 3.0599992, y: 2.49, z: 0.39999992}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1702141630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2134481362
 GameObject:
@@ -14624,6 +14858,3 @@ SceneRoots:
   - {fileID: 1971631016}
   - {fileID: 277363573}
   - {fileID: 2051746140}
-  - {fileID: 487686802}
-  - {fileID: 2128610462}
-  - {fileID: 19301539}

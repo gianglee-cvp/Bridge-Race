@@ -19,9 +19,12 @@ public class Step : MonoBehaviour
 
             if ( SetStopPoint(ch))
             {   
-                SetColor(ch.colorCharacter);
-                stairHolder.stage.OnRemainBrick();
-                ch.RemoveBrick();
+                if(ch.colorCharacter != colorStep)
+                {
+                    SetColor(ch.colorCharacter);
+                    stairHolder.stage.OnRemainBrick();
+                    ch.RemoveBrick();                
+                }
             }
         }   
     }
@@ -31,27 +34,6 @@ public class Step : MonoBehaviour
         // gia tri tra ve la true neu character co the di len step 
         int brickCount = ch.currentBrickCount;
         int brickColor = (int)ch.colorCharacter;
-        // if(brickColor == (int) colorStep)
-        // {
-        //     stairHolder.SetStopTransform(transform.TransformPoint(backPointOffset), transform.rotation , ch.colorCharacter);
-        //     Debug.Log(this.gameObject.name + ": 1");
-        //     return true;
-        // }
-        // else
-        // {
-        //     if(brickCount ==  0 )
-        //     {
-        //         stairHolder.SetStopTransform(transform.TransformPoint(frontPointOffset), transform.rotation , ch.colorCharacter);
-        //         Debug.Log(this.gameObject.name + ": 2");
-        //         return false;
-        //     }
-        //     else
-        //     {
-        //         stairHolder.SetStopTransform( transform.TransformPoint(backPointOffset), transform.rotation , ch.colorCharacter);
-        //         Debug.Log(this.gameObject.name + ": 3");
-        //         return true;
-        //     }
-        // }
         if(brickColor != (int) colorStep && brickCount == 0)
         {
                 stairHolder.SetStopTransform(transform.TransformPoint(frontPointOffset), transform.rotation , ch.colorCharacter);
@@ -64,7 +46,7 @@ public class Step : MonoBehaviour
                 // Debug.Log(this.gameObject.name + ": 3");
                 if(isLastStep)
                 {
-                    ReachLastStep(ch);
+                    ch.ReachLastStep(this);
                 }
                 return true;
         }
@@ -74,7 +56,7 @@ public class Step : MonoBehaviour
         colorStep = color;
         meshRenderer.material = GameManager.Instance.colorDataSO.GetMaterial(color);
     }
-    public void ReachLastStep(Character ch)
+    public void SetStopPointOnLastStep(Character ch)
     {
         Vector3 offset = new Vector3(0, 4.5f, 0f);
         stairHolder.SetStopTransform( transform.TransformPoint(backPointOffset + offset), transform.rotation , ch.colorCharacter);

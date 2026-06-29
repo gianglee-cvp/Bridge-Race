@@ -14,27 +14,15 @@ public class Character : MonoBehaviour
     public int currentBrickCount = 0 ; 
     public virtual void OnInit()    
     {
-        // switch(colorCharacter)
-        // {
-        //     case ENUM_COLOR.Blue:
-        //         gameObject.layer = LayerMask.NameToLayer("Blue");
-        //         break;
-        //     case ENUM_COLOR.Red:
-        //         gameObject.layer = LayerMask.NameToLayer("Red");
-        //         break;
-        //     case ENUM_COLOR.Yellow:
-        //         gameObject.layer = LayerMask.NameToLayer("Yellow");
-        //         break;
-        // }
         currentStage = GameManager.Instance.stageList[0];
     }
     // void OnDespawn()
     // {
         
     // }
-    public void OnTriggerEnter(Collider other)
-    {
-    }    
+    // public void OnTriggerEnter(Collider other)
+    // {
+    // }    
     public void AddBrick(Brick brick)
     {
         CharacterBrick chBrick = Instantiate(chBrickPrefab, parentBrick , false);
@@ -78,10 +66,15 @@ public class Character : MonoBehaviour
             
         }
     }
-    public void ReachNewStage(Stage newStage)
+    public virtual void ReachNewStage(Stage newStage)
     {
-        if(currentStage == newStage) return ; 
+        if(currentStage == newStage) return ;
         currentStage.CloseAllDoor(colorCharacter); 
         currentStage = newStage; 
+    }
+    public virtual void ReachLastStep(Step st)
+    {
+        Debug.Log("Characte Reach Last Step"); 
+        st.SetStopPointOnLastStep(this);
     }
 }
