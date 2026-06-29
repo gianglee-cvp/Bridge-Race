@@ -8,10 +8,12 @@ public class Character : MonoBehaviour
     [SerializeField] public Collider characterCollider;
     [SerializeField] public Transform rotatePart;
     [SerializeField] public CharacterBrick chBrickPrefab; // TODO dduaw vafo gamemanager de load 
-    public List<CharacterBrick> listBricks_copy = new List<CharacterBrick>();
+    public List<CharacterBrick> listBricks = new List<CharacterBrick>();
+    public Stage currentStage;
     public int currentBrickCount = 0 ; 
-    void OnInit()
+    public virtual void OnInit()    
     {
+
     }
     // void OnDespawn()
     // {
@@ -32,7 +34,7 @@ public class Character : MonoBehaviour
     public void AddBrick(Brick brick)
     {
         CharacterBrick chBrick = Instantiate(chBrickPrefab, parentBrick , false);
-        listBricks_copy.Add(chBrick);
+        listBricks.Add(chBrick);
         brick.OnCollect(); 
         //TODO : cho vao oncollect cua brick
         chBrick.transform.localPosition = new Vector3(0, (currentBrickCount) * 0.15f, 0);
@@ -65,12 +67,12 @@ public class Character : MonoBehaviour
     //TODO cho vào trong pool 
     public void RemoveBrick()
     {
-        if (listBricks_copy.Count > 0)
+        if (listBricks.Count > 0)
         {
-            int index = listBricks_copy.Count - 1;
+            int index = listBricks.Count - 1;
 
-            listBricks_copy[index].gameObject.SetActive(false); // TODO : cho vào pool
-            listBricks_copy.RemoveAt(index); 
+            listBricks[index].gameObject.SetActive(false); // TODO : cho vào pool
+            listBricks.RemoveAt(index); 
             
             currentBrickCount--;
             

@@ -14,4 +14,32 @@ public class Stair : MonoBehaviour
         stopPoint.rotation = rotation;
         
     }
+    public int GetOpponentCount()
+    {
+        Dictionary<ENUM_COLOR, bool> colorCount = new Dictionary<ENUM_COLOR, bool>();
+        foreach(Step st in steps)
+        {
+            if(colorCount.ContainsKey(st.colorStep))
+            {
+                continue;
+            }
+            else
+            {
+                colorCount.Add(st.colorStep, true);
+            }
+        }
+        return colorCount.Count;
+    }
+    public int GetMaxPointCount(ENUM_COLOR color)
+    {
+        int maxCount = 0;
+        foreach(Step st in steps)
+        {
+            if(st.colorStep == color)
+            {
+                maxCount++;
+            }
+        }
+        return maxCount;
+    }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 public class MapManager : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class MapManager : MonoBehaviour
                     brickData.position, 
                     stageRoot.transform.rotation,
                     stageRoot.transform);
+
+                stageRoot.AddBrickToRemain(unit);
+                stageRoot.AddActiveBrick(unit);
+
 
                 unit.SetColor(brickData.color, GameManager.Instance.colorDataSO.GetMaterial(brickData.color));
                 unit.stage = stageRoot;

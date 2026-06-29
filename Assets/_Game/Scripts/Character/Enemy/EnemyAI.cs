@@ -1,0 +1,124 @@
+using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.InputSystem;
+
+public interface IEnemyState
+{
+    void OnEnter(EnemyAI enemy);
+    void OnExecute(EnemyAI enemy);
+    void OnExit(EnemyAI enemy);
+}
+public class EnemyAI : Character
+{
+    [SerializeField] private IEnemyState currentState;
+    public Camera mainCamera; // Test thoi sau delete
+    [SerializeField] private NavMeshAgent agent;
+
+
+    public override void OnInit()
+    {
+        base.OnInit();
+        Debug.Log("EnemyAI: OnInit called");
+        currentStage = GameManager.Instance.stageList[0];
+        ChangeState(new PatrolState());
+    }
+    private void Update()
+    {
+        if(currentState != null)
+        {
+            currentState.OnExecute(this);
+        }
+        // Delete 
+        if(Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+            RaycastHit hit;
+            if(Physics.Raycast(ray, out hit))
+            {
+                agent.SetDestination(hit.point);
+            }
+        }
+
+    }
+    public void SetAgentDestination(Vector3 destination)
+    {
+        if(agent == null)
+        {
+            Debug.LogError("NavMeshAgent component is not assigned.");
+        }
+        agent.SetDestination(destination);
+    }
+    public void ChangeState(IEnemyState newState)
+    {
+        Debug.Log("EnemyAI: Changing state from " + (currentState != null ? currentState.GetType().Name : "null") + " to " + (newState != null ? newState.GetType().Name : "null"));
+        if(currentState != null)
+        {
+            currentState.OnExit(this);
+        }
+
+        currentState = newState;
+
+        if(currentState != null)
+        {
+            currentState.OnEnter(this);
+        }
+    }
+    /// <summary>
+    /// Kiểm tra agent đã đến đích chưa.
+    /// Check 3 điều kiện: path đã tính xong, khoảng cách đủ gần, velocity gần 0.
+    /// </summary>
+    public bool HasReachedDestination()
+    {
+        return !agent.pathPending 
+            && agent.remainingDistance <= agent.stoppingDistance + 0.1f
+            && agent.velocity.sqrMagnitude < 0.01f;
+    }
+
+    public Stair ChooseStrategy()
+    {
+        int randomIndex = Random.Range(0,1); // dung switch để mở rộng thêm strategy 
+        switch(randomIndex)
+        {
+            case 0:
+                return GetStairLeastOpponent();
+            case 1:
+                return GetStairMostPoint(colorCharacter);
+            default:
+                return GetStairLeastOpponent();
+        }
+    }
+    public Stair GetStairLeastOpponent()
+    {
+        Stair leastOpponentStair = null;
+        int leastOpponentCount = int.MaxValue;
+
+        foreach (Stair stair in currentStage.listStair)
+        {
+            int opponentCount = stair.GetOpponentCount();
+            if (opponentCount < leastOpponentCount)
+            {
+                leastOpponentCount = opponentCount;
+                leastOpponentStair = stair;
+            }
+        }
+
+        return leastOpponentStair;
+    }
+    public Stair GetStairMostPoint(ENUM_COLOR color)
+    {
+        Stair mostPointStair = null;
+        int mostPointCount = -1;
+
+        foreach (Stair stair in currentStage.listStair)
+        {
+            int pointCount = stair.GetMaxPointCount(color);
+            if (pointCount > mostPointCount)
+            {
+                mostPointCount = pointCount;
+                mostPointStair = stair;
+            }
+        }
+
+        return mostPointStair;
+    }
+}

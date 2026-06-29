@@ -12,6 +12,7 @@ public partial class GameManager : Singleton<GameManager>
         foreach (var character in listCharacters)
         {
             characterDictionary.Add(character.characterCollider, character);
+            character.OnInit();
         }
     }
 
