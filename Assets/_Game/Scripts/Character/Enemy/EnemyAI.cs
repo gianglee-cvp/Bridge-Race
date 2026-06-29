@@ -12,7 +12,7 @@ public class EnemyAI : Character
 {
     [SerializeField] private IEnemyState currentState;
     public Camera mainCamera; // Test thoi sau delete
-    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] public NavMeshAgent agent;
 
 
     public override void OnInit()
@@ -36,6 +36,7 @@ public class EnemyAI : Character
             if(Physics.Raycast(ray, out hit))
             {
                 agent.SetDestination(hit.point);
+                Debug.Log("EnemyAI: Set destination to " + hit.point);
             }
         }
 
@@ -63,20 +64,10 @@ public class EnemyAI : Character
             currentState.OnEnter(this);
         }
     }
-    /// <summary>
-    /// Kiểm tra agent đã đến đích chưa.
-    /// Check 3 điều kiện: path đã tính xong, khoảng cách đủ gần, velocity gần 0.
-    /// </summary>
-    public bool HasReachedDestination()
-    {
-        return !agent.pathPending 
-            && agent.remainingDistance <= agent.stoppingDistance + 0.1f
-            && agent.velocity.sqrMagnitude < 0.01f;
-    }
-
     public Stair ChooseStrategy()
     {
-        int randomIndex = Random.Range(0,1); // dung switch để mở rộng thêm strategy 
+        int randomIndex = Random.Range(0,2); // dung switch để mở rộng thêm strategy 
+        Debug.Log("EnemyAI: ChooseStrategy called, randomIndex = " + randomIndex);
         switch(randomIndex)
         {
             case 0:
@@ -89,20 +80,20 @@ public class EnemyAI : Character
     }
     public Stair GetStairLeastOpponent()
     {
-        Stair leastOpponentStair = null;
-        int leastOpponentCount = int.MaxValue;
+        Stair choosenStair = null;
+        int st = int.MaxValue;
 
         foreach (Stair stair in currentStage.listStair)
         {
-            int opponentCount = stair.GetOpponentCount();
-            if (opponentCount < leastOpponentCount)
+            int opponentCount = stair.GetOpponentCount(this.colorCharacter);
+            if (opponentCount < st)
             {
-                leastOpponentCount = opponentCount;
-                leastOpponentStair = stair;
+                st = opponentCount;
+                choosenStair = stair;
             }
         }
 
-        return leastOpponentStair;
+        return choosenStair;
     }
     public Stair GetStairMostPoint(ENUM_COLOR color)
     {

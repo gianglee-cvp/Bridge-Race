@@ -24,6 +24,7 @@ public class Brick : MonoBehaviour
             {
                 ch.AddBrick(this);
                 stage.AddBrickToRemain(this);
+                stage.RemoveActiveBrick(this);
             }
         }
     }

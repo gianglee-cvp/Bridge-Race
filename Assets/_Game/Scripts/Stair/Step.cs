@@ -15,45 +15,57 @@ public class Step : MonoBehaviour
             Character ch = GameManager.Instance.GetCharacter(other);
             if (ch.CheckCharacterGoUpStair())
             {
-                SetStopPoint(ch);
+                
+                if ( ch.colorCharacter != colorStep && SetStopPoint(ch))
+                {
+                    //  Debug.Log("Step: " + gameObject.name + " Character: " + ch.gameObject.name + " is on step");
+                    SetColor(ch.colorCharacter);
+                    stairHolder.stage.OnRemainBrick();
+                    ch.RemoveBrick();
+                }
             }
         }
     }
-    public void OnTriggerStay(Collider other)
+    // public void OnTriggerStay(Collider other)
+    // {
+    //     if (other.CompareTag("Character"))
+    //     {
+    //         Character ch = GameManager.Instance.GetCharacter(other);
+    //         if (ch.CheckDistanceToStep(transform) && ch.colorCharacter != colorStep)
+    //         {
+    //             //  Debug.Log("Step: " + gameObject.name + " Character: " + ch.gameObject.name + " is on step");
+    //             SetColor(ch.colorCharacter);
+    //             stairHolder.stage.OnRemainBrick();
+    //             ch.RemoveBrick();
+    //         }
+    //     }
+    // }
+
+    public bool SetStopPoint(Character ch)
     {
-        if (other.CompareTag("Character"))
-        {
-            Character ch = GameManager.Instance.GetCharacter(other);
-            if (ch.CheckDistanceToStep(transform) && ch.colorCharacter != colorStep)
-            {
-                //  Debug.Log("Step: " + gameObject.name + " Character: " + ch.gameObject.name + " is on step");
-                SetColor(ch.colorCharacter);
-                stairHolder.stage.OnRemainBrick();
-                ch.RemoveBrick();
-            }
-        }
-    }
-    public void SetStopPoint(Character ch)
-    {
+        // gia tri tra ve la true neu character co the di len step 
         int brickCount = ch.currentBrickCount;
         int brickColor = (int)ch.colorCharacter;
         if(brickColor == (int) colorStep)
         {
             stairHolder.SetStopTransform(transform.TransformPoint(backPointOffset), transform.rotation );
-            //Debug.Log(this.gameObject.name + ": 1");
+            // Debug.Log(this.gameObject.name + ": 1");
+            return true;
         }
         else
         {
             if(brickCount ==  0 )
             {
                 stairHolder.SetStopTransform(transform.TransformPoint(frontPointOffset), transform.rotation );
-                //Debug.Log(this.gameObject.name + ": 2");
+                // Debug.Log(this.gameObject.name + ": 2");
+                return false;
             }
             else
             {
                 stairHolder.SetStopTransform( transform.TransformPoint(backPointOffset), transform.rotation );
              //   ch.RemoveBrick();
                // Debug.Log(this.gameObject.name + ": 3");
+               return true;
             }
         }
     }

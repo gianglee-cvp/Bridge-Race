@@ -27,7 +27,6 @@ public class MapManager : MonoBehaviour
                     stageRoot.transform.rotation,
                     stageRoot.transform);
 
-                stageRoot.AddBrickToRemain(unit);
                 stageRoot.AddActiveBrick(unit);
 
 

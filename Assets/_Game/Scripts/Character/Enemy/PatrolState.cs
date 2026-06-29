@@ -4,24 +4,42 @@ public class PatrolState : IEnemyState
 {
     float timer;
     float randomTime;
+    bool isGoToDestination;
+    Transform des ;
+    Vector2 desXZ ;
     public void OnEnter(EnemyAI enemy)
     {
         timer = 0f;
-        randomTime = Random.Range(9f, 18f); 
+        randomTime = Random.Range(5f, 18f); 
     }
 
     public void OnExecute(EnemyAI enemy)
     {
+
         if (timer >= randomTime || enemy.currentStage.CountActiveBricks() == 0)
         {
             enemy.ChangeState(new BuildState());
+            timer = 0f;
             return;
         }
 
-        Transform des = enemy.currentStage.GetActiveBrick();
-        enemy.SetAgentDestination(des.position);
-        Debug.Log("PatrolState: Moving towards destination: " + des.position);
-        
+        if(!isGoToDestination)
+        {
+            isGoToDestination = true;
+
+            des = enemy.currentStage.GetActiveBrick(enemy.colorCharacter);
+            desXZ = GameManager.Instance.GetVector2XZ(des.position);
+
+            enemy.SetAgentDestination(des.position);
+            // /Debug.Log("PatrolState: Moving towards destination: " + des.position);
+        }
+
+        Vector2 enemyXZ = GameManager.Instance.GetVector2XZ(enemy.transform.position);
+        if(Vector2.Distance(enemyXZ, desXZ) < 0.1f)
+        {
+            isGoToDestination = false;  
+        }
+
         timer += Time.deltaTime;
 
     }

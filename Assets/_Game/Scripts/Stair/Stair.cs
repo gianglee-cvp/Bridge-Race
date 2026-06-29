@@ -14,12 +14,12 @@ public class Stair : MonoBehaviour
         stopPoint.rotation = rotation;
         
     }
-    public int GetOpponentCount()
+    public int GetOpponentCount(ENUM_COLOR color)
     {
         Dictionary<ENUM_COLOR, bool> colorCount = new Dictionary<ENUM_COLOR, bool>();
         foreach(Step st in steps)
         {
-            if(colorCount.ContainsKey(st.colorStep))
+            if(colorCount.ContainsKey(st.colorStep) || st.colorStep == color)
             {
                 continue;
             }
@@ -41,5 +41,18 @@ public class Stair : MonoBehaviour
             }
         }
         return maxCount;
+    }
+    public Vector3 GetLastStepPosition()
+    {
+        if (steps.Count > 0)
+        {
+            Step lastStep = steps[steps.Count - 1];
+            return lastStep.transform.position;
+        }
+        else
+        {
+            Debug.LogWarning("Stair: No steps found in the stair.");
+            return transform.position;
+        }
     }
 }

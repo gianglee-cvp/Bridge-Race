@@ -21,15 +21,6 @@ public class Character : MonoBehaviour
     // }
     public void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Brick"))
-        {
-            if(colorCharacter == GameManager.Instance.GetBrick(other).colorBrick)
-            {
-                // Brick brick = GameManager.Instance.GetBrick(other);
-                // AddBrick(brick);
-                // GameManager.Instance.UnregisterBrick(other);
-            }
-        }
     }    
     public void AddBrick(Brick brick)
     {

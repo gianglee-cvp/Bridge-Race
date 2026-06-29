@@ -15,5 +15,8 @@ public partial class GameManager : Singleton<GameManager>
             character.OnInit();
         }
     }
-
+    public Vector2 GetVector2XZ(Vector3 position)
+    {
+        return new Vector2(position.x, position.z);
+    }
 }

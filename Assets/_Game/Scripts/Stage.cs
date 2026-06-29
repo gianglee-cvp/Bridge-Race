@@ -10,6 +10,7 @@ public class Stage : MonoBehaviour
 
     public void OnRemainBrick()
     {
+        Debug.Log("Stage: " + gameObject.name + " OnRemainBrick");
         if(brickToRemain.Count == 0)
         {
             return;
@@ -27,16 +28,24 @@ public class Stage : MonoBehaviour
     {
         activeBricks.Add(brick);
     }
-
+    public void RemoveActiveBrick(Brick brick)
+    {
+        activeBricks.Remove(brick);
+    }
     public int CountActiveBricks()
     {
         return activeBricks.Count;
     }
     
-    public Transform GetActiveBrick()
+    public Transform GetActiveBrick(ENUM_COLOR color)
     {
-        int randomIndex = Random.Range(0, activeBricks.Count);
-        return activeBricks[randomIndex].transform;
+        List<Brick> filteBrickByColor = activeBricks.FindAll(brick => brick.colorBrick == color);
+        if (filteBrickByColor.Count == 0)
+        {
+            Debug.LogError("No active bricks found for color: " + color);
+        }
+        int randomIndex = Random.Range(0, filteBrickByColor.Count);
+        return filteBrickByColor[randomIndex].transform;
     }
 }
     
