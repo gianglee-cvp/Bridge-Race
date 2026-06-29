@@ -3,16 +3,14 @@ using System.Collections.Generic;
 public class Stair : MonoBehaviour
 {
     public List<Step> steps = new List<Step>(); 
-    //Dictionary luu stopPoint theo tung mau 
-    //public Dictionary<int , GameObject> stopPoints = new Dictionary<int, GameObject>();
     [SerializeField] public List<GameObject> stopPoints = new List<GameObject>(); // so in dex trung voi index cua ENUM_COLOR 
     [SerializeField] public Stage stage;
     public Transform stopPoint;
-    public void SetStopTransform(Vector3 position, Quaternion rotation)
+    public void SetStopTransform(Vector3 position, Quaternion rotation , ENUM_COLOR color)
     {
-        stopPoint.position = position;
-        stopPoint.rotation = rotation;
-        
+        int index = (int)color;
+        stopPoints[index].transform.position = position;
+        stopPoints[index].transform.rotation = rotation;
     }
     public int GetOpponentCount(ENUM_COLOR color)
     {
@@ -51,8 +49,24 @@ public class Stair : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Stair: No steps found in the stair.");
             return transform.position;
+        }
+    }
+    public void CloseDoor(ENUM_COLOR color)
+    {
+        if (steps.Count > 0)
+        {
+            Step lastStep = steps[steps.Count - 1];
+            Transform lastStepTF = lastStep.transform; 
+            SetStopTransform(
+                lastStepTF.TransformPoint(lastStep.backPointOffset),
+                lastStepTF.rotation,
+                color
+            );
+        }
+        else
+        {
+            Debug.LogWarning("Stair: No steps found in the stair.");
         }
     }
 }

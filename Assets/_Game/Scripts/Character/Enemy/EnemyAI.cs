@@ -11,15 +11,13 @@ public interface IEnemyState
 public class EnemyAI : Character
 {
     [SerializeField] private IEnemyState currentState;
-    public Camera mainCamera; // Test thoi sau delete
+ //   public Camera mainCamera; // Test thoi sau delete
     [SerializeField] public NavMeshAgent agent;
 
 
     public override void OnInit()
     {
         base.OnInit();
-        Debug.Log("EnemyAI: OnInit called");
-        currentStage = GameManager.Instance.stageList[0];
         ChangeState(new PatrolState());
     }
     private void Update()
@@ -29,17 +27,25 @@ public class EnemyAI : Character
             currentState.OnExecute(this);
         }
         // Delete 
-        if(Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-            RaycastHit hit;
-            if(Physics.Raycast(ray, out hit))
-            {
-                agent.SetDestination(hit.point);
-                Debug.Log("EnemyAI: Set destination to " + hit.point);
-            }
-        }
+        // if(Mouse.current.leftButton.wasPressedThisFrame)
+        // {
+        //     Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        //     RaycastHit hit;
+        //     if(Physics.Raycast(ray, out hit))
+        //     {
+        //         agent.SetDestination(hit.point);
+        //         Debug.Log("EnemyAI: Set destination to " + hit.point);
+        //     }
+        // }
 
+    }
+    public override bool CheckCharacterGoUpStair()
+    {
+        if(transform.forward.z < 0)
+        {
+            return false;
+        }
+        return true;
     }
     public void SetAgentDestination(Vector3 destination)
     {
@@ -67,7 +73,7 @@ public class EnemyAI : Character
     public Stair ChooseStrategy()
     {
         int randomIndex = Random.Range(0,2); // dung switch để mở rộng thêm strategy 
-        Debug.Log("EnemyAI: ChooseStrategy called, randomIndex = " + randomIndex);
+        // Debug.Log("EnemyAI: ChooseStrategy called, randomIndex = " + randomIndex);
         switch(randomIndex)
         {
             case 0:

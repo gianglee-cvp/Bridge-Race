@@ -10,10 +10,23 @@ public class Character : MonoBehaviour
     [SerializeField] public CharacterBrick chBrickPrefab; // TODO dduaw vafo gamemanager de load 
     public List<CharacterBrick> listBricks = new List<CharacterBrick>();
     public Stage currentStage;
+    // public int currentStageIndex = 0;
     public int currentBrickCount = 0 ; 
     public virtual void OnInit()    
     {
-
+        // switch(colorCharacter)
+        // {
+        //     case ENUM_COLOR.Blue:
+        //         gameObject.layer = LayerMask.NameToLayer("Blue");
+        //         break;
+        //     case ENUM_COLOR.Red:
+        //         gameObject.layer = LayerMask.NameToLayer("Red");
+        //         break;
+        //     case ENUM_COLOR.Yellow:
+        //         gameObject.layer = LayerMask.NameToLayer("Yellow");
+        //         break;
+        // }
+        currentStage = GameManager.Instance.stageList[0];
     }
     // void OnDespawn()
     // {
@@ -34,12 +47,8 @@ public class Character : MonoBehaviour
         
         currentBrickCount++;
     }
-    public bool CheckCharacterGoUpStair()
+    public virtual bool CheckCharacterGoUpStair()
     {
-        if(rotatePart.forward.z < 0)
-        {
-            return false;
-        }
         return true;
     }
     public bool CheckDistanceToStep(Transform stepTf)
@@ -68,5 +77,11 @@ public class Character : MonoBehaviour
             currentBrickCount--;
             
         }
+    }
+    public void ReachNewStage(Stage newStage)
+    {
+        if(currentStage == newStage) return ; 
+        currentStage.CloseAllDoor(colorCharacter); 
+        currentStage = newStage; 
     }
 }

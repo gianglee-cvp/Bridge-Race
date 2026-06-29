@@ -12,10 +12,11 @@ public class Player : Character
     private float speed = 5f;
     private float rotateAngle; 
 
-    private void OnEnable()
+    public override void OnInit()
     {
+        base.OnInit();
+        
         moveAction = inputActions.FindAction("Move");
-
         moveAction.Enable();
     }
 
@@ -28,7 +29,7 @@ public class Player : Character
 
     private void Update()
     {
-        moveAmount = moveAction.ReadValue<Vector2>();
+        moveAmount = moveAction.ReadValue<Vector2>().normalized;
 
         // Vector3 move = new Vector3(moveAmount.x, 0, moveAmount.y);
         // //TODO : dùng lerp cho mượt, cân nhắc sửa thành rb moveposition để mượt hơn hi lên dốc và xuống dốc
@@ -51,5 +52,13 @@ public class Player : Character
             move * speed * Time.fixedDeltaTime
         );
         }
+    }
+    public override bool CheckCharacterGoUpStair()
+    {
+        if(rotatePart.forward.z < 0)
+        {
+            return false;
+        }
+        return true;
     }
 }

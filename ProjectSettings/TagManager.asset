@@ -7,6 +7,7 @@ TagManager:
   - Brick
   - Stage
   - Character
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -16,9 +17,9 @@ TagManager:
   - UI
   - Step
   - Walkable
-  - 
-  - 
-  - 
+  - Blue
+  - Red
+  - Yellow
   - 
   - 
   - 

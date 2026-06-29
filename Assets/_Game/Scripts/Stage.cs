@@ -1,16 +1,16 @@
 using UnityEngine;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using Unity.VisualScripting;
 public class Stage : MonoBehaviour
 {
     private Queue<Brick> brickToRemain = new Queue<Brick>();
     private List<Brick> activeBricks = new List<Brick>();
+    public int stageIndex; // cho vao dictionary hoac gan khi spawn
     [SerializeField] public List<Stair> listStair = new List<Stair>();
-
-
 
     public void OnRemainBrick()
     {
-        Debug.Log("Stage: " + gameObject.name + " OnRemainBrick");
+//        Debug.Log("Stage: " + gameObject.name + " OnRemainBrick");
         if(brickToRemain.Count == 0)
         {
             return;
@@ -46,6 +46,13 @@ public class Stage : MonoBehaviour
         }
         int randomIndex = Random.Range(0, filteBrickByColor.Count);
         return filteBrickByColor[randomIndex].transform;
+    }
+    public void CloseAllDoor(ENUM_COLOR color)
+    {
+        foreach(Stair st in listStair)
+        {
+            st.CloseDoor(color); 
+        }
     }
 }
     
