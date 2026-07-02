@@ -17,7 +17,7 @@ public class PatrolState : IEnemyState
     public void OnExecute(EnemyAI enemy)
     {
 
-        if (timer >= randomTime || enemy.currentStage.CountActiveBricks() == 0)
+        if (timer >= randomTime || enemy.currentStage.CountActiveBricks(enemy.colorCharacter) == 0)
         {
             enemy.ChangeState(new BuildState());
             timer = 0f;

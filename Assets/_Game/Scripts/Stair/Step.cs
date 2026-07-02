@@ -22,7 +22,7 @@ public class Step : MonoBehaviour
                 if(ch.colorCharacter != colorStep)
                 {
                     SetColor(ch.colorCharacter);
-                    stairHolder.stage.OnRemainBrick();
+                    stairHolder.stage.OnRemainBrick(ch.colorCharacter);
                     ch.RemoveBrick();                
                 }
             }
