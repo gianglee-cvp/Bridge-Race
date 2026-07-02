@@ -5,9 +5,10 @@ public class Stage : MonoBehaviour
 {
     private Queue<Brick> brickToRemain = new Queue<Brick>();
     private List<Brick> activeBricks = new List<Brick>();
+    private Dictionary<ENUM_COLOR, List<Brick>> colorBricks = new Dictionary<ENUM_COLOR, List<Brick>>();
     public int stageIndex; // cho vao dictionary hoac gan khi spawn
     [SerializeField] public List<Stair> listStair = new List<Stair>();
-
+    public Dictionary<ENUM_COLOR, bool > isCoLorSpawned = new Dictionary<ENUM_COLOR, bool>();
     public void OnRemainBrick()
     {
 //        Debug.Log("Stage: " + gameObject.name + " OnRemainBrick");
@@ -24,9 +25,14 @@ public class Stage : MonoBehaviour
         brickToRemain.Enqueue(brick);
     }
 
-    public void AddActiveBrick(Brick brick)
+    public void AddActiveBrick(Brick brick , ENUM_COLOR color)
     {
         activeBricks.Add(brick);
+        if (!colorBricks.ContainsKey(color))
+        {
+            colorBricks[color] = new List<Brick>();
+        }
+        colorBricks[color].Add(brick);
     }
     public void RemoveActiveBrick(Brick brick)
     {
@@ -52,6 +58,25 @@ public class Stage : MonoBehaviour
         foreach(Stair st in listStair)
         {
             st.CloseDoor(color); 
+        }
+    }
+    public void SpawnBrick(ENUM_COLOR color)
+    {
+
+        if(isCoLorSpawned.ContainsKey(color) && isCoLorSpawned[color]) return ; 
+        isCoLorSpawned[color] = true;
+
+        if(colorBricks.ContainsKey(color))
+        {
+            List<Brick> bricksOfColor = colorBricks[color];
+            foreach (Brick brick in bricksOfColor)
+            {
+                brick.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No bricks found for color: " + color);    
         }
     }
 }

@@ -27,7 +27,7 @@ public class MapManager : MonoBehaviour
                     stageRoot.transform.rotation,
                     stageRoot.transform);
 
-                stageRoot.AddActiveBrick(unit);
+                stageRoot.AddActiveBrick(unit , brickData.color);
 
 
                 unit.SetColor(brickData.color, GameManager.Instance.colorDataSO.GetMaterial(brickData.color));
@@ -42,4 +42,22 @@ public class MapManager : MonoBehaviour
         string json = JsonUtility.ToJson(mapData, true);
         System.IO.File.WriteAllText(path, json);
     }
+    // public void SpawnBrickNewStage(Stage stageRoot,ENUM_COLOR color)
+    // {
+    //     StageData stageData = mapData.stages[stageRoot.stageIndex];
+        
+    //     foreach (var brickData in stageData.bricks)
+    //     {
+    //         if(brickData.color != color) continue;
+            
+    //         Brick unit = Instantiate(
+    //             brickPrefab, 
+    //             brickData.position, 
+    //             stageRoot.transform.rotation,
+    //             stageRoot.transform);
+
+    //         stageRoot.AddActiveBrick(unit , brickData.color);
+    //     }
+    // }
+
 }

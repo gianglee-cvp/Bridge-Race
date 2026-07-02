@@ -19,8 +19,37 @@ public partial class GameManager : Singleton<GameManager>
     {
         return new Vector2(position.x, position.z);
     }
-    // public void OnCharacterWin(Character character, Transform firstSeed, Transform secondSeed, Transform thirdSeed)
-    // {
-    //     character.OnFinishLevel(firstSeed);
-    // }
+    public void OnCharacterWin(Character character, Transform firstSeed, Transform secondSeed, Transform thirdSeed)
+    {
+        character.OnWin(firstSeed);
+
+        Character secondPlace = null;
+        Character thirdPlace = null;
+
+        for (int i = 0; i < listCharacters.Count; i++)
+        {
+            Character c = listCharacters[i];
+            if (c == character) continue;
+
+            if (secondPlace == null || c.Point > secondPlace.Point)
+            {
+                thirdPlace = secondPlace;
+                secondPlace = c;
+            }
+            else if (thirdPlace == null || c.Point > thirdPlace.Point)
+            {
+                thirdPlace = c;
+            }
+        }
+
+        if (secondPlace != null)
+        {
+            secondPlace.OnWin(secondSeed);
+        }
+
+        if (thirdPlace != null)
+        {
+            thirdPlace.OnWin(thirdSeed);
+        }
+    }   
 }

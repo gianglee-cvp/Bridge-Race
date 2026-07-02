@@ -5,9 +5,9 @@ public enum ENUM_ANIMATOR_TRIGGER
 {
     IDLE = 0,
     RUN = 1,
-    FALL = 3,
-    WIN = 4,
-    LOSE = 5
+    FALL = 2,
+    WIN = 3,
+    LOSE = 4
 }
 
 public class Character : MonoBehaviour
@@ -21,6 +21,8 @@ public class Character : MonoBehaviour
     public List<CharacterBrick> listBricks = new List<CharacterBrick>();
     public Stage currentStage;
     private ENUM_ANIMATOR_TRIGGER currentAnim ;
+    private int point; 
+    public int Point { get => point;}
 
 
     // public int currentStageIndex = 0;
@@ -28,15 +30,15 @@ public class Character : MonoBehaviour
     public virtual void OnInit()    
     {
         SetAnim(ENUM_ANIMATOR_TRIGGER.IDLE);
-        currentStage = GameManager.Instance.stageList[0];
+        // currentStage = GameManager.Instance.stageList[0];
+        OnChangeStage(GameManager.Instance.stageList[0]);
+        point = 0 ; 
     }
     // void OnDespawn()
     // {
         
-    // }
-    // public void OnTriggerEnter(Collider other)
-    // {
-    // }    
+    // }  
+
     public void AddBrick(Brick brick)
     {
         CharacterBrick chBrick = Instantiate(chBrickPrefab, parentBrick , false);
@@ -48,6 +50,16 @@ public class Character : MonoBehaviour
         chBrick.OnCollect(brick.colorBrick, this);
         
         currentBrickCount++;
+        point ++;
+    }
+    public void ClearAllBrick()
+    {
+        foreach (var brick in listBricks)
+        {
+            Destroy(brick.gameObject); // TODO : cho vao pool
+        }
+        listBricks.Clear();
+        currentBrickCount = 0;
     }
     public virtual bool CheckCharacterGoUpStair()
     {
@@ -84,7 +96,8 @@ public class Character : MonoBehaviour
     {
         if(currentStage == newStage) return ;
         currentStage.CloseAllDoor(colorCharacter); 
-        currentStage = newStage; 
+        //currentStage = newStage; 
+        OnChangeStage(newStage);
     }
     public virtual void ReachLastStep(Step st)
     {
@@ -103,9 +116,23 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void OnFinishLevel(Transform Seed)
+    public virtual void OnFinishLevel()
     {
-        transform.position = Seed.position;
+        ClearAllBrick();
+    }   
+    public virtual void OnWin(Transform Seed)
+    {
+        OnFinishLevel();
+        transform.SetPositionAndRotation(Seed.position, Seed.rotation);
         SetAnim(ENUM_ANIMATOR_TRIGGER.WIN);
+    }
+    public virtual void OnChangeStage(Stage newStage)
+    {
+        if(currentStage != newStage)
+        {
+            currentStage = newStage;
+            newStage.SpawnBrick(colorCharacter);
+            Debug.Log("Character: " + gameObject.name + " Change Stage to: " + newStage.gameObject.name);
+        }
     }
 }

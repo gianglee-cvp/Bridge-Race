@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &590640185070199247
 Transform:
   m_ObjectHideFlags: 0
@@ -128,3 +128,4 @@ MonoBehaviour:
   colorBrick: 0
   meshRenderer: {fileID: 5708177104337892517}
   colliderBrick: {fileID: 2039338285852014688}
+  stage: {fileID: 0}

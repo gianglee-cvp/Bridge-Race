@@ -4,7 +4,6 @@ public class IdleState : IEnemyState
 {
     public void OnEnter(EnemyAI enemy)
     {
-        enemy.characterCollider.enabled = false;
         enemy.SetAnim(ENUM_ANIMATOR_TRIGGER.IDLE);
     }
 
@@ -16,6 +15,5 @@ public class IdleState : IEnemyState
     public void OnExit(EnemyAI enemy)
     {
         // Cleanup or transition logic when exiting the idle state
-        enemy.characterCollider.enabled = true;
     }
 }

@@ -22,11 +22,6 @@ public class Player : Character
     }
 
 
-    private void OnDisable()
-    {
-        moveAction.Disable();
-    }
-
 
     private void Update()
     {
@@ -45,6 +40,10 @@ public class Player : Character
     }
     private void FixedUpdate()
     {
+        if(!moveAction.enabled)
+        {
+            return;
+        }
         Vector3 move = new Vector3(moveAmount.x, 0, moveAmount.y);
 
         if(move.sqrMagnitude   > 0.01f)
@@ -81,4 +80,10 @@ public class Player : Character
     {
         base.ReachLastStep(st);
     }
+    public override void OnFinishLevel()
+    {
+        base.OnFinishLevel();
+        moveAction.Disable();
+    }
+
 }

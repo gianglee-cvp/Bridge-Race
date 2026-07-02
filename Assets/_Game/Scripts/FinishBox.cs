@@ -10,8 +10,10 @@ public class FinishBox : MonoBehaviour
         if(other.CompareTag("Character"))
         {
             Character ch = GameManager.Instance.GetCharacter(other);
+            GameManager.Instance.OnCharacterWin(ch, firstSeed, secondSeed, thirdSeed);
+            Debug.Log("FinishBox: Character " + ch.name + " has entered the finish box.");
             // GameManager.Instance.OnCharacterWin(ch, firstSeed, secondSeed, thirdSeed);
         }
     }
 
-}
+}   

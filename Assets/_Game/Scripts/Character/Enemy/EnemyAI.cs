@@ -19,7 +19,9 @@ public class EnemyAI : Character
     public override void OnInit()
     {
         base.OnInit();
+        agent.enabled = true;
         ChangeState(new PatrolState());
+
     }
     private void Update()
     {
@@ -117,5 +119,12 @@ public class EnemyAI : Character
         Debug.Log("Enemy Reach Last Step");
         Vector3 target = transform.position + transform.forward * 4f ;
         SetAgentDestination(target); 
+    }
+    public override void OnFinishLevel()
+    {   
+        Debug.Log("Enemy Finish Level");
+        agent.enabled = false;
+        base.OnFinishLevel();
+        ChangeState(new IdleState()); // Stop the enemy from moving or performing any actions
     }
 }
