@@ -5,6 +5,7 @@ public class IdleState : IEnemyState
     public void OnEnter(EnemyAI enemy)
     {
         enemy.characterCollider.enabled = false;
+        enemy.SetAnim(ENUM_ANIMATOR_TRIGGER.IDLE);
     }
 
     public void OnExecute(EnemyAI enemy)

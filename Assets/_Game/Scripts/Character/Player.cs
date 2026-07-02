@@ -11,13 +11,14 @@ public class Player : Character
 
     private float speed = 5f;
     private float rotateAngle; 
+    private bool isMove ; 
 
     public override void OnInit()
     {
         base.OnInit();
-        
         moveAction = inputActions.FindAction("Move");
         moveAction.Enable();
+        isMove = false;
     }
 
 
@@ -45,12 +46,27 @@ public class Player : Character
     private void FixedUpdate()
     {
         Vector3 move = new Vector3(moveAmount.x, 0, moveAmount.y);
+
         if(move.sqrMagnitude   > 0.01f)
         {
-        rotatePart.rotation = Quaternion.LookRotation(move);
-        transform.Translate(
-            move * speed * Time.fixedDeltaTime
-        );
+            if (!isMove)
+            {
+                isMove = true;
+                SetAnim(ENUM_ANIMATOR_TRIGGER.RUN);
+            }
+
+            rotatePart.rotation = Quaternion.LookRotation(move);
+            transform.Translate(
+                move * speed * Time.fixedDeltaTime
+            );
+        }
+        else
+        {
+            if (isMove)
+            {
+                isMove = false;
+                SetAnim(ENUM_ANIMATOR_TRIGGER.IDLE);
+            }
         }
     }
     public override bool CheckCharacterGoUpStair()

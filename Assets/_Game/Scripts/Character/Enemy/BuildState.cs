@@ -9,6 +9,8 @@ public class BuildState : IEnemyState
         choosenStair = enemy.ChooseStrategy();
         Vector3 destination = choosenStair.GetLastStepPosition();
         enemy.SetAgentDestination(destination);
+
+        enemy.SetAnim(ENUM_ANIMATOR_TRIGGER.RUN);
     }
 
     public void OnExecute(EnemyAI enemy)

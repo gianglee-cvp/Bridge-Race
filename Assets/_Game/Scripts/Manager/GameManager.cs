@@ -19,4 +19,8 @@ public partial class GameManager : Singleton<GameManager>
     {
         return new Vector2(position.x, position.z);
     }
+    // public void OnCharacterWin(Character character, Transform firstSeed, Transform secondSeed, Transform thirdSeed)
+    // {
+    //     character.OnFinishLevel(firstSeed);
+    // }
 }

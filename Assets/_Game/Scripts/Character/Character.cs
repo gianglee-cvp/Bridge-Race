@@ -1,5 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
+public enum ENUM_ANIMATOR_TRIGGER
+{
+    IDLE = 0,
+    RUN = 1,
+    FALL = 3,
+    WIN = 4,
+    LOSE = 5
+}
 
 public class Character : MonoBehaviour
 {
@@ -7,13 +16,18 @@ public class Character : MonoBehaviour
     [SerializeField] public ENUM_COLOR colorCharacter;
     [SerializeField] public Collider characterCollider;
     [SerializeField] public Transform rotatePart;
+    [SerializeField] private Animator animator;
     [SerializeField] public CharacterBrick chBrickPrefab; // TODO dduaw vafo gamemanager de load 
     public List<CharacterBrick> listBricks = new List<CharacterBrick>();
     public Stage currentStage;
+    private ENUM_ANIMATOR_TRIGGER currentAnim ;
+
+
     // public int currentStageIndex = 0;
     public int currentBrickCount = 0 ; 
     public virtual void OnInit()    
     {
+        SetAnim(ENUM_ANIMATOR_TRIGGER.IDLE);
         currentStage = GameManager.Instance.stageList[0];
     }
     // void OnDespawn()
@@ -76,5 +90,22 @@ public class Character : MonoBehaviour
     {
         Debug.Log("Characte Reach Last Step"); 
         st.SetStopPointOnLastStep(this);
+    }
+    public void SetAnim(ENUM_ANIMATOR_TRIGGER anim)
+    {
+        if(currentAnim != anim)
+        {
+            animator.ResetTrigger(
+                GameManager.Instance.listTriggerAnimator[(int)currentAnim]);
+            currentAnim = anim;
+            animator.SetTrigger(
+                GameManager.Instance.listTriggerAnimator[(int)currentAnim]);
+        }
+    }
+
+    public void OnFinishLevel(Transform Seed)
+    {
+        transform.position = Seed.position;
+        SetAnim(ENUM_ANIMATOR_TRIGGER.WIN);
     }
 }

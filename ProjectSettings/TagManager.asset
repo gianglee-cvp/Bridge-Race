@@ -8,6 +8,7 @@ TagManager:
   - Stage
   - Character
   - Door
+  - FinishBox
   layers:
   - Default
   - TransparentFX

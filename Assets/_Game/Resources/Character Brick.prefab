@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2039338285852014688}
   - component: {fileID: 6426189225144788868}
   m_Layer: 0
-  m_Name: BrickPrefab 1
+  m_Name: Character Brick
   m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

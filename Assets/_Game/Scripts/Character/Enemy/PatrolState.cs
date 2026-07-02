@@ -11,6 +11,7 @@ public class PatrolState : IEnemyState
     {
         timer = 0f;
         randomTime = Random.Range(5f, 18f); 
+        enemy.SetAnim(ENUM_ANIMATOR_TRIGGER.RUN);
     }
 
     public void OnExecute(EnemyAI enemy)
