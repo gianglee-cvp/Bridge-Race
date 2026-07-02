@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class CharacterBrick : MonoBehaviour
+public class CharacterBrick : GameUnit
 {
     [SerializeField] private MeshRenderer meshRenderer;
     public void OnCollect(ENUM_COLOR color, Character character )

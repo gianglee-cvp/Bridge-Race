@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Brick : MonoBehaviour
+public class Brick : GameUnit
 {
     [SerializeField] public ENUM_COLOR colorBrick;
     [SerializeField] private MeshRenderer meshRenderer;

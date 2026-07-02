@@ -125,4 +125,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7877972dc406454ca9ed9469c439073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterBrick
+  poolType: 1
   meshRenderer: {fileID: 5708177104337892517}

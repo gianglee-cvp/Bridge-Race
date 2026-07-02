@@ -6819,6 +6819,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1832793328}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1005159977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1005159979}
+  - component: {fileID: 1005159978}
+  m_Layer: 0
+  m_Name: Pooling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1005159978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005159977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c20364d427436f429f3ba107ba39259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PoolControl
+  poolAmounts:
+  - prefab: {fileID: 2580360831205630559, guid: b0b440fea56d4d74ca3fa9fb4dc89191, type: 3}
+    amount: 20
+    parent: {fileID: 1005159979}
+  - prefab: {fileID: 6426189225144788868, guid: 22e6f7c85015e3b458d71969914afae0, type: 3}
+    amount: 20
+    parent: {fileID: 1005159979}
+--- !u!4 &1005159979
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005159977}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1005162552
 GameObject:
   m_ObjectHideFlags: 0
@@ -15140,3 +15191,4 @@ SceneRoots:
   - {fileID: 1971631016}
   - {fileID: 277363573}
   - {fileID: 2051746140}
+  - {fileID: 1005159979}

@@ -21,12 +21,17 @@ public class MapManager : MonoBehaviour
             Stage stageRoot = stageList[i];
             foreach (var brickData in stageData.bricks)
             {
-                Brick unit = Instantiate(
-                    brickPrefab, 
+                    // Brick unit = Instantiate(
+                    //     brickPrefab, 
+                    //     brickData.position, 
+                    //     stageRoot.transform.rotation,
+                    //     stageRoot.transform);
+                Brick unit = SimplePool.Spawn<Brick>(
+                    brickPrefab.poolType, 
                     brickData.position, 
                     stageRoot.transform.rotation,
                     stageRoot.transform);
-
+                
                 stageRoot.AddActiveBrick(unit , brickData.color);
                 Debug.Log("Stage: " + stageRoot.gameObject.name + " AddActiveBrick color: " + brickData.color + " count: " + stageRoot.CountActiveBricks(brickData.color));
 

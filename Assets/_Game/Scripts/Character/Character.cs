@@ -41,12 +41,14 @@ public class Character : MonoBehaviour
 
     public void AddBrick(Brick brick)
     {
-        CharacterBrick chBrick = Instantiate(chBrickPrefab, parentBrick , false);
+        CharacterBrick chBrick = SimplePool.Spawn<CharacterBrick>(
+            chBrickPrefab.poolType, 
+            parentBrick.position + new Vector3(0, (currentBrickCount) * 0.15f, 0),
+            parentBrick.rotation , 
+            parentBrick);
+        
         listBricks.Add(chBrick);
         brick.OnCollect(); 
-        //TODO : cho vao oncollect cua brick
-        chBrick.transform.localPosition = new Vector3(0, (currentBrickCount) * 0.15f, 0);
-        chBrick.transform.localRotation = Quaternion.identity;
         chBrick.OnCollect(brick.colorBrick, this);
         
         currentBrickCount++;
