@@ -916,6 +916,7 @@ MonoBehaviour:
   rotatePart: {fileID: 813299780}
   animator: {fileID: 1468129814}
   chBrickPrefab: {fileID: 6426189225144788868, guid: 22e6f7c85015e3b458d71969914afae0, type: 3}
+  rb: {fileID: 52767038}
   listBricks: []
   currentStage: {fileID: 0}
   currentBrickCount: 0
@@ -10462,6 +10463,7 @@ MonoBehaviour:
   rotatePart: {fileID: 1832793328}
   animator: {fileID: 427049032}
   chBrickPrefab: {fileID: 6426189225144788868, guid: 22e6f7c85015e3b458d71969914afae0, type: 3}
+  rb: {fileID: 1664969816}
   listBricks: []
   currentStage: {fileID: 0}
   currentBrickCount: 0

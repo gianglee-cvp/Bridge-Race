@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class CanvasMainMenu : UICanvas
 {
-
+    public override void Setup()
+    {
+        base.Setup();
+    }
     public void PlayButton()
     {
         Close(0); 

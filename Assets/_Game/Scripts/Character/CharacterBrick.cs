@@ -1,15 +1,51 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class CharacterBrick : GameUnit
 {
     [SerializeField] private MeshRenderer meshRenderer;
-    public void OnCollect(ENUM_COLOR color, Character character )
+    public void OnCollect(ENUM_COLOR color, Character character, Vector3 startPos, Quaternion startRot)
     {
         meshRenderer.material = GameManager.Instance.GetMaterial(color);
         gameObject.layer = LayerMask.NameToLayer(
                 GameManager.Instance.listColorLayerName[(int)color]
         );
+
+        Transform targetHolder = character.parentBrick;
+        Vector3 targetLocalPos = new Vector3(0, character.currentBrickCount * 0.15f, 0);
+
+        transform.SetParent(null);
+        transform.position = startPos;
+        transform.rotation = startRot;
+
+        StopAllCoroutines();
+        StartCoroutine(FlyToCharacter(targetHolder, targetLocalPos, startPos, startRot));
     }
 
+    private IEnumerator FlyToCharacter(Transform targetHolder, Vector3 targetLocalPos, Vector3 startPos, Quaternion startRot)
+    {
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime * 1.5f;
+
+            Vector3 endPos = targetHolder.TransformPoint(targetLocalPos);
+            Vector3 controlPoint = (startPos + endPos) * 0.5f + Vector3.up * 2f;
+            transform.position = CalculateBezier(startPos, controlPoint, endPos, t);
+            transform.rotation = Quaternion.Slerp(startRot, targetHolder.rotation, t);
+
+            yield return null;
+        }
+
+        transform.SetParent(targetHolder);
+        transform.localPosition = targetLocalPos;
+        transform.localRotation = Quaternion.identity;
+    }
+
+    private Vector3 CalculateBezier(Vector3 p0, Vector3 p1, Vector3 p2, float t)
+    {
+        float u = 1 - t;
+        return u * u * p0 + 2 * u * t * p1 + t * t * p2;
+    }
 }

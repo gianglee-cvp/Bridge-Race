@@ -18,7 +18,7 @@ public class Character : MonoBehaviour
     [SerializeField] public Transform rotatePart;
     [SerializeField] private Animator animator;
     [SerializeField] public CharacterBrick chBrickPrefab; // TODO dduaw vafo gamemanager de load 
-    [SerializeField] Rigidbody rigidbody;
+    [SerializeField] private Rigidbody rb;
     public List<CharacterBrick> listBricks = new List<CharacterBrick>();
     public Stage currentStage;
     private ENUM_ANIMATOR_TRIGGER currentAnim ;
@@ -28,9 +28,10 @@ public class Character : MonoBehaviour
 
     // public int currentStageIndex = 0;
     public int currentBrickCount = 0 ; 
-    public virtual void OnInit()    
+    public virtual void OnInit()
     {
-        rigidbody.useGravity = false;
+        rb.useGravity = false;
+        characterCollider.enabled = false;
     }
     // void OnDespawn()
     // {
@@ -38,23 +39,29 @@ public class Character : MonoBehaviour
     // }  
     public virtual void OnPlay()
     {
+        rb.useGravity = true;
+        characterCollider.enabled = true;
+
         SetAnim(ENUM_ANIMATOR_TRIGGER.IDLE);
         OnChangeStage(GameManager.Instance.stageList[0]);
         point = 0 ; 
-        rigidbody.useGravity = true;
     }
 
     public void AddBrick(Brick brick)
     {
+        Vector3 spawnWorldPos = brick.transform.position;
+        Quaternion spawnWorldRot = brick.transform.rotation;
+
         CharacterBrick chBrick = SimplePool.Spawn<CharacterBrick>(
             chBrickPrefab.poolType, 
-            parentBrick.position + new Vector3(0, (currentBrickCount) * 0.15f, 0),
-            parentBrick.rotation , 
-            parentBrick);
+            spawnWorldPos, 
+            spawnWorldRot, 
+            null
+        );
         
         listBricks.Add(chBrick);
         brick.OnCollect(); 
-        chBrick.OnCollect(brick.colorBrick, this);
+        chBrick.OnCollect(brick.colorBrick, this, spawnWorldPos, spawnWorldRot);
         
         currentBrickCount++;
         point ++;
