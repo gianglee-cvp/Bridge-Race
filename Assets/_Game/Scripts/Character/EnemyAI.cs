@@ -19,9 +19,13 @@ public class EnemyAI : Character
     public override void OnInit()
     {
         base.OnInit();
+        agent.enabled = false;
+    }
+    public override void OnPlay()
+    {
+        base.OnPlay();
         agent.enabled = true;
         ChangeState(new PatrolState());
-
     }
     private void Update()
     {

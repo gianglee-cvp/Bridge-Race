@@ -33,7 +33,6 @@ public class MapManager : MonoBehaviour
                     stageRoot.transform);
                 
                 stageRoot.AddActiveBrick(unit , brickData.color);
-                Debug.Log("Stage: " + stageRoot.gameObject.name + " AddActiveBrick color: " + brickData.color + " count: " + stageRoot.CountActiveBricks(brickData.color));
 
 
                 unit.SetColor(brickData.color, GameManager.Instance.colorDataSO.GetMaterial(brickData.color));

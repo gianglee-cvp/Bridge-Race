@@ -37,7 +37,6 @@ public class Stage : MonoBehaviour
             activeBricks[color] = new List<Brick>();
         }
         activeBricks[color].Add(brick);
-        Debug.Log("Stage: " + gameObject.name + " AddActiveBrick color: " + color + " count: " + activeBricks[color].Count);
 
         if (!colorBricks.ContainsKey(color))
         {

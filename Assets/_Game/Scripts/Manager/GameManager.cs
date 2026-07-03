@@ -6,8 +6,9 @@ public partial class GameManager : Singleton<GameManager>
     [SerializeField] public ColorDataSO colorDataSO;
     public MapManager mapManager;
     public Player player;
-    void Awake()
+    private void Awake()
     {
+        UIManager.Instance.OpenUI<CanvasMainMenu>();
         mapManager.LoadMap(stageList);
         foreach (var character in listCharacters)
         {
@@ -52,4 +53,11 @@ public partial class GameManager : Singleton<GameManager>
             thirdPlace.OnWin(thirdSeed);
         }
     }   
+    public void OnPlayGame()
+    {
+        foreach (var character in listCharacters)
+        {
+            character.OnPlay();
+        }
+    }
 }

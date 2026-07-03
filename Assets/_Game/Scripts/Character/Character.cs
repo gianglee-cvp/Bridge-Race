@@ -18,6 +18,7 @@ public class Character : MonoBehaviour
     [SerializeField] public Transform rotatePart;
     [SerializeField] private Animator animator;
     [SerializeField] public CharacterBrick chBrickPrefab; // TODO dduaw vafo gamemanager de load 
+    [SerializeField] Rigidbody rigidbody;
     public List<CharacterBrick> listBricks = new List<CharacterBrick>();
     public Stage currentStage;
     private ENUM_ANIMATOR_TRIGGER currentAnim ;
@@ -29,15 +30,19 @@ public class Character : MonoBehaviour
     public int currentBrickCount = 0 ; 
     public virtual void OnInit()    
     {
-        SetAnim(ENUM_ANIMATOR_TRIGGER.IDLE);
-        // currentStage = GameManager.Instance.stageList[0];
-        OnChangeStage(GameManager.Instance.stageList[0]);
-        point = 0 ; 
+        rigidbody.useGravity = false;
     }
     // void OnDespawn()
     // {
         
     // }  
+    public virtual void OnPlay()
+    {
+        SetAnim(ENUM_ANIMATOR_TRIGGER.IDLE);
+        OnChangeStage(GameManager.Instance.stageList[0]);
+        point = 0 ; 
+        rigidbody.useGravity = true;
+    }
 
     public void AddBrick(Brick brick)
     {
@@ -65,7 +70,7 @@ public class Character : MonoBehaviour
     }
     public virtual bool CheckCharacterGoUpStair()
     {
-        return true;
+        return false;
     }
     public bool CheckDistanceToStep(Transform stepTf)
     {
