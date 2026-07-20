@@ -1,10 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(menuName = "LevelDataSO")]
+[CreateAssetMenu(menuName = "Game/Level Data")]
 public class LevelDataSO : ScriptableObject
 {
     public List<StageData> stages = new();
+
+    public void Clear()
+    {
+        stages.Clear();
+    }
+
+    public void AddStage(StageData stage)
+    {
+        stages.Add(stage);
+    }
 }
 
 [System.Serializable]

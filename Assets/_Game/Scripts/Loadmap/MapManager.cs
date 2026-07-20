@@ -4,29 +4,26 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class MapManager : MonoBehaviour
 {
-    public MapData mapData = new MapData();
-    private string path = Application.dataPath + "/_Game/Resources/Level_1/map.json";
+    // private string path = Application.dataPath + "/_Game/Resources/Level_1/map.json";
     private Brick brickPrefab;
     private ColorDataSO colorDataSO;
-    public void LoadMap(List<Stage> stageList)
+    public void LoadMap(Level currentLevel)
     {
-        string json = System.IO.File.ReadAllText(path);
-        mapData = JsonUtility.FromJson<MapData>(json);
+        // string json = System.IO.File.ReadAllText(path);
+        // mapData = JsonUtility.FromJson<MapData>(json);
+        // mapData = currentLevel.levelDataSO.mapData;
+        List<StageData> stageDataList = currentLevel.levelDataSO.stages;
 
         brickPrefab = Resources.Load<Brick>("BrickPrefab"); 
         colorDataSO = GameManager.Instance.colorDataSO;
 
-        for(int i = 0 ; i < mapData.stages.Count; i++)
+        for(int i = 0 ; i < stageDataList.Count; i++)
         {
-            StageData stageData = mapData.stages[i];
-            Stage stageRoot = stageList[i];
+            StageData stageData = stageDataList[i];
+            Stage stageRoot = currentLevel.stageList[i];
             foreach (var brickData in stageData.bricks)
             {
-                    // Brick unit = Instantiate(
-                    //     brickPrefab, 
-                    //     brickData.position, 
-                    //     stageRoot.transform.rotation,
-                    //     stageRoot.transform);
+                UnityEngine.Debug.Log("Spawn Brick : " + brickData.color + " at " + brickData.position);
                 Brick unit = SimplePool.Spawn<Brick>(
                     brickPrefab.poolType, 
                     brickData.position, 
@@ -42,11 +39,6 @@ public class MapManager : MonoBehaviour
                 GameManager.Instance.RegisterBrick(unit.colliderBrick, unit);
             }
         }
-    }
-    public void SaveMap()
-    {
-        string json = JsonUtility.ToJson(mapData, true);
-        System.IO.File.WriteAllText(path, json);
     }
     // public void SpawnBrickNewStage(Stage stageRoot,ENUM_COLOR color)
     // {

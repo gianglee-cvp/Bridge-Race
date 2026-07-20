@@ -10,9 +10,10 @@ public class CanvasMainMenu : UICanvas
     {
         Close(0); 
 
-        UIManager.Instance.OpenUI<CanvasGamePlay>(); 
+        UIManager.Instance.OpenUI<CanvasGamePlay>();
+
+        GameManager.Instance.OnChangeLevel(0);
         GameManager.Instance.OnPlayGame();
-        GameManager.Instance.LoadGameMap();
     }
     public void SettingButton()
     {

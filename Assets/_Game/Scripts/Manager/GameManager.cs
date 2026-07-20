@@ -10,17 +10,28 @@ public partial class GameManager : Singleton<GameManager>
     private void Awake()
     {
         UIManager.Instance.OpenUI<CanvasMainMenu>();
-        //mapManager.LoadMap(stageList);
-        stageList = currentLevel.stageList;
+        // stageList = currentLevel.stageList;
+        AddListLevel();
         foreach (var character in listCharacters)
         {
             characterDictionary.Add(character.characterCollider, character);
             character.OnInit();
         }
     }
-    public void LoadGameMap()
+    public void OnChangeLevel(int levelIndex)
     {
-        mapManager.LoadMap(stageList);
+        if(currentLevel != null)
+        {
+            currentLevel.gameObject.SetActive(false);
+        }
+        if (levelIndex >= 0 && levelIndex < listLevels.Count)
+        {
+            currentLevel = listLevels[levelIndex];
+            currentLevel.gameObject.SetActive(true);
+
+            stageList = currentLevel.stageList;
+            mapManager.LoadMap(currentLevel);
+        }
     }
     public Vector2 GetVector2XZ(Vector3 position)
     {

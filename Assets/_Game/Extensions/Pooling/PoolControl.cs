@@ -27,5 +27,5 @@ public enum PoolType
 {
     Brick = 0, 
     CharacterBrick = 1,
-    Bullet_3 = 2 
+    Level = 2 
 }

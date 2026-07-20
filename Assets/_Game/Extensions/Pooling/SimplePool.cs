@@ -6,7 +6,7 @@ using UnityEngine;
 
 public static class SimplePool 
 {
-    private static Dictionary<PoolType,Pool> poolInstance = new Dictionary<PoolType, Pool>(); 
+    public static Dictionary<PoolType,Pool> poolInstance = new Dictionary<PoolType, Pool>(); 
     public static void Preload(GameUnit prefab , int amount, Transform parent)
     {
         if(prefab == null)
@@ -19,6 +19,12 @@ public static class SimplePool
             Pool p = new Pool(); 
             p.Preload(prefab, amount, parent); 
             poolInstance[prefab.poolType] = p ;
+        }
+        // truong hop da co poolInstance cho level(level pool type giong nhau nhung prefab khac nhau)
+        else if(prefab.poolType == PoolType.Level && poolInstance.ContainsKey(PoolType.Level))
+        {
+            Pool p = poolInstance[PoolType.Level];
+            p.Preload(prefab, amount, parent);
         }
     }
     public static T Spawn<T>(PoolType poolType , Vector3 pos , Quaternion rot , Transform parent) where T : GameUnit
@@ -136,5 +142,9 @@ public class Pool
             GameObject.Destroy(inactive.Dequeue().gameObject);
         }
         inactive.Clear();
+    }
+    public Queue<GameUnit> GetInactive()
+    {
+        return inactive; 
     }
 }

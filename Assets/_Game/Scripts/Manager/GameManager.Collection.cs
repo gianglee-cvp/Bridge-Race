@@ -11,6 +11,7 @@ public partial class GameManager : Singleton<GameManager>
     public List<Character> listCharacters = new List<Character>();
     public List<String> listTriggerAnimator = new List<String>();
     public List<String> listColorLayerName = new List<String>();
+    public List<Level> listLevels = new List<Level>();
 
 
 
@@ -41,6 +42,14 @@ public partial class GameManager : Singleton<GameManager>
     public Material GetMaterial(ENUM_COLOR color)
     {
         return colorDataSO.GetMaterial(color);
+    }
+    public void AddListLevel()
+    {
+        Queue<GameUnit> levelQueue = SimplePool.poolInstance[PoolType.Level].GetInactive();
+        foreach(var level in levelQueue)
+        {
+            listLevels.Add((Level)level);
+        }
     }
 
 
