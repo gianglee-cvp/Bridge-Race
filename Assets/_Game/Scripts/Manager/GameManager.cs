@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public partial class GameManager : Singleton<GameManager>
@@ -6,7 +7,7 @@ public partial class GameManager : Singleton<GameManager>
     [SerializeField] public ColorDataSO colorDataSO;
     public MapManager mapManager;
     public Player player;
-    public Level currentLevel;
+    public int currentLevelIndex = 0;
     private void Awake()
     {
         UIManager.Instance.OpenUI<CanvasMainMenu>();
@@ -20,19 +21,50 @@ public partial class GameManager : Singleton<GameManager>
     }
     public void OnChangeLevel(int levelIndex)
     {
-        if(currentLevel != null)
+        if (currentLevelIndex >= 0 && currentLevelIndex < listLevels.Count)
         {
-            currentLevel.gameObject.SetActive(false);
+            listLevels[currentLevelIndex].gameObject.SetActive(false);
         }
+
         if (levelIndex >= 0 && levelIndex < listLevels.Count)
         {
-            currentLevel = listLevels[levelIndex];
-            currentLevel.gameObject.SetActive(true);
+            currentLevelIndex = levelIndex;
+            Level level = listLevels[currentLevelIndex];
+            level.gameObject.SetActive(true);
 
-            stageList = currentLevel.stageList;
-            mapManager.LoadMap(currentLevel);
+            stageList = level.stageList;
+            mapManager.LoadMap(level);
         }
     }
+
+    public void NextLevel()
+    {
+        if (listLevels.Count == 0) return;
+
+        int nextLevel = currentLevelIndex + 1;
+        if (nextLevel >= listLevels.Count)
+        {
+            nextLevel = 0; 
+        }
+        currentLevelIndex = nextLevel;
+        UIManager.Instance.GetUI<CanvasMainMenu>().UpdateLevelText(currentLevelIndex);
+        // OnChangeLevel(nextLevel);
+    }
+
+    public void PrevLevel()
+    {
+        if (listLevels.Count == 0) return;
+
+        int prevLevel = currentLevelIndex - 1;
+        if (prevLevel < 0)
+        {
+            prevLevel = listLevels.Count - 1; 
+        }
+        currentLevelIndex = prevLevel;
+        UIManager.Instance.GetUI<CanvasMainMenu>().UpdateLevelText(currentLevelIndex);
+        // OnChangeLevel(prevLevel);
+    }
+
     public Vector2 GetVector2XZ(Vector3 position)
     {
         return new Vector2(position.x, position.z);
