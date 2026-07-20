@@ -7,7 +7,7 @@ public partial class GameManager : Singleton<GameManager>
     private Dictionary<Collider, Brick> brickDictionary = new Dictionary<Collider, Brick>();
     private Dictionary<Collider, Character> characterDictionary = new Dictionary<Collider, Character>();
 
-    [SerializeField] public List<Stage> stageList = new List<Stage>();
+    [SerializeField] public List<Stage> stageList = new List<Stage>();    
     public List<Character> listCharacters = new List<Character>();
     public List<String> listTriggerAnimator = new List<String>();
     public List<String> listColorLayerName = new List<String>();

@@ -8,14 +8,10 @@ public class PoolControl : MonoBehaviour
     void Awake()
     {
         GameUnit[] gameUnits = Resources.LoadAll<GameUnit>("Pool/");
-
-        for (int i = 0; i < gameUnits.Length; i++)
-        {
-            SimplePool.Preload(gameUnits[i], 0 , new GameObject(gameUnits[i].name).transform);
-        }
         for(int i =0 ; i < poolAmounts.Length ; i++)
         {
             SimplePool.Preload(poolAmounts[i].prefab , poolAmounts[i].amount , poolAmounts[i].parent);
+            Debug.Log("Preload " + poolAmounts[i].prefab.name + " Amount: " + poolAmounts[i].amount);   
         }
     }
 }

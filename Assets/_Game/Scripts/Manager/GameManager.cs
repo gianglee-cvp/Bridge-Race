@@ -6,15 +6,21 @@ public partial class GameManager : Singleton<GameManager>
     [SerializeField] public ColorDataSO colorDataSO;
     public MapManager mapManager;
     public Player player;
+    public Level currentLevel;
     private void Awake()
     {
         UIManager.Instance.OpenUI<CanvasMainMenu>();
-        mapManager.LoadMap(stageList);
+        //mapManager.LoadMap(stageList);
+        stageList = currentLevel.stageList;
         foreach (var character in listCharacters)
         {
             characterDictionary.Add(character.characterCollider, character);
             character.OnInit();
         }
+    }
+    public void LoadGameMap()
+    {
+        mapManager.LoadMap(stageList);
     }
     public Vector2 GetVector2XZ(Vector3 position)
     {
