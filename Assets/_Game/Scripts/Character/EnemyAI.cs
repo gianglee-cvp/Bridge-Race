@@ -16,9 +16,9 @@ public class EnemyAI : Character
     [SerializeField] public NavMeshAgent agent;
 
 
-    public override void OnInit()
+    public override void OnInit(Vector3 pos)
     {
-        base.OnInit();
+        base.OnInit(pos);
         agent.enabled = false;
     }
     public override void OnPlay()
@@ -114,6 +114,7 @@ public class EnemyAI : Character
     public override void ReachNewStage(Stage newStage)
     {
         base.ReachNewStage(newStage);
+        Debug.Log("Change 2");
         ChangeState(new PatrolState()); 
     }
     

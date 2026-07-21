@@ -6,7 +6,8 @@ public enum ENUM_COLOR
     Red = 2,
     Yellow = 3,
     Green = 4, 
-    Black = 5
+    Black = 5,
+    Stair = 6
 }
 
 [CreateAssetMenu(menuName = "ColorDataSO")]

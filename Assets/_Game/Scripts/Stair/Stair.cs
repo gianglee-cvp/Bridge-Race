@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 public class Stair : MonoBehaviour
 {
-    public List<Step> steps = new List<Step>(); 
+    public List<Step> listStep = new List<Step>(); 
     [SerializeField] public List<GameObject> stopPoints = new List<GameObject>(); // so in dex trung voi index cua ENUM_COLOR 
     [SerializeField] public Stage stage;
     public Transform stopPoint;
@@ -15,7 +15,7 @@ public class Stair : MonoBehaviour
     public int GetOpponentCount(ENUM_COLOR color)
     {
         Dictionary<ENUM_COLOR, bool> colorCount = new Dictionary<ENUM_COLOR, bool>();
-        foreach(Step st in steps)
+        foreach(Step st in listStep)
         {
             if(colorCount.ContainsKey(st.colorStep) || st.colorStep == color)
             {
@@ -31,7 +31,7 @@ public class Stair : MonoBehaviour
     public int GetMaxPointCount(ENUM_COLOR color)
     {
         int maxCount = 0;
-        foreach(Step st in steps)
+        foreach(Step st in listStep)
         {
             if(st.colorStep == color)
             {
@@ -42,9 +42,9 @@ public class Stair : MonoBehaviour
     }
     public Vector3 GetLastStepPosition()
     {
-        if (steps.Count > 0)
+        if (listStep.Count > 0)
         {
-            Step lastStep = steps[steps.Count - 1];
+            Step lastStep = listStep[listStep.Count - 1];
             return lastStep.transform.position;
         }
         else
@@ -54,9 +54,9 @@ public class Stair : MonoBehaviour
     }
     public void CloseDoor(ENUM_COLOR color)
     {
-        if (steps.Count > 0)
+        if (listStep.Count > 0)
         {
-            Step lastStep = steps[steps.Count - 1];
+            Step lastStep = listStep[listStep.Count - 1];
             Transform lastStepTF = lastStep.transform; 
             SetStopTransform(
                 lastStepTF.TransformPoint(lastStep.backPointOffset),
@@ -67,6 +67,15 @@ public class Stair : MonoBehaviour
         else
         {
             Debug.LogWarning("Stair: No steps found in the stair.");
+        }
+    }
+    public void OnEnd()
+    {
+        Debug.Log("Return color 4 "); 
+        foreach(var step in listStep)
+        {
+            Debug.Log("Return color 3"); 
+            step.SetColor(ENUM_COLOR.Stair);
         }
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public partial class GameManager : Singleton<GameManager>
@@ -11,13 +9,13 @@ public partial class GameManager : Singleton<GameManager>
     private void Awake()
     {
         UIManager.Instance.OpenUI<CanvasMainMenu>();
-        // stageList = currentLevel.stageList;
+
         AddListLevel();
         foreach (var character in listCharacters)
         {
             characterDictionary.Add(character.characterCollider, character);
-            character.OnInit();
         }
+
     }
     public void OnChangeLevel(int levelIndex)
     {
@@ -28,12 +26,29 @@ public partial class GameManager : Singleton<GameManager>
 
         if (levelIndex >= 0 && levelIndex < listLevels.Count)
         {
+            SetTimeScale(1); 
+
             currentLevelIndex = levelIndex;
             Level level = listLevels[currentLevelIndex];
+            level.OnInit();
             level.gameObject.SetActive(true);
 
             stageList = level.stageList;
+            Debug.Log("level Load");
             mapManager.LoadMap(level);
+        }
+        // foreach (var character in listCharacters)
+        // {
+        //     character.OnInit();
+        // }
+        LevelDataSO levelData = listLevels[currentLevelIndex].levelDataSO ;
+        Vector3 pos = levelData.player.position;
+        player.OnInit(pos) ;
+        for(int i = 1 ; i < listCharacters.Count; i++)
+        {
+            Debug.Log("1");
+            pos = levelData.listEnemy[i-1].position;
+            listCharacters[i].OnInit(pos); 
         }
     }
 
@@ -117,11 +132,14 @@ public partial class GameManager : Singleton<GameManager>
     {
         // SimplePool.poolInstance[PoolType.CharacterBrick].Collect(); 
         // SimplePool.poolInstance[PoolType.Brick].Collect();
+        Level level = listLevels[currentLevelIndex]; 
+        level.OnEnd();
 
         listLevels[currentLevelIndex].gameObject.SetActive(false);
+        Debug.Log("1++");
         foreach(var ch in listCharacters)
         {
-            ch.OnFinishLevel();
+            ch.OnExitGame();
         }
     }
 }

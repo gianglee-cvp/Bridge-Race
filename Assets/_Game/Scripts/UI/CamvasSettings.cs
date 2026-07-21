@@ -33,7 +33,6 @@ public class CanvasSettings : UICanvas
 
         UIManager.Instance.CloseAllUI(); 
         UIManager.Instance.OpenUI<CanvasMainMenu>(); 
-
     }
     public void ContinueButton()
     {

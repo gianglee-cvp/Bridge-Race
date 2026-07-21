@@ -267,3 +267,11 @@ MonoBehaviour:
       position: {x: -6.000005, y: 6.565, z: 44.820004}
     - color: 2
       position: {x: -8.000005, y: 6.565, z: 44.820004}
+  player:
+    color: 0
+    position: {x: 0, y: 0.6, z: -7.6}
+  listEnemy:
+  - color: 0
+    position: {x: -5, y: 0.6, z: -7.6}
+  - color: 0
+    position: {x: 5, y: 0.6, z: -7.6}

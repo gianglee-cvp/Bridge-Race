@@ -17,9 +17,9 @@ public class Stage : MonoBehaviour
             return;
         }
         Brick br = brickToRemain[color].Dequeue();
+        AddActiveBrick(br, br.colorBrick);  
         br.gameObject.SetActive(true);
     }
-
     public void AddBrickToRemain(Brick brick)
     {
         if (!brickToRemain.ContainsKey(brick.colorBrick))
@@ -51,7 +51,7 @@ public class Stage : MonoBehaviour
             kvp.Value.Remove(brick);
         }
     }
-    public int CountActiveBricks(ENUM_COLOR color)
+    public int CountActiveBricks(ENUM_COLOR color) 
     {
         if(activeBricks.ContainsKey(color))
         {
@@ -94,6 +94,31 @@ public class Stage : MonoBehaviour
             {
                 brick.gameObject.SetActive(true);
             }
+        }
+    }
+    public void OnEnd()
+    {
+        foreach (var kvp in colorBricks)
+        {
+            foreach (var brick in kvp.Value)
+            {
+                if (!brick.gameObject.activeSelf)
+                {
+                    brick.gameObject.SetActive(true);
+                }
+                SimplePool.DesSpawn(brick);
+            }
+        }
+        
+        brickToRemain.Clear();
+        activeBricks.Clear();
+        colorBricks.Clear();
+        isCoLorSpawned.Clear();
+        Debug.Log("Return color1");
+        foreach( var stair in listStair)
+        {
+            Debug.Log("Return color 2");
+            stair.OnEnd(); 
         }
     }
 }

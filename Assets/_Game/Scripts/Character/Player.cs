@@ -13,9 +13,9 @@ public class Player : Character
     private float rotateAngle; 
     private bool isMove ; 
 
-    public override void OnInit()
+    public override void OnInit(Vector3 pos)
     {
-        base.OnInit();
+        base.OnInit(pos);
         moveAction = inputActions.FindAction("Move");
         moveAction.Enable();
         isMove = false;
@@ -26,7 +26,7 @@ public class Player : Character
     private void Update()
     {
         moveAmount = moveAction.ReadValue<Vector2>().normalized;
-
+        Debug.Log("abc" + moveAction.enabled); 
         // Vector3 move = new Vector3(moveAmount.x, 0, moveAmount.y);
         // //TODO : dùng lerp cho mượt, cân nhắc sửa thành rb moveposition để mượt hơn hi lên dốc và xuống dốc
         // if(move.sqrMagnitude   > 0.01f)

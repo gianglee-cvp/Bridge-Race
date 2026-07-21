@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System;
+using Unity.VisualScripting;
 public enum ENUM_ANIMATOR_TRIGGER
 {
     IDLE = 0,
@@ -29,16 +29,14 @@ public class Character : MonoBehaviour
 
     // public int currentStageIndex = 0;
     public int currentBrickCount = 0 ; 
-    public virtual void OnInit()
+    public virtual void OnInit(Vector3 pos)
     {
-        rb.useGravity = false;
-        characterCollider.enabled = false;
+        gameObject.SetActive(true); 
+        transform.position = pos;
+        transform.rotation = Quaternion.identity;
     }
     public virtual void OnPlay()
     {
-        rb.useGravity = true;
-        characterCollider.enabled = true;
-
         SetAnim(ENUM_ANIMATOR_TRIGGER.IDLE);
         OnChangeStage(GameManager.Instance.stageList[0]);
         point = 0 ; 
@@ -146,11 +144,17 @@ public class Character : MonoBehaviour
     }
     public virtual void OnChangeStage(Stage newStage)
     {
-        if(currentStage != newStage)
+        if(currentStage == null || currentStage != newStage)
         {
             currentStage = newStage;
             newStage.SpawnBrick(colorCharacter);
             Debug.Log("Character: " + gameObject.name + " Change Stage to: " + newStage.gameObject.name);
         }
     }
+    public virtual void OnExitGame()
+    {
+        ClearAllBrick();
+        currentStage = null; 
+        gameObject.SetActive(false); 
+    } 
 }
