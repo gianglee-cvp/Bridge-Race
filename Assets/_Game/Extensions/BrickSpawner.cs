@@ -58,7 +58,7 @@ public class BrickSpawner : MonoBehaviour
 
                     Brick unit = Instantiate(prefabBase, spawnPoint, prefabBase.transform.rotation);
                     stageData.bricks.Add(new BrickData { color = selectedRatio.color, position = spawnPoint });
-                    unit.SetColor(selectedRatio.color, selectedRatio.material);
+                    unit.SetColor(selectedRatio.color);
                     unit.transform.SetParent(root);
 
                     if (GameManager.Instance != null)

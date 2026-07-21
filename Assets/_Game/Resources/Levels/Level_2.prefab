@@ -1226,7 +1226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6948acb9c2540ed46bb24fdf7b261510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Stair
-  steps:
+  listStep:
   - {fileID: 3769997780327821792}
   - {fileID: 311334120922061952}
   - {fileID: 1163348299656574755}
@@ -1238,8 +1238,8 @@ MonoBehaviour:
   - {fileID: 5919178019089284172}
   - {fileID: 2648892118908744553}
   - {fileID: 1295528937888155027}
-  - {fileID: 5382603865165070736}
   - {fileID: 4511605893306893593}
+  - {fileID: 5382603865165070736}
   - {fileID: 7018587920671919565}
   - {fileID: 7407972447507296668}
   - {fileID: 3494884084192729942}
@@ -9387,7 +9387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6948acb9c2540ed46bb24fdf7b261510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Stair
-  steps:
+  listStep:
   - {fileID: 8113025755246663508}
   - {fileID: 1480009361661960809}
   - {fileID: 5414382422563391454}
@@ -9477,7 +9477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6948acb9c2540ed46bb24fdf7b261510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Stair
-  steps:
+  listStep:
   - {fileID: 6839478600769768354}
   - {fileID: 2233342363808051520}
   - {fileID: 255714880248997987}
@@ -12442,7 +12442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6948acb9c2540ed46bb24fdf7b261510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Stair
-  steps:
+  listStep:
   - {fileID: 4222128290301269215}
   - {fileID: 6090116441626380182}
   - {fileID: 3036338566046960244}

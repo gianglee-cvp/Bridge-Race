@@ -1,61 +1,51 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 public class Stage : MonoBehaviour
 {
-    private Dictionary<ENUM_COLOR, Queue<Brick>> brickToRemain = new Dictionary<ENUM_COLOR, Queue<Brick>>();
+    private Dictionary<ENUM_COLOR, Queue<Brick>> brickToRemain_ver2 = new Dictionary<ENUM_COLOR, Queue<Brick>>(); 
     // private List<Brick> activeBricks = new List<Brick>();
-    private Dictionary<ENUM_COLOR, List<Brick>> activeBricks = new Dictionary<ENUM_COLOR, List<Brick>>();
-    private Dictionary<ENUM_COLOR, List<Brick>> colorBricks = new Dictionary<ENUM_COLOR, List<Brick>>();
+    private Dictionary<ENUM_COLOR, List<Brick>> activeBricks_ver2 = new Dictionary<ENUM_COLOR, List<Brick>>() ; 
     public int stageIndex; // cho vao dictionary hoac gan khi spawn
     [SerializeField] public List<Stair> listStair = new List<Stair>();
-    public Dictionary<ENUM_COLOR, bool > isCoLorSpawned = new Dictionary<ENUM_COLOR, bool>();
     public void OnRemainBrick(ENUM_COLOR color)
     {
-        if(!brickToRemain.ContainsKey(color) || brickToRemain[color].Count == 0)
+        if(!brickToRemain_ver2.ContainsKey(color) || brickToRemain_ver2[color].Count == 0)
         {
             return;
         }
-        Brick br = brickToRemain[color].Dequeue();
-        AddActiveBrick(br, br.colorBrick);  
-        br.gameObject.SetActive(true);
+        Brick br = brickToRemain_ver2[color].Dequeue();
+        if (!activeBricks_ver2.ContainsKey(color))
+        {
+            activeBricks_ver2[color] = new List<Brick>(); 
+        }
+        activeBricks_ver2[color].Add(br); 
+        br.SetColor(color); 
     }
     public void AddBrickToRemain(Brick brick)
     {
-        if (!brickToRemain.ContainsKey(brick.colorBrick))
+        if (!brickToRemain_ver2.ContainsKey(brick.colorBrick))
         {
-            brickToRemain[brick.colorBrick] = new Queue<Brick>();
+            brickToRemain_ver2[brick.colorBrick] = new Queue<Brick>();
         }
-        brickToRemain[brick.colorBrick].Enqueue(brick);
+        brickToRemain_ver2[brick.colorBrick].Enqueue(brick);
+        brick.SetColor(ENUM_COLOR.None); 
     }
 
-    public void AddActiveBrick(Brick brick , ENUM_COLOR color)
+    public void AddRemainBrick(Brick brick , ENUM_COLOR color)
     {
-
-        if (!activeBricks.ContainsKey(color))
+        if (!brickToRemain_ver2.ContainsKey(color))
         {
-            activeBricks[color] = new List<Brick>();
+            brickToRemain_ver2[color] = new Queue<Brick>(); 
         }
-        activeBricks[color].Add(brick);
-
-        if (!colorBricks.ContainsKey(color))
-        {
-            colorBricks[color] = new List<Brick>();
-        }
-        colorBricks[color].Add(brick);
-    }
-    public void RemoveActiveBrick(Brick brick)
-    {
-        foreach (var kvp in activeBricks)
-        {
-            kvp.Value.Remove(brick);
-        }
+        
+        brickToRemain_ver2[color].Enqueue(brick); 
+        brick.SetColor(ENUM_COLOR.None); 
     }
     public int CountActiveBricks(ENUM_COLOR color) 
     {
-        if(activeBricks.ContainsKey(color))
+        if(activeBricks_ver2.ContainsKey(color))
         {
-            return activeBricks[color].Count;
+            return activeBricks_ver2[color].Count;
         }
         else
         {
@@ -66,13 +56,13 @@ public class Stage : MonoBehaviour
     
     public Transform GetActiveBrick(ENUM_COLOR color)
     {
-        int cnt = activeBricks[color].Count;
+        int cnt = activeBricks_ver2[color].Count;
         if (cnt == 0)
         {
             Debug.LogError("No active bricks found for color: " + color);
         }
         int randomIndex = Random.Range(0, cnt);
-        return activeBricks[color][randomIndex].transform;
+        return activeBricks_ver2[color][randomIndex].transform;
     }
     public void CloseAllDoor(ENUM_COLOR color)
     {
@@ -83,41 +73,45 @@ public class Stage : MonoBehaviour
     }
     public void SpawnBrick(ENUM_COLOR color)
     {
-
-        if(isCoLorSpawned.ContainsKey(color) && isCoLorSpawned[color]) return ; 
-        isCoLorSpawned[color] = true;
-
-        if(colorBricks.ContainsKey(color))
+        if(brickToRemain_ver2.ContainsKey(color) && brickToRemain_ver2[color].Count > 0)
         {
-            List<Brick> bricksOfColor = colorBricks[color];
-            foreach (Brick brick in bricksOfColor)
+            while(brickToRemain_ver2[color].Count > 0)
             {
-                brick.gameObject.SetActive(true);
+                Brick br = brickToRemain_ver2[color].Dequeue(); 
+                br.SetColor(color);
+
+                if (!activeBricks_ver2.ContainsKey(color))
+                {
+                    activeBricks_ver2[color] = new List<Brick>() ;
+                }
+                activeBricks_ver2[color].Add(br); 
             }
         }
     }
     public void OnEnd()
-    {
-        foreach (var kvp in colorBricks)
+    {      
+        foreach( var q in brickToRemain_ver2.Values)
         {
-            foreach (var brick in kvp.Value)
+            while(q.Count > 0)
             {
-                if (!brick.gameObject.activeSelf)
-                {
-                    brick.gameObject.SetActive(true);
-                }
-                SimplePool.DesSpawn(brick);
+                Brick br = q.Dequeue(); 
+                SimplePool.DesSpawn(br); 
             }
         }
-        
-        brickToRemain.Clear();
-        activeBricks.Clear();
-        colorBricks.Clear();
-        isCoLorSpawned.Clear();
-        Debug.Log("Return color1");
+
+
+        foreach(var listBrick in activeBricks_ver2.Values)
+        {
+            foreach(var br in listBrick)
+            {
+                SimplePool.DesSpawn(br); 
+            }
+        }
+        activeBricks_ver2.Clear();
+
+
         foreach( var stair in listStair)
         {
-            Debug.Log("Return color 2");
             stair.OnEnd(); 
         }
     }

@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Color Data SO
   m_EditorClassIdentifier: Assembly-CSharp::ColorDataSO
   material:
-  - {fileID: 2100000, guid: fc17b31c0cc82c849ab1704a619828eb, type: 2}
+  - {fileID: 2100000, guid: 3ac0e9e79c0e0e0498fa2c3c4fac38f3, type: 2}
   - {fileID: 2100000, guid: a4adce12e6f5dd646a18d7f8d576d2d7, type: 2}
   - {fileID: 2100000, guid: 1a23a567d56908944b6b92f72b4e510c, type: 2}
   - {fileID: 2100000, guid: 292ac3f72e8e3a64fbbaef4ada488aa8, type: 2}
   - {fileID: 2100000, guid: a852a45b6b450f140947bc282bd02266, type: 2}
   - {fileID: 2100000, guid: 16342bd1fc2c0c649a871ae889ecd340, type: 2}
+  - {fileID: 2100000, guid: fc17b31c0cc82c849ab1704a619828eb, type: 2}

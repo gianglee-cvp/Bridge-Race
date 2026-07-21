@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Brick : GameUnit
@@ -6,14 +7,18 @@ public class Brick : GameUnit
     [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] public Collider colliderBrick;
     [SerializeField] public Stage stage;
-    public void SetColor(ENUM_COLOR newColor, Material material)
+    public void SetColor(ENUM_COLOR newColor)
     {
+        Material mat = GameManager.Instance.colorDataSO.GetMaterial(newColor); 
+        meshRenderer.material = mat;
+        
         colorBrick = newColor;
-        meshRenderer.material = material;
     }
     public void OnCollect()
     {
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false); 
+        // SetColor(ENUM_COLOR.None);
+
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -24,7 +29,6 @@ public class Brick : GameUnit
             {
                 ch.AddBrick(this);
                 stage.AddBrickToRemain(this);
-                stage.RemoveActiveBrick(this);
             }
         }
     }

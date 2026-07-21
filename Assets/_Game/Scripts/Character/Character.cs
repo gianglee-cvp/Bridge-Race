@@ -55,9 +55,10 @@ public class Character : MonoBehaviour
         );
         
         listBricks.Add(chBrick);
-        brick.OnCollect(); 
+   
         chBrick.OnCollect(brick.colorBrick, this, spawnWorldPos, spawnWorldRot);
-        
+        brick.OnCollect(); 
+
         currentBrickCount++;
         point ++;
     }
@@ -148,7 +149,6 @@ public class Character : MonoBehaviour
         {
             currentStage = newStage;
             newStage.SpawnBrick(colorCharacter);
-            Debug.Log("Character: " + gameObject.name + " Change Stage to: " + newStage.gameObject.name);
         }
     }
     public virtual void OnExitGame()

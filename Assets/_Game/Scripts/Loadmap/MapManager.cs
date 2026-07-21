@@ -29,12 +29,12 @@ public class MapManager : MonoBehaviour
                     stageRoot.transform.rotation,
                     stageRoot.transform);
                 
-                stageRoot.AddActiveBrick(unit , brickData.color);
+                stageRoot.AddRemainBrick(unit , brickData.color);
 
 
-                unit.SetColor(brickData.color, GameManager.Instance.colorDataSO.GetMaterial(brickData.color));
+                //unit.SetColor(brickData.color);
                 unit.stage = stageRoot;
-                unit.gameObject.SetActive(false);
+                //unit.gameObject.SetActive(false);
                 
                 GameManager.Instance.RegisterBrick(unit.colliderBrick, unit);
             }
