@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
@@ -127,10 +128,11 @@ public class Pool
     // thu thap tat ca phan tu ve pool 
     public void Collect()
     {
+        Debug.Log("1") ; 
         while(inactive.Count > 0)
         {
             DesSpawn(active[0]);
-
+            Debug.Log("Pool"); 
         }
     }
     // destroy tat ca phan tu 

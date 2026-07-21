@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class LevelDataSO : ScriptableObject
 {
     public List<StageData> stages = new();
+    public PlayerData player = new PlayerData(); 
+    public List<EnemyData> listEnemy = new List<EnemyData>();
 
     public void Clear()
     {
@@ -27,5 +29,17 @@ public class StageData
 public class BrickData
 {
     public ENUM_COLOR color;
+    public Vector3 position;
+}
+[System.Serializable]
+public class PlayerData
+{
+    public ENUM_COLOR color;
+    public Vector3 position;
+}
+[System.Serializable]
+public class EnemyData
+{
+    public ENUM_COLOR color; 
     public Vector3 position;
 }

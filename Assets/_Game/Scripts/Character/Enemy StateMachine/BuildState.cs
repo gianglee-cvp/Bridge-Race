@@ -15,7 +15,6 @@ public class BuildState : IEnemyState
 
     public void OnExecute(EnemyAI enemy)
     {
-        // Implement idle behavior here
         if(choosenStair == null)
         {
             Debug.LogError("BuildState: choosenStair is null. Cannot set destination.");
@@ -30,6 +29,5 @@ public class BuildState : IEnemyState
 
     public void OnExit(EnemyAI enemy)
     {
-        // Cleanup or transition logic when exiting the idle state
     }
 }

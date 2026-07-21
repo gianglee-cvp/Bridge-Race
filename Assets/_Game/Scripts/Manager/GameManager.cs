@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public partial class GameManager : Singleton<GameManager>
@@ -109,5 +109,19 @@ public partial class GameManager : Singleton<GameManager>
             character.OnPlay();
         }
     }
-    
+    public void SetTimeScale(int t)
+    {
+        Time.timeScale = t ; 
+    }
+    public void OnEnd()
+    {
+        // SimplePool.poolInstance[PoolType.CharacterBrick].Collect(); 
+        // SimplePool.poolInstance[PoolType.Brick].Collect();
+
+        listLevels[currentLevelIndex].gameObject.SetActive(false);
+        foreach(var ch in listCharacters)
+        {
+            ch.OnFinishLevel();
+        }
+    }
 }

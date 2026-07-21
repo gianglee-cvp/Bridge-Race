@@ -23,7 +23,6 @@ public class MapManager : MonoBehaviour
             Stage stageRoot = currentLevel.stageList[i];
             foreach (var brickData in stageData.bricks)
             {
-                UnityEngine.Debug.Log("Spawn Brick : " + brickData.color + " at " + brickData.position);
                 Brick unit = SimplePool.Spawn<Brick>(
                     brickPrefab.poolType, 
                     brickData.position, 
@@ -35,6 +34,7 @@ public class MapManager : MonoBehaviour
 
                 unit.SetColor(brickData.color, GameManager.Instance.colorDataSO.GetMaterial(brickData.color));
                 unit.stage = stageRoot;
+                unit.gameObject.SetActive(false);
                 
                 GameManager.Instance.RegisterBrick(unit.colliderBrick, unit);
             }

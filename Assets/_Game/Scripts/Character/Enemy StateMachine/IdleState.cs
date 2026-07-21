@@ -9,11 +9,9 @@ public class IdleState : IEnemyState
 
     public void OnExecute(EnemyAI enemy)
     {
-        // Implement idle behavior here
     }
 
     public void OnExit(EnemyAI enemy)
     {
-        // Cleanup or transition logic when exiting the idle state
     }
 }

@@ -395,8 +395,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 836829475661796436}
         m_TargetAssemblyTypeName: CanvasSettings, Assembly-CSharp
-        m_MethodName: Close
-        m_Mode: 4
+        m_MethodName: ContinueButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

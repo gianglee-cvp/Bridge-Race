@@ -95,10 +95,6 @@ public class Stage : MonoBehaviour
                 brick.gameObject.SetActive(true);
             }
         }
-        else
-        {
-            Debug.LogWarning("No bricks found for color: " + color);    
-        }
     }
 }
     

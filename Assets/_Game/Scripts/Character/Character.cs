@@ -19,6 +19,7 @@ public class Character : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] public CharacterBrick chBrickPrefab; // TODO dduaw vafo gamemanager de load 
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private Renderer colorPart;
     public List<CharacterBrick> listBricks = new List<CharacterBrick>();
     public Stage currentStage;
     private ENUM_ANIMATOR_TRIGGER currentAnim ;
@@ -33,10 +34,6 @@ public class Character : MonoBehaviour
         rb.useGravity = false;
         characterCollider.enabled = false;
     }
-    // void OnDespawn()
-    // {
-        
-    // }  
     public virtual void OnPlay()
     {
         rb.useGravity = true;
@@ -70,8 +67,10 @@ public class Character : MonoBehaviour
     {
         foreach (var brick in listBricks)
         {
-            Destroy(brick.gameObject); // TODO : cho vao pool
+            //Destroy(brick.gameObject); // TODO : cho vao pool
+            SimplePool.poolInstance[PoolType.CharacterBrick].DesSpawn(brick);
         }
+        // SimplePool.poolInstance[PoolType.CharacterBrick].Collect(); 
         listBricks.Clear();
         currentBrickCount = 0;
     }
@@ -90,6 +89,11 @@ public class Character : MonoBehaviour
             return true;
         }
         return false;
+    }
+    public void SetColor(ENUM_COLOR color)
+    {
+        colorPart.material = GameManager.Instance.colorDataSO.GetMaterial(color);
+        colorCharacter = color;
     }
 
     //TODO cho vào trong pool 

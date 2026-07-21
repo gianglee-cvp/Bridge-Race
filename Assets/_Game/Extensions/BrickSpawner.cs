@@ -13,11 +13,9 @@ public class BrickSpawner : MonoBehaviour
     [SerializeField] public float disX = 0.6f; 
     [SerializeField] public float disZ = 1f;
 
-    [Header("Save Settings")]
-    [SerializeField] private string savePath = "Assets/_Game/Resources/Level_1/map_new.json";
+    [SerializeField] private LevelDataSO levelData;
 
     private StageData stageData;
-    private MapData newMapData;
     private bool isSpawningAll = false;
 
     [System.Serializable]
@@ -41,23 +39,17 @@ public class BrickSpawner : MonoBehaviour
         AddNavMeshSurface();
         stageData = new StageData();
 
-        if (newMapData == null)
-        {
-            newMapData = new MapData();
-            newMapData.stages = new List<StageData>();
-        }
-
-        int i = -length/2; 
-        int j = -width/2; 
-        Vector3 spawnPoint = Vector3.up * 0.625f + root.position;
+        int i = -width/2; 
+        int j = -length/2; 
         
-        while(i < length / 2)
+        while(i < width / 2)
         {
-            j = -width/2;
-            while (j < width / 2)
+            j = -length/2;
+            while (j < length / 2)
             {
-                spawnPoint.x = root.position.x + disX * i;
-                spawnPoint.z = root.position.z + disZ * j;
+                // Sử dụng TransformPoint để tính toán tọa độ local theo rotation của Stage
+                Vector3 localSpawnPos = new Vector3(disX * i, 0.625f, disZ * j);
+                Vector3 spawnPoint = root.TransformPoint(localSpawnPos);
 
                 NavMeshHit hit;
                 if(NavMesh.SamplePosition(spawnPoint, out hit, 0.5f, NavMesh.AllAreas))
@@ -80,11 +72,6 @@ public class BrickSpawner : MonoBehaviour
         }
         SaveStageData();
 
-        if (!isSpawningAll)
-        {
-            SaveToNewFile();
-        }
-
         ClearNavMesh(); 
     }
 
@@ -97,8 +84,7 @@ public class BrickSpawner : MonoBehaviour
         }
 
         isSpawningAll = true;
-        newMapData = new MapData();
-        newMapData.stages = new List<StageData>();
+        levelData.Clear();
 
         List<Stage> stageList = GameManager.Instance.stageList;
         foreach(var st in stageList)
@@ -108,29 +94,7 @@ public class BrickSpawner : MonoBehaviour
             SpawnBrick();
         }
 
-        SaveToNewFile();
         isSpawningAll = false;
-        newMapData = null;
-    }
-
-    private void SaveToNewFile()
-    {
-        if (newMapData == null) return;
-
-        string fullPath = System.IO.Path.Combine(Application.dataPath, "..", savePath).Replace("\\", "/");
-        string directory = System.IO.Path.GetDirectoryName(fullPath);
-        if (!System.IO.Directory.Exists(directory))
-        {
-            System.IO.Directory.CreateDirectory(directory);
-        }
-
-        string json = JsonUtility.ToJson(newMapData, true);
-        System.IO.File.WriteAllText(fullPath, json);
-        Debug.Log($"Successfully saved map data to a new file: {savePath}");
-
-#if UNITY_EDITOR
-        UnityEditor.AssetDatabase.Refresh();
-#endif
     }
 
     // Chọn màu ngẫu nhiên dựa trên tỉ lệ (ratios) đã thiết lập
@@ -185,12 +149,15 @@ public class BrickSpawner : MonoBehaviour
         modifier.enabled = false;
         surface.enabled = false;
     }
+
     public void SaveStageData()
     {
-        if (newMapData != null)
-        {
-            newMapData.stages.Add(stageData);
-        }
+        levelData.AddStage(stageData);
+
+#if UNITY_EDITOR
+        UnityEditor.EditorUtility.SetDirty(levelData);
+        UnityEditor.AssetDatabase.SaveAssets();
+#endif
     }
 }   
 

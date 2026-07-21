@@ -32,7 +32,6 @@ public class PatrolState : IEnemyState
             desXZ = GameManager.Instance.GetVector2XZ(des.position);
 
             enemy.SetAgentDestination(des.position);
-            // /Debug.Log("PatrolState: Moving towards destination: " + des.position);
         }
 
         Vector2 enemyXZ = GameManager.Instance.GetVector2XZ(enemy.transform.position);
@@ -47,6 +46,5 @@ public class PatrolState : IEnemyState
 
     public void OnExit(EnemyAI enemy)
     {
-        // Cleanup or transition logic when exiting the patrol state
     }
 }
