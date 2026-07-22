@@ -36,6 +36,11 @@ public class EnemyAI : Character
     }
     public override bool CheckCharacterGoUpStair()
     {
+        if (currentState is BuildState)
+        {
+            return true;
+        }
+
         if(transform.forward.z < 0)
         {
             return false;

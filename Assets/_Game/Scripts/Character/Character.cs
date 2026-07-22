@@ -156,5 +156,9 @@ public class Character : MonoBehaviour
         ClearAllBrick();
         currentStage = null; 
         gameObject.SetActive(false); 
-    } 
+    }
+    public void OllisionEnter(Collision collision)
+    {
+        Debug.Log(collision.collider.gameObject.name + "colide" + gameObject.name) ;
+    }
 }

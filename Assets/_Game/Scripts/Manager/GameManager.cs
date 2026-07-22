@@ -61,6 +61,7 @@ public partial class GameManager : Singleton<GameManager>
         {
             nextLevel = 0; 
         }
+
         currentLevelIndex = nextLevel;
         UIManager.Instance.GetUI<CanvasMainMenu>().UpdateLevelText(currentLevelIndex);
         // OnChangeLevel(nextLevel);
@@ -75,6 +76,7 @@ public partial class GameManager : Singleton<GameManager>
         {
             prevLevel = listLevels.Count - 1; 
         }
+        
         currentLevelIndex = prevLevel;
         UIManager.Instance.GetUI<CanvasMainMenu>().UpdateLevelText(currentLevelIndex);
         // OnChangeLevel(prevLevel);
@@ -130,8 +132,6 @@ public partial class GameManager : Singleton<GameManager>
     }
     public void OnEnd()
     {
-        // SimplePool.poolInstance[PoolType.CharacterBrick].Collect(); 
-        // SimplePool.poolInstance[PoolType.Brick].Collect();
         Level level = listLevels[currentLevelIndex]; 
         level.OnEnd();
 

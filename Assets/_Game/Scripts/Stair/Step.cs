@@ -37,13 +37,13 @@ public class Step : MonoBehaviour
         if(brickColor != (int) colorStep && brickCount == 0)
         {
                 stairHolder.SetStopTransform(transform.TransformPoint(frontPointOffset), transform.rotation , ch.colorCharacter);
-                // Debug.Log(this.gameObject.name + ": 2");
+                Debug.Log(this.gameObject.name + ": front");
                 return false;
         }
         else
         {
                 stairHolder.SetStopTransform( transform.TransformPoint(backPointOffset), transform.rotation , ch.colorCharacter);
-                // Debug.Log(this.gameObject.name + ": 3");
+                Debug.Log(this.gameObject.name + ": back");
                 if(isLastStep)
                 {
                     ch.ReachLastStep(this);

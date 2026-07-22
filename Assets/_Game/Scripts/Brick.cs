@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Brick : GameUnit
@@ -20,13 +19,17 @@ public class Brick : GameUnit
         // SetColor(ENUM_COLOR.None);
 
     }
-    public void OnTriggerEnter(Collider other)
+    // TODO tat colider de stay bi check point 1 nhieu lan 
+    public void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Character"))
         {
             Character ch = GameManager.Instance.GetCharacter(other);
+            //TODO fix stay
+            //Debug.Log("check point 1"); 
             if (ch.colorCharacter == colorBrick)
             {
+                Debug.Log("Checkpoint 2"); 
                 ch.AddBrick(this);
                 stage.AddBrickToRemain(this);
             }
