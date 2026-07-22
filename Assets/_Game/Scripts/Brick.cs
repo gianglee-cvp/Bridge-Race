@@ -1,35 +1,37 @@
+using System.Security.Cryptography;
 using UnityEngine;
 
-public class Brick : GameUnit
+public class Brick : GameUnit, IColor
 {
     [SerializeField] public ENUM_COLOR colorBrick;
-    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private Renderer meshRenderer;
     [SerializeField] public Collider colliderBrick;
     [SerializeField] public Stage stage;
     public void SetColor(ENUM_COLOR newColor)
     {
-        Material mat = GameManager.Instance.colorDataSO.GetMaterial(newColor); 
-        meshRenderer.material = mat;
+        // Material mat = GameManager.Instance.colorDataSO.GetMaterial(newColor); 
+        // meshRenderer.material = mat;
+        // colorBrick = newColor;
         
-        colorBrick = newColor;
+        ((IColor)this).ISetColor(meshRenderer, ref colorBrick, newColor);
     }
     public void OnCollect()
     {
-        // gameObject.SetActive(false); 
-        // SetColor(ENUM_COLOR.None);
-
+        colliderBrick.enabled = false; 
+        SetColor(ENUM_COLOR.None); 
     }
-    // TODO tat colider de stay bi check point 1 nhieu lan 
-    public void OnTriggerStay(Collider other)
+    public void OnRemain(ENUM_COLOR color)
+    {
+        colliderBrick.enabled = true;
+        SetColor(color); 
+    }
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Character"))
         {
             Character ch = GameManager.Instance.GetCharacter(other);
-            //TODO fix stay
-            //Debug.Log("check point 1"); 
             if (ch.colorCharacter == colorBrick)
             {
-                Debug.Log("Checkpoint 2"); 
                 ch.AddBrick(this);
                 stage.AddBrickToRemain(this);
             }

@@ -10,7 +10,7 @@ public enum ENUM_ANIMATOR_TRIGGER
     LOSE = 4
 }
 
-public class Character : MonoBehaviour
+public class Character : MonoBehaviour,IColor
 {
     [SerializeField] public Transform parentBrick;
     [SerializeField] public ENUM_COLOR colorCharacter;
@@ -42,7 +42,7 @@ public class Character : MonoBehaviour
         point = 0 ; 
     }
 
-    public void AddBrick(Brick brick)
+    public virtual void AddBrick(Brick brick)
     {
         Vector3 spawnWorldPos = brick.transform.position;
         Quaternion spawnWorldRot = brick.transform.rotation;
@@ -57,7 +57,7 @@ public class Character : MonoBehaviour
         listBricks.Add(chBrick);
    
         chBrick.OnCollect(brick.colorBrick, this, spawnWorldPos, spawnWorldRot);
-        brick.OnCollect(); 
+        // brick.OnCollect(); 
 
         currentBrickCount++;
         point ++;
@@ -91,8 +91,9 @@ public class Character : MonoBehaviour
     }
     public void SetColor(ENUM_COLOR color)
     {
-        colorPart.material = GameManager.Instance.colorDataSO.GetMaterial(color);
-        colorCharacter = color;
+        // colorPart.material = GameManager.Instance.colorDataSO.GetMaterial(color);
+        // colorCharacter = color;
+        ((IColor)this).ISetColor(colorPart,ref colorCharacter , color); 
     }
 
     //TODO cho vào trong pool 
@@ -101,8 +102,9 @@ public class Character : MonoBehaviour
         if (listBricks.Count > 0)
         {
             int index = listBricks.Count - 1;
-
-            listBricks[index].gameObject.SetActive(false); // TODO : cho vào pool
+            CharacterBrick chBrick = listBricks[index]; 
+            //listBricks[index].gameObject.SetActive(false); // TODO : cho vào pool
+            SimplePool.DesSpawn(chBrick); 
             listBricks.RemoveAt(index); 
             
             currentBrickCount--;
@@ -141,6 +143,7 @@ public class Character : MonoBehaviour
     {
         OnFinishLevel();
         transform.SetPositionAndRotation(Seed.position, Seed.rotation);
+        rotatePart.localRotation = Quaternion.Euler(Vector3.zero); 
         SetAnim(ENUM_ANIMATOR_TRIGGER.WIN);
     }
     public virtual void OnChangeStage(Stage newStage)

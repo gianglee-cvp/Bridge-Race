@@ -84,5 +84,10 @@ public class Player : Character
         base.OnFinishLevel();
         moveAction.Disable();
     }
+    public override void AddBrick(Brick brick)
+    {
+        base.AddBrick(brick);
+        UIManager.Instance.GetUI<CanvasGamePlay>().UpdateCoin(Point); 
+    }
 
 }

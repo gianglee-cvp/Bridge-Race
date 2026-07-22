@@ -29,7 +29,7 @@ public class MapManager : MonoBehaviour
                     stageRoot.transform.rotation,
                     stageRoot.transform);
                 
-                stageRoot.AddRemainBrick(unit , brickData.color);
+                stageRoot.AddBrickToRemain(unit , brickData.color);
 
 
                 //unit.SetColor(brickData.color);

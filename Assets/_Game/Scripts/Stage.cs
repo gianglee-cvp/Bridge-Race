@@ -19,7 +19,7 @@ public class Stage : MonoBehaviour
             activeBricks_ver2[color] = new List<Brick>(); 
         }
         activeBricks_ver2[color].Add(br); 
-        br.SetColor(color); 
+        br.OnRemain(color);  
     }
     public void AddBrickToRemain(Brick brick)
     {
@@ -28,10 +28,11 @@ public class Stage : MonoBehaviour
             brickToRemain_ver2[brick.colorBrick] = new Queue<Brick>();
         }
         brickToRemain_ver2[brick.colorBrick].Enqueue(brick);
-        brick.SetColor(ENUM_COLOR.None); 
+        brick.OnCollect(); 
     }
 
-    public void AddRemainBrick(Brick brick , ENUM_COLOR color)
+    // dung khi spawn luc dau (spawn ra luc dau la mau none nen la can truyen color)
+    public void AddBrickToRemain(Brick brick , ENUM_COLOR color)
     {
         if (!brickToRemain_ver2.ContainsKey(color))
         {
@@ -39,7 +40,7 @@ public class Stage : MonoBehaviour
         }
         
         brickToRemain_ver2[color].Enqueue(brick); 
-        brick.SetColor(ENUM_COLOR.None); 
+        brick.OnCollect();  
     }
     public int CountActiveBricks(ENUM_COLOR color) 
     {
@@ -78,7 +79,7 @@ public class Stage : MonoBehaviour
             while(brickToRemain_ver2[color].Count > 0)
             {
                 Brick br = brickToRemain_ver2[color].Dequeue(); 
-                br.SetColor(color);
+                br.OnRemain(color);
 
                 if (!activeBricks_ver2.ContainsKey(color))
                 {
