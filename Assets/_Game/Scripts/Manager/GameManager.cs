@@ -136,7 +136,6 @@ public partial class GameManager : Singleton<GameManager>
         level.OnEnd();
 
         listLevels[currentLevelIndex].gameObject.SetActive(false);
-        Debug.Log("1++");
         foreach(var ch in listCharacters)
         {
             ch.OnExitGame();

@@ -812,6 +812,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.69
       objectReference: {fileID: 0}
+    - target: {fileID: 7061568370374450748, guid: b04203626cdf9824d978fccb47b7e045, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061568370374450748, guid: b04203626cdf9824d978fccb47b7e045, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8271220172252455932, guid: b04203626cdf9824d978fccb47b7e045, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -826,7 +834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8826340920649952271, guid: b04203626cdf9824d978fccb47b7e045, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9205821143470727810, guid: b04203626cdf9824d978fccb47b7e045, type: 3}
       propertyPath: m_Layer
@@ -1025,6 +1033,10 @@ PrefabInstance:
       propertyPath: parentBrick
       value: 
       objectReference: {fileID: 1697796663}
+    - target: {fileID: 3714745294818630081, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7348974784525884571, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1071,7 +1083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7591018184016580147, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1134,13 +1146,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.69
       objectReference: {fileID: 0}
+    - target: {fileID: 7061568370374450748, guid: b04203626cdf9824d978fccb47b7e045, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061568370374450748, guid: b04203626cdf9824d978fccb47b7e045, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8826340920649952271, guid: b04203626cdf9824d978fccb47b7e045, type: 3}
       propertyPath: m_Name
       value: Bot1
       objectReference: {fileID: 0}
     - target: {fileID: 8826340920649952271, guid: b04203626cdf9824d978fccb47b7e045, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
