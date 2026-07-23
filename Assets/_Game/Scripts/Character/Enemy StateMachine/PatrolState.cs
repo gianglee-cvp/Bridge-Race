@@ -19,7 +19,6 @@ public class PatrolState : IEnemyState
 
         if (timer >= randomTime || enemy.currentStage.CountActiveBricks(enemy.colorCharacter) == 0)
         {
-            Debug.Log("change 1");
             enemy.ChangeState(new BuildState());
             timer = 0f;
             return;
