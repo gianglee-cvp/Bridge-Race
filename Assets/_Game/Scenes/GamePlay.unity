@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: b9be0c15efe8ad9489fdeead114d8ec5, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   target: {fileID: 52767036}
-  offset: {x: 0, y: 8, z: -14}
+  offset: {x: 0, y: 16, z: -28}
   smoothSpeed: 5
 --- !u!1 &410087039
 GameObject:
@@ -593,7 +593,7 @@ MonoBehaviour:
   - prefab: {fileID: 770137199229521788, guid: 0b0a39b0832d4cb4aad9a77894ac61d4, type: 3}
     amount: 1
     parent: {fileID: 0}
-  - prefab: {fileID: 770137199229521788, guid: a0210201b06a15e479800cbc42e7c4f8, type: 3}
+  - prefab: {fileID: 770137199229521788, guid: 7f852c704950142459e55259edb78edf, type: 3}
     amount: 1
     parent: {fileID: 0}
 --- !u!4 &1005159979

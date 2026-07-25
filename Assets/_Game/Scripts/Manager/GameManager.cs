@@ -141,4 +141,9 @@ public partial class GameManager : Singleton<GameManager>
             ch.OnExitGame();
         }
     }
+    public void OnRetry()
+    {
+        OnEnd();
+        OnChangeLevel(currentLevelIndex); 
+    }
 }

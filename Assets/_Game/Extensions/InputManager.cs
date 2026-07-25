@@ -15,13 +15,4 @@ public class InputManager : Singleton<InputManager>
             inputActions.Enable();
         }
     }
-
-    private void OnDestroy()
-    {
-        if (inputActions != null)
-        {
-            inputActions.Disable();
-            inputActions.Dispose();
-        }
-    }
 }

@@ -160,8 +160,8 @@ public class Character : MonoBehaviour,IColor
         currentStage = null; 
         gameObject.SetActive(false); 
     }
-    public void OllisionEnter(Collision collision)
+    public void OnLose()
     {
-        Debug.Log(collision.collider.gameObject.name + "colide" + gameObject.name) ;
+        
     }
 }

@@ -7,16 +7,7 @@ public class CanvasMainMenu : UICanvas
     {
         base.Setup();
     }
-    public void PlayButton()
-    {
-        Close(0); 
 
-        UIManager.Instance.OpenUI<CanvasGamePlay>();
-
-        int index = GameManager.Instance.currentLevelIndex ; 
-        GameManager.Instance.OnChangeLevel(index);
-        GameManager.Instance.OnPlayGame();
-    }
     public void SettingButton()
     {
         UIManager.Instance.OpenUI<CanvasSettings>().SetState(this); 

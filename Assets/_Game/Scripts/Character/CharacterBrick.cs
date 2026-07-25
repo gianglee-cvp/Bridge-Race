@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class CharacterBrick : GameUnit
 {
     [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private GameObject[] smoke;
     public void OnCollect(ENUM_COLOR color, Character character, Vector3 startPos, Quaternion startRot)
     {
         meshRenderer.material = GameManager.Instance.GetMaterial(color);
@@ -25,6 +26,11 @@ public class CharacterBrick : GameUnit
 
     private IEnumerator FlyToCharacter(Transform targetHolder, Vector3 targetLocalPos, Vector3 startPos, Quaternion startRot)
     {
+        foreach(var p in smoke)
+        {
+            p.SetActive(true);
+        }
+
         float t = 0f;
         while (t < 1f)
         {
@@ -32,10 +38,21 @@ public class CharacterBrick : GameUnit
 
             Vector3 endPos = targetHolder.TransformPoint(targetLocalPos);
             Vector3 controlPoint = (startPos + endPos) * 0.5f + Vector3.up * 2f;
-            transform.position = CalculateBezier(startPos, controlPoint, endPos, t);
+            Vector3 basePos = CalculateBezier(startPos, controlPoint, endPos, t);
+
+            float angle = t * Mathf.PI * 2f;
+            float radius = Mathf.Sin(t * Mathf.PI) * 3f; 
+            Vector3 circleOffset = new Vector3(Mathf.Sin(angle) * radius, 0, Mathf.Cos(angle) * radius);
+
+            transform.position = basePos + circleOffset;
             transform.rotation = Quaternion.Slerp(startRot, targetHolder.rotation, t);
 
             yield return null;
+        }
+
+        foreach(var p in smoke)
+        {
+            p.SetActive(false);
         }
 
         transform.SetParent(targetHolder);
