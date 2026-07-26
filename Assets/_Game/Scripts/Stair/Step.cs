@@ -18,19 +18,28 @@ public class Step : MonoBehaviour, IColor
             {   
                 if(ch.colorCharacter != colorStep)
                 {
+                    
                     SetColor(ch.colorCharacter);
                     stairHolder.stage.OnRemainBrick(ch.colorCharacter);
-                    ch.RemoveBrick();                
+                    ch.RemoveBrick();
+                    
+                    if(ch is Player)
+                    {
+                        SoundManager.Instance.PlaySfx(ENUM_SOUND.StairStep);
+                    }
                 }
             }
         }   
     }
     public void OnTriggerExit(Collider other)
     {
-        Character ch = GameManager.Instance.GetCharacter(other);
-        if(ch is Player)
+        if (other.CompareTag("Character"))
         {
-            ch.CanMoveUp = true; 
+            Character ch = GameManager.Instance.GetCharacter(other);
+            if(ch is Player)
+            {
+                ch.CanMoveUp = true; 
+            }
         }
     }
     public bool SetStopPoint(Character ch)

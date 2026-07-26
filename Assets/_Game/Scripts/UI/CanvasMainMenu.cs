@@ -6,6 +6,7 @@ public class CanvasMainMenu : UICanvas
     public override void Setup()
     {
         base.Setup();
+        SoundManager.Instance.PlayBgm(ENUM_SOUND.MenuBgm);
     }
 
     public void SettingButton()

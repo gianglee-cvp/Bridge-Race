@@ -10,7 +10,7 @@ public enum ENUM_COLOR
     Stair = 6
 }
 
-[CreateAssetMenu(menuName = "ColorDataSO")]
+[CreateAssetMenu(menuName = "Game/ColorDataSO")]
 public class ColorDataSO : ScriptableObject
 {
     [SerializeField] private Material[] material;

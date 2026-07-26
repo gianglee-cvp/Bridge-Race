@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6981d8a4dc87d0e409dbbcfb78abb2ad, type: 3}
+  m_Name: SoundLibrary
+  m_EditorClassIdentifier: Assembly-CSharp::SoundLibrarySO
+  sounds:
+  - clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+  - clip: {fileID: 8300000, guid: a7dc886140c8e1d4bba30163917bd864, type: 3}
+    volume: 0.35
+    pitch: 1
+    loop: 1
+  - clip: {fileID: 8300000, guid: 20b1ac74063b7b04ea6149b279459605, type: 3}
+    volume: 0.45
+    pitch: 1
+    loop: 1
+  - clip: {fileID: 8300000, guid: b3e3e77ea80772a4ab302a7563e62979, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: e05ff3a3ce2b19c41974f67dd88a6c36, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 810ea30d857ad954f95e7c84324f930f, type: 3}
+    volume: 0.9
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 09654d8bd20b40449b4256f7979b8158, type: 3}
+    volume: 0.9
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: 60ef40e2a79745644ad70182d55fc74d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+  - clip: {fileID: 8300000, guid: b9d33b453526db84c9b1eaf9120b8adb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0

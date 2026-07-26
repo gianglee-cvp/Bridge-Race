@@ -98,6 +98,7 @@ public class Player : Character
     {
         base.AddBrick(brick);
         UIManager.Instance.GetUI<CanvasGamePlay>().UpdateCoin(Point); 
+        SoundManager.Instance.PlaySfx(ENUM_SOUND.PickBrick);
     }
 
 }

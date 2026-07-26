@@ -668,8 +668,6 @@ MonoBehaviour:
   coinText: {fileID: 1193070191074020635}
   joinStick: {fileID: 48173518672795493}
   stickCanvasGroup: {fileID: 228059039829652742}
-  canvasRect: {fileID: 3466143566871743159}
-  stick: {fileID: 3988502788243127371}
 --- !u!1 &6989754047751440054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,6 +1086,18 @@ MonoBehaviour:
       - m_Target: {fileID: 8881110048636206862}
         m_TargetAssemblyTypeName: CanvasGamePlay, Assembly-CSharp
         m_MethodName: SettingButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8881110048636206862}
+        m_TargetAssemblyTypeName: CanvasGamePlay, Assembly-CSharp
+        m_MethodName: ButtonSfx
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

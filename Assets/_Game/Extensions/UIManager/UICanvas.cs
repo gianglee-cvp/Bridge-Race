@@ -24,6 +24,12 @@ public class UICanvas : MonoBehaviour
     {
         
     }
+
+    public void ButtonSfx()
+    {
+        SoundManager.Instance.PlaySfx(ENUM_SOUND.ButtonClick);
+    }
+
     public virtual void Open()
     {
         gameObject.SetActive(true); 
@@ -48,6 +54,7 @@ public class UICanvas : MonoBehaviour
         Close(0); 
 
         UIManager.Instance.OpenUI<CanvasGamePlay>();
+        SoundManager.Instance.PlayBgm(ENUM_SOUND.GameplayBgm);
 
         int index = GameManager.Instance.currentLevelIndex ; 
         GameManager.Instance.OnChangeLevel(index);

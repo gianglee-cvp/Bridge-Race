@@ -67,6 +67,7 @@ public partial class GameManager : Singleton<GameManager>
     public void OnCharacterWin(Character character, Transform firstSeed, Transform secondSeed, Transform thirdSeed)
     {
         character.OnWin(firstSeed);
+        SoundManager.Instance.PlaySfx(ENUM_SOUND.Win);
 
         Character secondPlace = null;
         Character thirdPlace = null;

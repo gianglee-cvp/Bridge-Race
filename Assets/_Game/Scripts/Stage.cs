@@ -39,6 +39,11 @@ public class Stage : MonoBehaviour
     }
     public void AddBrickToRemain(Brick brick)
     {
+        if (active.ContainsKey(brick.colorBrick))
+        {
+            active[brick.colorBrick].Remove(brick);
+        }
+
         if (!inactive.ContainsKey(brick.colorBrick))
         {
             inactive[brick.colorBrick] = new Queue<Brick>();
@@ -120,6 +125,7 @@ public class Stage : MonoBehaviour
             }
         }
         active.Clear();
+        inactive.Clear();
 
 
         foreach( var stair in listStair)

@@ -8,6 +8,7 @@ public class CanvasFail : UICanvas
     {
         base.Setup();
         GameManager.Instance.SetTimeScale(0); 
+        SoundManager.Instance.PlaySfx(ENUM_SOUND.Fail);
         int score = GameManager.Instance.player.Point;
         SetBestScore(score); 
     }
