@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 590640185070199247}
   - component: {fileID: 7860843766559423688}
+  - component: {fileID: 5708177104337892517}
   - component: {fileID: 2039338285852014688}
   - component: {fileID: 2580360831205630559}
-  - component: {fileID: 8682377473593438672}
   m_Layer: 0
   m_Name: BrickPrefab
   m_TagString: Brick
@@ -43,45 +43,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8020609629457718009}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &2039338285852014688
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8020609629457718009}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 8, y: 8, z: 4}
-  m_Center: {x: 0, y: 2, z: 0}
---- !u!114 &2580360831205630559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8020609629457718009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e6e2c954bba05447861a1622808e40e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Brick
-  poolType: 0
-  colorBrick: 0
-  meshRenderer: {fileID: 8682377473593438672}
-  colliderBrick: {fileID: 2039338285852014688}
-  stage: {fileID: 0}
---- !u!23 &8682377473593438672
+--- !u!23 &5708177104337892517
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,3 +92,41 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2039338285852014688
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8020609629457718009}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 8, y: 8, z: 4}
+  m_Center: {x: 0, y: 2, z: 0}
+--- !u!114 &2580360831205630559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8020609629457718009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6e2c954bba05447861a1622808e40e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Brick
+  poolType: 0
+  colorBrick: 0
+  meshRenderer: {fileID: 5708177104337892517}
+  colliderBrick: {fileID: 2039338285852014688}
+  stage: {fileID: 0}

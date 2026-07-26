@@ -4,21 +4,14 @@ using UnityEngine;
 
 public class CanvasFail : UICanvas
 {
-    [SerializeField] TextMeshProUGUI coinText;
-    public override void Setup()
-    {
-        base.Setup();
-        GameManager.Instance.SetTimeScale(0); 
-        int score = GameManager.Instance.player.Point;
-        SetBestScore(score); 
-    }
+    [SerializeField] TextMeshProUGUI coinText; 
     public void SetBestScore(int coin)
     {
         coinText.text = coin.ToString(); 
     }
-    public override void PlayButton()
+    public void MainMenuButton()
     {
-        GameManager.Instance.OnEnd(); 
-        base.PlayButton();
+        Close(0);
+        UIManager.Instance.OpenUI<CanvasMainMenu>(); 
     }
 }
