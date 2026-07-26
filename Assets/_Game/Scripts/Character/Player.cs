@@ -89,10 +89,6 @@ public class Player : Character
         }
         return true;
     }
-    public override void ReachLastStep(Step st)
-    {
-        base.ReachLastStep(st);
-    }
     public override void OnFinishLevel()
     {
         base.OnFinishLevel();

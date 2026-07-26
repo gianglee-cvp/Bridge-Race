@@ -27,13 +27,7 @@ public class CanvasSettings : UICanvas
             buttons[1].gameObject.SetActive(true); 
         }
     }
-    public void MainMenuButton()
-    {
-        GameManager.Instance.OnEnd(); 
 
-        UIManager.Instance.CloseAllUI(); 
-        UIManager.Instance.OpenUI<CanvasMainMenu>(); 
-    }
     public void ContinueButton()
     {
         GameManager.Instance.SetTimeScale(1); 

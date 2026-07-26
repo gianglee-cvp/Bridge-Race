@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 public enum ENUM_ANIMATOR_TRIGGER
 {
     IDLE = 0,
@@ -121,14 +120,12 @@ public class Character : MonoBehaviour,IColor
     public virtual void ReachNewStage(Stage newStage)
     {
         if(currentStage == newStage) return ;
-        currentStage.CloseAllDoor(colorCharacter); 
         //currentStage = newStage; 
         OnChangeStage(newStage);
     }
     public virtual void ReachLastStep(Step st)
     {
         Debug.Log("Characte Reach Last Step"); 
-        st.SetStopPointOnLastStep(this);
     }
     public void SetAnim(ENUM_ANIMATOR_TRIGGER anim)
     {

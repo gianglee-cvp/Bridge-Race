@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -6,9 +5,6 @@ public class Step : MonoBehaviour, IColor
 {
     public Stair stairHolder; // TODO khong keo inspector nua cho vafo 1 dic<step, stair>
     public ENUM_COLOR colorStep = ENUM_COLOR.None;
-    public Vector3 frontPointOffset; // local position
-    public Vector3 backPointOffset; // local position
-    public Vector3 rotateOffset; // local position
     public Renderer meshRenderer;
     public bool isLastStep = false; // neu la step cuoi cung thi se khong cho character di len nua
     public void OnTriggerEnter(Collider other)
@@ -66,10 +62,4 @@ public class Step : MonoBehaviour, IColor
         // meshRenderer.material = GameManager.Instance.colorDataSO.GetMaterial(color);
         ((IColor)this).ISetColor(meshRenderer , ref colorStep , color); 
     }
-    public void SetStopPointOnLastStep(Character ch)
-    {
-        Vector3 offset = new Vector3(0, 4.5f, 0f);
-        stairHolder.SetStopTransform( transform.TransformPoint(backPointOffset + offset), transform.rotation , ch.colorCharacter);
-    }
-
 }

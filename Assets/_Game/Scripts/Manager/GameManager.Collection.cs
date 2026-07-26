@@ -19,7 +19,7 @@ public partial class GameManager : Singleton<GameManager>
     {
         return characterDictionary[collider];
     }
-        public void RegisterBrick(Collider collider, Brick brick)
+    public void RegisterBrick(Collider collider, Brick brick)
     {
         if (!brickDictionary.ContainsKey(collider))
         {

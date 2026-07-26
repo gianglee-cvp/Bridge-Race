@@ -65,13 +65,6 @@ public class Stage : MonoBehaviour
         int randomIndex = Random.Range(0, cnt);
         return activeBricks_ver2[color][randomIndex].transform;
     }
-    public void CloseAllDoor(ENUM_COLOR color)
-    {
-        foreach(Stair st in listStair)
-        {
-            st.CloseDoor(color); 
-        }
-    }
     public void SpawnBrick(ENUM_COLOR color)
     {
         if(brickToRemain_ver2.ContainsKey(color) && brickToRemain_ver2[color].Count > 0)
@@ -91,6 +84,12 @@ public class Stage : MonoBehaviour
     }
     public void OnEnd()
     {      
+        DoorControl[] doorControls = GetComponentsInChildren<DoorControl>(true);
+        foreach (DoorControl doorControl in doorControls)
+        {
+            doorControl.OnEnd();
+        }
+
         foreach( var q in brickToRemain_ver2.Values)
         {
             while(q.Count > 0)

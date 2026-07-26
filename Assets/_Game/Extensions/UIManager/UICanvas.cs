@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UICanvas : MonoBehaviour
@@ -43,5 +42,22 @@ public class UICanvas : MonoBehaviour
         {
             gameObject.SetActive(false); 
         }
+    }
+    public virtual void PlayButton()
+    {
+        Close(0); 
+
+        UIManager.Instance.OpenUI<CanvasGamePlay>();
+
+        int index = GameManager.Instance.currentLevelIndex ; 
+        GameManager.Instance.OnChangeLevel(index);
+        GameManager.Instance.OnPlayGame();
+    }
+    public virtual void MainMenuButton()
+    {
+        GameManager.Instance.OnEnd(); 
+
+        UIManager.Instance.CloseAllUI(); 
+        UIManager.Instance.OpenUI<CanvasMainMenu>(); 
     }
 }

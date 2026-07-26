@@ -23,10 +23,6 @@ public class BuildState : IEnemyState
         
         if(enemy.listBricks.Count == 0 || !enemy.CanMoveUp){
             enemy.ChangeState(new PatrolState());
-            if (!enemy.canMoveUp)
-            {
-                Debug.Log("abc"); 
-            }
         }        
         
     }
