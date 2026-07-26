@@ -7,6 +7,22 @@ public class Stage : MonoBehaviour
     private Dictionary<ENUM_COLOR, List<Brick>> active = new Dictionary<ENUM_COLOR, List<Brick>>() ; 
     public int stageIndex; // cho vao dictionary hoac gan khi spawn
     [SerializeField] public List<Stair> listStair = new List<Stair>();
+
+    public void Load(StageData stageData)
+    {
+        foreach (var brickData in stageData.bricks)
+        {
+            Brick unit = SimplePool.Spawn<Brick>(
+                PoolType.Brick,
+                brickData.position,
+                transform.rotation,
+                transform);
+
+            AddBrickToRemain(unit, brickData.color);
+            unit.stage = this;
+        }
+    }
+
     public void OnRemainBrick(ENUM_COLOR color)
     {
         if(!inactive.ContainsKey(color) || inactive[color].Count == 0)
@@ -58,10 +74,6 @@ public class Stage : MonoBehaviour
     public Transform GetActiveBrick(ENUM_COLOR color)
     {
         int cnt = active[color].Count;
-        if (cnt == 0)
-        {
-            Debug.LogError("No active bricks found for color: " + color);
-        }
         int randomIndex = Random.Range(0, cnt);
         return active[color][randomIndex].transform;
     }

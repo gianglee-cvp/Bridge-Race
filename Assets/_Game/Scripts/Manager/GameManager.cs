@@ -3,7 +3,6 @@ using UnityEngine;
 public partial class GameManager : Singleton<GameManager>
 {
     [SerializeField] public ColorDataSO colorDataSO;
-    public MapManager mapManager;
     public Player player;
     public int currentLevelIndex = 0;
     private void Awake()
@@ -15,41 +14,23 @@ public partial class GameManager : Singleton<GameManager>
         {
             characterDictionary.Add(character.characterCollider, character);
         }
-
     }
     public void OnChangeLevel(int levelIndex)
     {
         if (currentLevelIndex >= 0 && currentLevelIndex < listLevels.Count)
         {
-            listLevels[currentLevelIndex].gameObject.SetActive(false);
+            Level currentLevel = listLevels[currentLevelIndex];
+            currentLevel.Unload();
         }
 
-        if (levelIndex >= 0 && levelIndex < listLevels.Count)
-        {
-            SetTimeScale(1); 
+        SetTimeScale(1); 
 
-            currentLevelIndex = levelIndex;
-            Level level = listLevels[currentLevelIndex];
-            // level.OnInit();
-            level.gameObject.SetActive(true);
+        currentLevelIndex = levelIndex;
+        Level level = listLevels[currentLevelIndex];
+        level.Load();
 
-            stageList = level.stageList;
-            Debug.Log("level Load");
-            mapManager.LoadMap(level);
-        }
-        // foreach (var character in listCharacters)
-        // {
-        //     character.OnInit();
-        // }
-        LevelDataSO levelData = listLevels[currentLevelIndex].levelDataSO ;
-        Vector3 pos = levelData.player.position;
-        player.OnInit(pos) ;
-        for(int i = 1 ; i < listCharacters.Count; i++)
-        {
-            Debug.Log("1");
-            pos = levelData.listEnemy[i-1].position;
-            listCharacters[i].OnInit(pos); 
-        }
+        stageList = level.stageList;
+        InitCharacters(level.levelDataSO);
     }
 
     public void NextLevel()
@@ -82,10 +63,7 @@ public partial class GameManager : Singleton<GameManager>
         // OnChangeLevel(prevLevel);
     }
 
-    public Vector2 GetVector2XZ(Vector3 position)
-    {
-        return new Vector2(position.x, position.z);
-    }
+
     public void OnCharacterWin(Character character, Transform firstSeed, Transform secondSeed, Transform thirdSeed)
     {
         character.OnWin(firstSeed);
@@ -133,12 +111,23 @@ public partial class GameManager : Singleton<GameManager>
     public void OnEnd()
     {
         Level level = listLevels[currentLevelIndex]; 
-        level.OnEnd();
+        level.Unload();
 
-        listLevels[currentLevelIndex].gameObject.SetActive(false);
         foreach(var ch in listCharacters)
         {
             ch.OnExitGame();
+        }
+    }
+
+    private void InitCharacters(LevelDataSO levelData)
+    {
+        Vector3 pos = levelData.player.position;
+        player.OnInit(pos);
+
+        for (int i = 1; i < listCharacters.Count; i++)
+        {
+            pos = levelData.listEnemy[i - 1].position;
+            listCharacters[i].OnInit(pos);
         }
     }
 }
