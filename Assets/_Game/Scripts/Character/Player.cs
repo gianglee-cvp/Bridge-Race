@@ -26,6 +26,18 @@ public class Player : Character
     {
         if(moveAction.enabled){
             moveAmount = moveAction.ReadValue<Vector2>().normalized;
+            if (!canMoveUp)
+            {
+                Debug.Log("khong len duoc");
+                if(moveAmount.y > 0)
+                {
+                    moveAmount.y = 0; 
+                }
+                // else
+                // {
+                //     canMoveUp = true; 
+                // }
+            }
         }
 
         // Vector3 move = new Vector3(moveAmount.x, 0, moveAmount.y);

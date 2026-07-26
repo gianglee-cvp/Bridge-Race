@@ -25,6 +25,12 @@ public class Character : MonoBehaviour,IColor
     private ENUM_ANIMATOR_TRIGGER currentAnim ;
     private int point; 
     public int Point { get => point;}
+    public bool canMoveUp = true;
+    public bool CanMoveUp
+    {
+        get => canMoveUp;
+        set => canMoveUp = value;
+    }
 
 
     // public int currentStageIndex = 0;
@@ -34,6 +40,7 @@ public class Character : MonoBehaviour,IColor
         gameObject.SetActive(true); 
         transform.position = pos;
         transform.rotation = Quaternion.identity;
+        canMoveUp = true; 
     }
     public virtual void OnPlay()
     {
@@ -160,8 +167,8 @@ public class Character : MonoBehaviour,IColor
         currentStage = null; 
         gameObject.SetActive(false); 
     }
-    public void OnLose()
-    {
+    // public void OnLose()
+    // {
         
-    }
+    // }
 }

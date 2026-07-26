@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -29,7 +30,14 @@ public class Step : MonoBehaviour, IColor
             }
         }   
     }
-
+    public void OnTriggerExit(Collider other)
+    {
+        Character ch = GameManager.Instance.GetCharacter(other);
+        if(ch is Player)
+        {
+            ch.CanMoveUp = true; 
+        }
+    }
     public bool SetStopPoint(Character ch)
     {
         // gia tri tra ve la true neu character co the di len step 
@@ -37,18 +45,20 @@ public class Step : MonoBehaviour, IColor
         int brickColor = (int)ch.colorCharacter;
         if(brickColor != (int) colorStep && brickCount == 0)
         {
-                stairHolder.SetStopTransform(transform.TransformPoint(frontPointOffset), transform.rotation , ch.colorCharacter);
-                return false;
+            ch.CanMoveUp = false; 
+            // stairHolder.SetStopTransform(transform.TransformPoint(frontPointOffset), transform.rotation , ch.colorCharacter);
+            return false;
         }
         else
         {
-                stairHolder.SetStopTransform( transform.TransformPoint(backPointOffset), transform.rotation , ch.colorCharacter);
+                // stairHolder.SetStopTransform( transform.TransformPoint(backPointOffset), transform.rotation , ch.colorCharacter);
+                ch.CanMoveUp = true;
                 if(isLastStep)
                 {
                     ch.ReachLastStep(this);
                 }
                 return true;
-        }
+        }   
     }
     public void SetColor(ENUM_COLOR color)
     {

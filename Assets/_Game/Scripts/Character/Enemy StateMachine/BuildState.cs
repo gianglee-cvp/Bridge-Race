@@ -21,13 +21,19 @@ public class BuildState : IEnemyState
             return; 
         }
         
-        if(enemy.listBricks.Count == 0){
+        if(enemy.listBricks.Count == 0 || !enemy.CanMoveUp){
             enemy.ChangeState(new PatrolState());
+            if (!enemy.canMoveUp)
+            {
+                Debug.Log("abc"); 
+            }
         }        
         
     }
 
     public void OnExit(EnemyAI enemy)
     {
+        enemy.agent.ResetPath(); 
+        enemy.agent.velocity = Vector3.zero;    
     }
 }
