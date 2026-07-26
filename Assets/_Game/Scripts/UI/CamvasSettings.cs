@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Diagnostics;
-using System.Xml.Serialization;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CanvasSettings : UICanvas
 {

@@ -33,8 +33,6 @@ public class MapManager : MonoBehaviour
                 //unit.SetColor(brickData.color);
                 unit.stage = stageRoot;
                 //unit.gameObject.SetActive(false);
-                
-                GameManager.Instance.RegisterBrick(unit.colliderBrick, unit);
             }
         }
     }

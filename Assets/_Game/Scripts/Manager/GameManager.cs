@@ -30,7 +30,7 @@ public partial class GameManager : Singleton<GameManager>
 
             currentLevelIndex = levelIndex;
             Level level = listLevels[currentLevelIndex];
-            level.OnInit();
+            // level.OnInit();
             level.gameObject.SetActive(true);
 
             stageList = level.stageList;

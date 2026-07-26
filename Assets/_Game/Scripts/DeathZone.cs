@@ -6,8 +6,8 @@ public class DeathZone : MonoBehaviour
     {
         if (other.CompareTag("Character"))
         {
-            Debug.Log("death");
-            Character player = GameManager.Instance.GetCharacter(other); 
+            // Debug.Log("death");
+            // Character player = GameManager.Instance.GetCharacter(other); 
             UIManager.Instance.OpenUI<CanvasFail>(); 
         }   
     }

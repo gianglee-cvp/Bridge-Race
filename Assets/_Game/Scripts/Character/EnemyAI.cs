@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
 public interface IEnemyState
 {

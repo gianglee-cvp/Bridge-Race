@@ -1,14 +1,11 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class CanvasGamePlay : UICanvas
 {
     [SerializeField] TextMeshProUGUI coinText;
     [SerializeField] RectTransform joinStick;
     [SerializeField] CanvasGroup stickCanvasGroup;
-    [SerializeField] RectTransform canvasRect;
-    [SerializeField] GameObject stick;
 
     public override void Setup()
     {

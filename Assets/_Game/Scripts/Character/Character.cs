@@ -17,7 +17,6 @@ public class Character : MonoBehaviour,IColor
     [SerializeField] public Transform rotatePart;
     [SerializeField] private Animator animator;
     [SerializeField] public CharacterBrick chBrickPrefab; // TODO dduaw vafo gamemanager de load 
-    [SerializeField] private Rigidbody rb;
     [SerializeField] private Renderer colorPart;
     public List<CharacterBrick> listBricks = new List<CharacterBrick>();
     public Stage currentStage;
@@ -81,18 +80,6 @@ public class Character : MonoBehaviour,IColor
     }
     public virtual bool CheckCharacterGoUpStair()
     {
-        return false;
-    }
-    public bool CheckDistanceToStep(Transform stepTf)
-    {
-        Vector2 cr = new Vector2(transform.position.x, transform.position.z);
-        Vector2 st = new Vector2(stepTf.position.x, stepTf.position.z);
-        float distance = Vector2.Distance(cr, st);
-        // Debug.Log("CheckDistanceToStep: " + stepTf.gameObject.name + " distance: " + distance);
-        if(distance < 0.9f) 
-        {
-            return true;
-        }
         return false;
     }
     public void SetColor(ENUM_COLOR color)

@@ -29,7 +29,6 @@ public class BuildState : IEnemyState
 
     public void OnExit(EnemyAI enemy)
     {
-        enemy.agent.ResetPath(); 
         enemy.agent.velocity = Vector3.zero;    
     }
 }

@@ -60,10 +60,6 @@ public class BrickSpawner : MonoBehaviour
                     unit.SetColor(selectedRatio.color);
                     unit.transform.SetParent(root);
 
-                    if (GameManager.Instance != null)
-                    {
-                        GameManager.Instance.RegisterBrick(unit.colliderBrick, unit);
-                    }
                 }
                 j++;
             }
