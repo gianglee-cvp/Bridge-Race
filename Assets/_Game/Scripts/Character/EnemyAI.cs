@@ -1,3 +1,4 @@
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -125,6 +126,11 @@ public class EnemyAI : Character
     {   
         agent.enabled = false;
         base.OnFinishLevel();
+        ChangeState(new IdleState()); 
+    }
+    public override void OnLose()
+    {
+        base.OnLose();
         ChangeState(new IdleState()); 
     }
 }

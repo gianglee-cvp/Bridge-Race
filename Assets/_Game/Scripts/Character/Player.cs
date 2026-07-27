@@ -84,5 +84,10 @@ public class Player : Character
         UIManager.Instance.GetUI<CanvasGamePlay>().UpdateCoin(Point); 
         SoundManager.Instance.PlaySfx(ENUM_SOUND.PickBrick);
     }
+    public override void OnLose()
+    {
+        base.OnLose();
+        moveAction.Disable(); 
+    }
 
 }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public partial class GameManager : Singleton<GameManager>
@@ -13,35 +15,28 @@ public partial class GameManager : Singleton<GameManager>
     {
         character.OnWin(firstSeed);
 
-        Character secondPlace = null;
-        Character thirdPlace = null;
+        List<Character> rank = new List<Character>(LevelManager.Instance.Characters);
 
-        for (int i = 0; i < LevelManager.Instance.Characters.Count; i++)
+        rank.Remove(character); 
+        rank.Sort((a,b) => b.Point.CompareTo(a.Point));
+
+        rank[0].OnWin(secondSeed); 
+        rank.RemoveAt(0); 
+
+        rank[0].OnWin(thirdSeed);
+        rank.RemoveAt(0); 
+
+        rank[0].OnLose(); 
+        
+        if(rank[0] is Player)
         {
-            Character c = LevelManager.Instance.Characters[i];
-            if (c == character) continue;
-
-            if (secondPlace == null || c.Point > secondPlace.Point)
-            {
-                thirdPlace = secondPlace;
-                secondPlace = c;
-            }
-            else if (thirdPlace == null || c.Point > thirdPlace.Point)
-            {
-                thirdPlace = c;
-            }
+            UIManager.Instance.OpenUI<CanvasFail>(); 
+        }
+        else
+        {
+            UIManager.Instance.OpenUI<CanvasVictory>();           
         }
 
-        if (secondPlace != null)
-        {
-            secondPlace.OnWin(secondSeed);
-        }
-
-        if (thirdPlace != null)
-        {
-            thirdPlace.OnWin(thirdSeed);
-        }
-        UIManager.Instance.OpenUI<CanvasVictory>(); 
     }   
     public void OnPlayGame()
     {

@@ -119,6 +119,10 @@ public class Character : MonoBehaviour,IColor
         rotatePart.localRotation = Quaternion.Euler(Vector3.zero); 
         SetAnim(ENUM_ANIMATOR_TRIGGER.WIN);
     }
+    public virtual void OnLose()
+    {
+        
+    }
     public virtual void OnChangeStage(Stage newStage)
     {
         if(currentStage == null || currentStage != newStage)
