@@ -8,19 +8,17 @@ public class Stair : MonoBehaviour
     public Transform stopPoint;
     public int GetOpponentCount(ENUM_COLOR color)
     {
-        Dictionary<ENUM_COLOR, bool> colorCount = new Dictionary<ENUM_COLOR, bool>();
-        foreach(Step st in listStep)
+        HashSet<ENUM_COLOR> colorSet = new HashSet<ENUM_COLOR>();
+
+        foreach (Step st in listStep)
         {
-            if(colorCount.ContainsKey(st.colorStep) || st.colorStep == color)
-            {
+            if (st.colorStep == color)
                 continue;
-            }
-            else
-            {
-                colorCount.Add(st.colorStep, true);
-            }
+
+            colorSet.Add(st.colorStep);
         }
-        return colorCount.Count;
+
+        return colorSet.Count;
     }
     public int GetMaxPointCount(ENUM_COLOR color)
     {

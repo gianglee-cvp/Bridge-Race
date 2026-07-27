@@ -1934,7 +1934,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3940eceb1c7f85a43986f47867fd423e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorControl
-  blockWallLayer: 11
   stageIndex: 1
 --- !u!1 &1705411397301055298
 GameObject:
@@ -8219,7 +8218,7 @@ MonoBehaviour:
   stageList:
   - {fileID: 2261671023446434045}
   - {fileID: 6209395328620858634}
-  levelDataSO: {fileID: 11400000, guid: 75de7ab37bbcd5341bbaf44c99d4570c, type: 2}
+  levelDataSO: {fileID: 11400000, guid: 54fd8770f27cbb04599146847d31074e, type: 2}
 --- !u!1 &6961562563312513068
 GameObject:
   m_ObjectHideFlags: 0
