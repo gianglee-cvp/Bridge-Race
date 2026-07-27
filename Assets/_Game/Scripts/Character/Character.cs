@@ -101,10 +101,10 @@ public class Character : MonoBehaviour,IColor
         if(currentAnim != anim)
         {
             animator.ResetTrigger(
-                GameManager.Instance.listTriggerAnimator[(int)currentAnim]);
+                Constants.listTriggerAnimator[(int)currentAnim]);
             currentAnim = anim;
             animator.SetTrigger(
-                GameManager.Instance.listTriggerAnimator[(int)currentAnim]);
+                Constants.listTriggerAnimator[(int)currentAnim]);
         }
     }
 

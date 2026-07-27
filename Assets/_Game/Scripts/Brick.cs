@@ -22,7 +22,7 @@ public class Brick : GameUnit, IColor
     }
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Character"))
+        if (other.CompareTag(Constants.CharacterTag))
         {
             Character ch = GameManager.Instance.GetCharacter(other);
             if (ch.colorCharacter == colorBrick)

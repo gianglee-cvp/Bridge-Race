@@ -9,7 +9,7 @@ public class CharacterBrick : GameUnit
     {
         meshRenderer.material = GameManager.Instance.GetMaterial(color);
         gameObject.layer = LayerMask.NameToLayer(
-                GameManager.Instance.listColorLayerName[(int)color]
+                Constants.listColorLayerName[(int)color]
         );
 
         Transform targetHolder = character.parentBrick;

@@ -4,7 +4,7 @@ public class DeathZone : MonoBehaviour
 {
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Character"))
+        if (other.CompareTag(Constants.CharacterTag))
         {
             UIManager.Instance.OpenUI<CanvasFail>(); 
         }   

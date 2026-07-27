@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Rendering;
 public class Stage : MonoBehaviour
 {
     private Dictionary<ENUM_COLOR, Queue<Brick>> inactive = new Dictionary<ENUM_COLOR, Queue<Brick>>(); 
@@ -7,7 +8,6 @@ public class Stage : MonoBehaviour
     public int stageIndex; 
     [SerializeField] public List<Stair> listStair = new List<Stair>();
     [SerializeField] private DoorControl door ; 
-
     public void Load(StageData stageData)
     {
         foreach (var brickData in stageData.bricks)

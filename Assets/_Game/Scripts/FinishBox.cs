@@ -7,7 +7,7 @@ public class FinishBox : MonoBehaviour
     [SerializeField] private Transform thirdSeed;
     public void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Character"))
+        if(other.CompareTag(Constants.CharacterTag))
         {
             Character ch = GameManager.Instance.GetCharacter(other);
             GameManager.Instance.OnCharacterWin(ch, firstSeed, secondSeed, thirdSeed);

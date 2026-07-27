@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class DoorControl : MonoBehaviour
 {
-    [SerializeField] private int blockWallLayer;
+    private int blockWallLayer => LayerMask.NameToLayer(Constants.LayerBlockWall);
     [SerializeField] private int stageIndex;
 
     private Dictionary<ENUM_COLOR, int> colorToLayerPass = new Dictionary<ENUM_COLOR, int>();
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Character"))
+        if (!other.CompareTag(Constants.CharacterTag))
         {
             return;
         }

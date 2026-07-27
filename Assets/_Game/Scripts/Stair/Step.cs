@@ -8,7 +8,7 @@ public class Step : MonoBehaviour, IColor
     public bool isLastStep = false; // neu la step cuoi cung thi se khong cho character di len nua
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Character"))
+        if (other.CompareTag(Constants.CharacterTag))
         {
             Character ch = GameManager.Instance.GetCharacter(other);
 
@@ -33,7 +33,7 @@ public class Step : MonoBehaviour, IColor
     }
     public void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Character"))
+        if (other.CompareTag(Constants.CharacterTag))
         {
             Character ch = GameManager.Instance.GetCharacter(other);
             if(ch is Player)

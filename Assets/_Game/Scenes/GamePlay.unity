@@ -593,7 +593,7 @@ MonoBehaviour:
   - prefab: {fileID: 770137199229521788, guid: 0b0a39b0832d4cb4aad9a77894ac61d4, type: 3}
     amount: 1
     parent: {fileID: 0}
-  - prefab: {fileID: 770137199229521788, guid: 7f852c704950142459e55259edb78edf, type: 3}
+  - prefab: {fileID: 770137199229521788, guid: 9e2f2e37f19b3e645b73ee01f9ca9dad, type: 3}
     amount: 1
     parent: {fileID: 0}
 --- !u!4 &1005159979
@@ -875,6 +875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BrickSpawner
   root: {fileID: 0}
+  stageList: []
   prefabBase: {fileID: 2580360831205630559, guid: 25be93a33d027d84faedd48c2362b05b, type: 3}
   length: 30
   width: 40
