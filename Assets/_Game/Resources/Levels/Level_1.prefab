@@ -816,6 +816,7 @@ MonoBehaviour:
   stageIndex: 2
   listStair:
   - {fileID: 136912632878514882}
+  door: {fileID: 2026127832552802891}
 --- !u!1 &818863670299255032
 GameObject:
   m_ObjectHideFlags: 0
@@ -5220,6 +5221,7 @@ MonoBehaviour:
   - {fileID: 1769056657838296435}
   - {fileID: 5652566309649214965}
   - {fileID: 7107374456041169884}
+  door: {fileID: 0}
 --- !u!1 &3911044250028686984
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class Stage : MonoBehaviour
     private Dictionary<ENUM_COLOR, List<Brick>> active = new Dictionary<ENUM_COLOR, List<Brick>>() ; 
     public int stageIndex; 
     [SerializeField] public List<Stair> listStair = new List<Stair>();
+    [SerializeField] private DoorControl door ; 
 
     public void Load(StageData stageData)
     {
@@ -98,10 +99,9 @@ public class Stage : MonoBehaviour
     }
     public void OnEnd()
     {      
-        DoorControl[] doorControls = GetComponentsInChildren<DoorControl>(true);
-        foreach (DoorControl doorControl in doorControls)
+        if(door != null)
         {
-            doorControl.OnEnd();
+            door.OnEnd(); 
         }
 
         foreach( var q in inactive.Values)
