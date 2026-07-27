@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Step : MonoBehaviour, IColor
@@ -65,5 +66,25 @@ public class Step : MonoBehaviour, IColor
     public void SetColor(ENUM_COLOR color)
     {
         ((IColor)this).ISetColor(meshRenderer , ref colorStep , color); 
+        meshRenderer.material.SetFloat("_Flash",0);
+        StartCoroutine(FlashCoroutine());
     }
+    private IEnumerator FlashCoroutine()
+    {
+        float duration = 0.35f; 
+        float time = 0f; 
+        while(time < duration)
+        {
+            time += Time.deltaTime;
+            float value = 1 - time/duration;    
+            meshRenderer.material.SetFloat("_Flash",value);
+
+            yield return null; 
+        }
+
+        meshRenderer.material.SetFloat("_Flash", 0f);
+        yield break;
+    }
+
+
 }

@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
+using UnityEngine;
 
 public static class Constants
 {
@@ -37,5 +39,4 @@ public static class Constants
         LayerGreen,
         LayerBlack
     };
-
 }

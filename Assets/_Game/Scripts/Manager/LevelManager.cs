@@ -51,10 +51,11 @@ public class LevelManager : Singleton<LevelManager>
 
     public void ChangeLevel(int levelIndex)
     {
-        if (currentLevelIndex >= 0 && currentLevelIndex < listLevels.Count)
-        {
-            listLevels[currentLevelIndex].Unload();
-        }
+        OnEnd();
+        // if (currentLevelIndex >= 0 && currentLevelIndex < listLevels.Count)
+        // {
+        //     listLevels[currentLevelIndex].Unload();
+        // }
 
         GameManager.Instance.SetTimeScale(1);
 
@@ -143,9 +144,6 @@ public class LevelManager : Singleton<LevelManager>
     }
     public void PlayNextLevel()
     {
-        LevelManager.Instance.OnEnd(); 
-
-
         int nextLevel = currentLevelIndex + 1;
         if (nextLevel >= listLevels.Count)
         {

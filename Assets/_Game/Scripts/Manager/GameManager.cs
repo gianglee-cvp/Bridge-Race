@@ -55,8 +55,4 @@ public partial class GameManager : Singleton<GameManager>
     {
         Time.timeScale = t ; 
     }
-    public void OnEnd()
-    {
-        LevelManager.Instance.OnEnd();
-    }
 }

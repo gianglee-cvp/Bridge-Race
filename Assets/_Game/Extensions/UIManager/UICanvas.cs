@@ -64,7 +64,7 @@ public class UICanvas : MonoBehaviour
     }
     public virtual void MainMenuButton()
     {
-        GameManager.Instance.OnEnd(); 
+        LevelManager.Instance.OnEnd(); 
 
         UIManager.Instance.CloseAllUI(); 
         UIManager.Instance.OpenUI<CanvasMainMenu>(); 

@@ -16,7 +16,6 @@ public class CanvasFail : UICanvas
 
     public override void PlayButton()
     {
-        GameManager.Instance.OnEnd(); 
         base.PlayButton();
     }
 }
