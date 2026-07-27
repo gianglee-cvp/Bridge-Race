@@ -1,21 +1,19 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class CanvasFail : UICanvas
 {
-    [SerializeField] TextMeshProUGUI coinText;
+    [SerializeField] private TextMeshProUGUI coinText; 
     public override void Setup()
     {
         base.Setup();
         GameManager.Instance.SetTimeScale(0); 
         SoundManager.Instance.PlaySfx(ENUM_SOUND.Fail);
         int score = LevelManager.Instance.Player.Point;
-        SetBestScore(score); 
+        SetBestScore(score, coinText); 
     }
-    public void SetBestScore(int coin)
-    {
-        coinText.text = coin.ToString(); 
-    }
+
     public override void PlayButton()
     {
         GameManager.Instance.OnEnd(); 

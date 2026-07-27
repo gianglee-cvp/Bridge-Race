@@ -141,4 +141,18 @@ public class LevelManager : Singleton<LevelManager>
             listCharacters[i].OnInit(pos);
         }
     }
+    public void PlayNextLevel()
+    {
+        LevelManager.Instance.OnEnd(); 
+
+
+        int nextLevel = currentLevelIndex + 1;
+        if (nextLevel >= listLevels.Count)
+        {
+            nextLevel = 0;
+        }
+
+        ChangeLevel(nextLevel);
+        GameManager.Instance.OnPlayGame(); 
+    }
 }

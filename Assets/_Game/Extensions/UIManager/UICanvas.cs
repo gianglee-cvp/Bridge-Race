@@ -1,4 +1,6 @@
+using System.Xml.Serialization;
 using UnityEngine;
+using TMPro;
 
 public class UICanvas : MonoBehaviour
 {
@@ -66,5 +68,14 @@ public class UICanvas : MonoBehaviour
 
         UIManager.Instance.CloseAllUI(); 
         UIManager.Instance.OpenUI<CanvasMainMenu>(); 
+    }
+    public virtual void PlayNextLevel()
+    {
+        LevelManager.Instance.PlayNextLevel();
+        Close(0); 
+    }
+    public virtual void SetBestScore(int coin , TextMeshProUGUI coinText)
+    {
+        coinText.text = coin.ToString(); 
     }
 }

@@ -1,17 +1,15 @@
 using TMPro;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class CanvasVictory : UICanvas
 {
-    [SerializeField] TextMeshProUGUI coinText; 
-
-    public void SetBestScore(int coin)
+    [SerializeField] private TextMeshProUGUI coinText; 
+    public override void Setup()
     {
-        coinText.text = coin.ToString(); 
-    }
-    public void MainMenuButton()
-    {
-        Close(0);
-        UIManager.Instance.OpenUI<CanvasMainMenu>(); 
+        base.Setup();
+        SoundManager.Instance.PlaySfx(ENUM_SOUND.Win);
+        int score = LevelManager.Instance.Player.Point;
+        SetBestScore( score, coinText); 
     }
 }
