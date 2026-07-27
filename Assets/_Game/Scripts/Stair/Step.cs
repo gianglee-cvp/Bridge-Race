@@ -50,7 +50,6 @@ public class Step : MonoBehaviour, IColor
         if(brickColor != (int) colorStep && brickCount == 0)
         {
             ch.CanMoveUp = false; 
-            // stairHolder.SetStopTransform(transform.TransformPoint(frontPointOffset), transform.rotation , ch.colorCharacter);
             return false;
         }
         else

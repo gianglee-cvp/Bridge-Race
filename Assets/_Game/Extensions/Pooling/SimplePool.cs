@@ -17,7 +17,6 @@ public static class SimplePool
             p.Preload(prefab, amount, parent); 
             poolInstance[prefab.poolType] = p ;
         }
-        // truong hop da co poolInstance cho level(level pool type giong nhau nhung prefab khac nhau)
         else if(prefab.poolType == PoolType.Level && poolInstance.ContainsKey(PoolType.Level))
         {
             Pool p = poolInstance[PoolType.Level];
@@ -76,12 +75,9 @@ public class Pool
     Transform parentPool; 
     GameUnit prefab; 
 
-    // chua cac unit co the su dung
     Queue<GameUnit> inactive = new  Queue<GameUnit>();
-    // chua cac unit dang duoc su dung 
     List<GameUnit> active = new  List<GameUnit>();
 
-    // khoi tao pool 
     public void Preload(GameUnit prefab, int amount , Transform parent)
     {
         this.parentPool = parent; 

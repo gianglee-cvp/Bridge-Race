@@ -123,9 +123,8 @@ public class EnemyAI : Character
     }
     public override void OnFinishLevel()
     {   
-        Debug.Log("Enemy Finish Level");
         agent.enabled = false;
         base.OnFinishLevel();
-        ChangeState(new IdleState()); // Stop the enemy from moving or performing any actions
+        ChangeState(new IdleState()); 
     }
 }

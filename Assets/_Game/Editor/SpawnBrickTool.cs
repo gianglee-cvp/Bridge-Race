@@ -6,7 +6,6 @@ public class BrickSpawnerEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        // Vẽ inspector mặc định
         DrawDefaultInspector();
 
         GUILayout.Space(10);

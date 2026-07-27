@@ -58,7 +58,6 @@ public class Character : MonoBehaviour,IColor
 
         chBrick.OnCollect(brick.colorBrick, this, spawnWorldPos, spawnWorldRot);
         listBricks.Add(chBrick);
-        // brick.OnCollect(); 
 
         point ++;
     }

@@ -8,10 +8,6 @@ public class Brick : GameUnit, IColor
     [SerializeField] public Stage stage;
     public void SetColor(ENUM_COLOR newColor)
     {
-        // Material mat = GameManager.Instance.colorDataSO.GetMaterial(newColor); 
-        // meshRenderer.material = mat;
-        // colorBrick = newColor;
-        
         ((IColor)this).ISetColor(meshRenderer, ref colorBrick, newColor);
     }
     public void OnCollect()

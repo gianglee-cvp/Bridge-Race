@@ -4,7 +4,7 @@ public class Stage : MonoBehaviour
 {
     private Dictionary<ENUM_COLOR, Queue<Brick>> inactive = new Dictionary<ENUM_COLOR, Queue<Brick>>(); 
     private Dictionary<ENUM_COLOR, List<Brick>> active = new Dictionary<ENUM_COLOR, List<Brick>>() ; 
-    public int stageIndex; // cho vao dictionary hoac gan khi spawn
+    public int stageIndex; 
     [SerializeField] public List<Stair> listStair = new List<Stair>();
 
     public void Load(StageData stageData)
@@ -50,8 +50,6 @@ public class Stage : MonoBehaviour
         inactive[brick.colorBrick].Enqueue(brick);
         brick.OnCollect(); 
     }
-
-    // dung khi spawn luc dau (spawn ra luc dau la mau none nen la can truyen color)
     public void AddBrickToRemain(Brick brick , ENUM_COLOR color)
     {
         if (!inactive.ContainsKey(color))

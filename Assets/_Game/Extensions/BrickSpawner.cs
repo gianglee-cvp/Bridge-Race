@@ -22,9 +22,7 @@ public class BrickSpawner : MonoBehaviour
     public struct ColorRatio
     {
         public ENUM_COLOR color;
-        [Tooltip("Trọng số tỉ lệ xuất hiện")]
         public int ratio; 
-        [Tooltip("Prefab")]
         public Material material;
     }
 
