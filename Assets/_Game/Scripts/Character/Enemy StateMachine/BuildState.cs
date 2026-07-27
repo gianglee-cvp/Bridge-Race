@@ -15,12 +15,6 @@ public class BuildState : IEnemyState
 
     public void OnExecute(EnemyAI enemy)
     {
-        if(choosenStair == null)
-        {
-            Debug.LogError("BuildState: choosenStair is null. Cannot set destination.");
-            return; 
-        }
-        
         if(enemy.listBricks.Count == 0 || !enemy.CanMoveUp){
             enemy.ChangeState(new PatrolState());
         }        

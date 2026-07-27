@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class BrickSpawner : MonoBehaviour
 {
     [SerializeField] private Transform root;
+    [SerializeField] private List<Stage> stageList = new List<Stage>();
     [SerializeField] private Brick prefabBase;
     [SerializeField] private int length; 
     [SerializeField] private int width; 
@@ -21,9 +22,9 @@ public class BrickSpawner : MonoBehaviour
     public struct ColorRatio
     {
         public ENUM_COLOR color;
-        [Tooltip("Trọng số tỉ lệ xuất hiện (Ví dụ: Red=50, Blue=30, Yellow=20)")]
+        [Tooltip("Trọng số tỉ lệ xuất hiện")]
         public int ratio; 
-        [Tooltip("Prefab tương ứng với màu này để tô lên gạch")]
+        [Tooltip("Prefab")]
         public Material material;
     }
 
@@ -72,19 +73,17 @@ public class BrickSpawner : MonoBehaviour
 
     public void SpawnAllStage()
     {
-        if (GameManager.Instance == null)
-        {
-            Debug.LogError("GameManager.Instance is null! Please run in Play Mode.");
-            return;
-        }
 
         isSpawningAll = true;
         levelData.Clear();
 
-        List<Stage> stageList = GameManager.Instance.stageList;
         foreach(var st in stageList)
         {
-            Debug.Log($"Spawning stage: {st.name}");
+            if (st == null)
+            {
+                continue;
+            }
+
             root = st.transform;
             SpawnBrick();
         }
@@ -92,19 +91,12 @@ public class BrickSpawner : MonoBehaviour
         isSpawningAll = false;
     }
 
-    // Chọn màu ngẫu nhiên dựa trên tỉ lệ (ratios) đã thiết lập
     private ColorRatio GetRandomColorByRatio()
     {
         int totalRatio = 0;
         foreach (var cr in colorRatios)
         {
             totalRatio += cr.ratio;
-        }
-
-        // Nếu không thiết lập ratio hoặc tổng bằng 0, trả về phần tử đầu tiên hoặc mặc định
-        if (totalRatio <= 0)
-        {
-            return colorRatios.Count > 0 ? colorRatios[0] : new ColorRatio();
         }
 
         int randomValue = Random.Range(0, totalRatio);
@@ -149,10 +141,8 @@ public class BrickSpawner : MonoBehaviour
     {
         levelData.AddStage(stageData);
 
-#if UNITY_EDITOR
         UnityEditor.EditorUtility.SetDirty(levelData);
         UnityEditor.AssetDatabase.SaveAssets();
-#endif
     }
 }   
 

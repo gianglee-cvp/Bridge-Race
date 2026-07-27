@@ -16,7 +16,7 @@ public class Character : MonoBehaviour,IColor
     [SerializeField] public Collider characterCollider;
     [SerializeField] public Transform rotatePart;
     [SerializeField] private Animator animator;
-    [SerializeField] public CharacterBrick chBrickPrefab; // TODO dduaw vafo gamemanager de load 
+    [SerializeField] public CharacterBrick chBrickPrefab;
     [SerializeField] private Renderer colorPart;
     public List<CharacterBrick> listBricks = new List<CharacterBrick>();
     public Stage currentStage;
@@ -29,10 +29,7 @@ public class Character : MonoBehaviour,IColor
         get => canMoveUp;
         set => canMoveUp = value;
     }
-
-
-    // public int currentStageIndex = 0;
-    public int currentBrickCount = 0 ; 
+    public int currentBrickCount => listBricks.Count;
     public virtual void OnInit(Vector3 pos)
     {
         gameObject.SetActive(true); 
@@ -58,25 +55,20 @@ public class Character : MonoBehaviour,IColor
             spawnWorldRot, 
             null
         );
-        
-        listBricks.Add(chBrick);
-   
+
         chBrick.OnCollect(brick.colorBrick, this, spawnWorldPos, spawnWorldRot);
+        listBricks.Add(chBrick);
         // brick.OnCollect(); 
 
-        currentBrickCount++;
         point ++;
     }
     public void ClearAllBrick()
     {
         foreach (var brick in listBricks)
         {
-            //Destroy(brick.gameObject); // TODO : cho vao pool
             SimplePool.poolInstance[PoolType.CharacterBrick].DesSpawn(brick);
         }
-        // SimplePool.poolInstance[PoolType.CharacterBrick].Collect(); 
         listBricks.Clear();
-        currentBrickCount = 0;
     }
     public virtual bool CheckCharacterGoUpStair()
     {
@@ -84,35 +76,26 @@ public class Character : MonoBehaviour,IColor
     }
     public void SetColor(ENUM_COLOR color)
     {
-        // colorPart.material = GameManager.Instance.colorDataSO.GetMaterial(color);
-        // colorCharacter = color;
         ((IColor)this).ISetColor(colorPart,ref colorCharacter , color); 
     }
-
-    //TODO cho vào trong pool 
     public void RemoveBrick()
     {
         if (listBricks.Count > 0)
         {
             int index = listBricks.Count - 1;
             CharacterBrick chBrick = listBricks[index]; 
-            //listBricks[index].gameObject.SetActive(false); // TODO : cho vào pool
             SimplePool.DesSpawn(chBrick); 
             listBricks.RemoveAt(index); 
-            
-            currentBrickCount--;
             
         }
     }
     public virtual void ReachNewStage(Stage newStage)
     {
         if(currentStage == newStage) return ;
-        //currentStage = newStage; 
         OnChangeStage(newStage);
     }
     public virtual void ReachLastStep(Step st)
     {
-        Debug.Log("Characte Reach Last Step"); 
     }
     public void SetAnim(ENUM_ANIMATOR_TRIGGER anim)
     {
@@ -151,8 +134,4 @@ public class Character : MonoBehaviour,IColor
         currentStage = null; 
         gameObject.SetActive(false); 
     }
-    // public void OnLose()
-    // {
-        
-    // }
 }

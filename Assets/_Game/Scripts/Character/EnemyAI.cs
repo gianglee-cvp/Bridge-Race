@@ -10,7 +10,6 @@ public interface IEnemyState
 public class EnemyAI : Character
 {
     [SerializeField] private IEnemyState currentState;
- //   public Camera mainCamera; // Test thoi sau delete
     [SerializeField] public NavMeshAgent agent;
 
 
@@ -47,10 +46,6 @@ public class EnemyAI : Character
     }
     public void SetAgentDestination(Vector3 destination)
     {
-        if(agent == null)
-        {
-            Debug.LogError("NavMeshAgent component is not assigned.");
-        }
         agent.SetDestination(destination);
     }
     public void ChangeState(IEnemyState newState)
@@ -117,14 +112,12 @@ public class EnemyAI : Character
     public override void ReachNewStage(Stage newStage)
     {
         base.ReachNewStage(newStage);
-        Debug.Log("Change 2");
         ChangeState(new PatrolState()); 
     }
     
     public override void ReachLastStep(Step st)
     {
         base.ReachLastStep(st);
-        Debug.Log("Enemy Reach Last Step");
         Vector3 target = transform.position + transform.forward * 4f ;
         SetAgentDestination(target); 
     }

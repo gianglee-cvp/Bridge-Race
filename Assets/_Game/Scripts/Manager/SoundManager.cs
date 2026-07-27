@@ -14,7 +14,7 @@ public class SoundManager : Singleton<SoundManager>
     {
         if (bgmSource == null)
         {
-            Debug.LogWarning("No BGM");
+            Debug.LogWarning("BGM");
             return;
         }
 
@@ -46,7 +46,7 @@ public class SoundManager : Singleton<SoundManager>
     {
         if (sfxSource == null)
         {
-            Debug.LogWarning("No SFX");
+            Debug.LogWarning("SFX");
             return;
         }
 
@@ -63,7 +63,7 @@ public class SoundManager : Singleton<SoundManager>
     {
         if (library == null)
         {
-            Debug.LogWarning("No Lib");
+            Debug.LogWarning("Lib");
             return null;
         }
 

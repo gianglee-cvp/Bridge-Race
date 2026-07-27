@@ -45,7 +45,6 @@ public partial class GameManager : Singleton<GameManager>
 
         currentLevelIndex = nextLevel;
         UIManager.Instance.GetUI<CanvasMainMenu>().UpdateLevelText(currentLevelIndex);
-        // OnChangeLevel(nextLevel);
     }
 
     public void PrevLevel()
@@ -60,7 +59,6 @@ public partial class GameManager : Singleton<GameManager>
         
         currentLevelIndex = prevLevel;
         UIManager.Instance.GetUI<CanvasMainMenu>().UpdateLevelText(currentLevelIndex);
-        // OnChangeLevel(prevLevel);
     }
 
 

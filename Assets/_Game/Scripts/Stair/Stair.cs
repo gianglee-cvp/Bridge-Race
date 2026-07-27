@@ -48,10 +48,8 @@ public class Stair : MonoBehaviour
     }
     public void OnEnd()
     {
-        Debug.Log("Return color 4 "); 
         foreach(var step in listStep)
         {
-            Debug.Log("Return color 3"); 
             step.SetColor(ENUM_COLOR.Stair);
         }
     }

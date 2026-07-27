@@ -55,7 +55,6 @@ public class Step : MonoBehaviour, IColor
         }
         else
         {
-                // stairHolder.SetStopTransform( transform.TransformPoint(backPointOffset), transform.rotation , ch.colorCharacter);
                 ch.CanMoveUp = true;
                 if(isLastStep)
                 {
@@ -66,8 +65,6 @@ public class Step : MonoBehaviour, IColor
     }
     public void SetColor(ENUM_COLOR color)
     {
-        // colorStep = color;
-        // meshRenderer.material = GameManager.Instance.colorDataSO.GetMaterial(color);
         ((IColor)this).ISetColor(meshRenderer , ref colorStep , color); 
     }
 }

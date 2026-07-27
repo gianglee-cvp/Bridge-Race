@@ -3,7 +3,6 @@ using System.Collections.Generic;
 public class Stage : MonoBehaviour
 {
     private Dictionary<ENUM_COLOR, Queue<Brick>> inactive = new Dictionary<ENUM_COLOR, Queue<Brick>>(); 
-    // private List<Brick> activeBricks = new List<Brick>();
     private Dictionary<ENUM_COLOR, List<Brick>> active = new Dictionary<ENUM_COLOR, List<Brick>>() ; 
     public int stageIndex; // cho vao dictionary hoac gan khi spawn
     [SerializeField] public List<Stair> listStair = new List<Stair>();

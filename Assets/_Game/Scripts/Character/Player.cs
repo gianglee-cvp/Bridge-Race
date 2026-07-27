@@ -28,28 +28,12 @@ public class Player : Character
             moveAmount = moveAction.ReadValue<Vector2>().normalized;
             if (!canMoveUp)
             {
-                Debug.Log("khong len duoc");
                 if(moveAmount.y > 0)
                 {
                     moveAmount.y = 0; 
                 }
-                // else
-                // {
-                //     canMoveUp = true; 
-                // }
             }
         }
-
-        // Vector3 move = new Vector3(moveAmount.x, 0, moveAmount.y);
-        // //TODO : dùng lerp cho mượt, cân nhắc sửa thành rb moveposition để mượt hơn hi lên dốc và xuống dốc
-        // if(move.sqrMagnitude   > 0.01f)
-        // {
-        // rotatePart.rotation = Quaternion.LookRotation(move);
-        // transform.Translate(
-        //     move * speed * Time.deltaTime
-        // );
-        // }
-
     }
     private void FixedUpdate()
     {

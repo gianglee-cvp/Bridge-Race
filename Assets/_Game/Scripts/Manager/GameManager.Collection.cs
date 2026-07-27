@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System;
 public partial class GameManager : Singleton<GameManager>
 {
-    // TODO nên cache collider của character để tối ưu bộ nhớ 
     private Dictionary<Collider, Character> characterDictionary = new Dictionary<Collider, Character>();
 
     [SerializeField] public List<Stage> stageList = new List<Stage>();    

@@ -10,7 +10,6 @@ public class TouchZone : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("down");
         Vector2 localPoint;
         stickCanvasGroup.alpha = 1; 
 
