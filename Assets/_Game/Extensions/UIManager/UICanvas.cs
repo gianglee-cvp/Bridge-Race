@@ -56,8 +56,8 @@ public class UICanvas : MonoBehaviour
         UIManager.Instance.OpenUI<CanvasGamePlay>();
         SoundManager.Instance.PlayBgm(ENUM_SOUND.GameplayBgm);
 
-        int index = GameManager.Instance.currentLevelIndex ; 
-        GameManager.Instance.OnChangeLevel(index);
+        int index = LevelManager.Instance.CurrentLevelIndex; 
+        LevelManager.Instance.ChangeLevel(index);
         GameManager.Instance.OnPlayGame();
     }
     public virtual void MainMenuButton()

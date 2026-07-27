@@ -16,12 +16,12 @@ public class CanvasMainMenu : UICanvas
 
     public void NextLevelButton()
     {
-        GameManager.Instance.NextLevel();
+        LevelManager.Instance.NextLevel();
     }
 
     public void PrevLevelButton()
     {
-        GameManager.Instance.PrevLevel();
+        LevelManager.Instance.PrevLevel();
     }
     public void UpdateLevelText(int index)
     {

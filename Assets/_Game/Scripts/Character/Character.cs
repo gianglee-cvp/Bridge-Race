@@ -40,7 +40,7 @@ public class Character : MonoBehaviour,IColor
     public virtual void OnPlay()
     {
         SetAnim(ENUM_ANIMATOR_TRIGGER.IDLE);
-        OnChangeStage(GameManager.Instance.stageList[0]);
+        OnChangeStage(LevelManager.Instance.GetStage(0));
         point = 0 ; 
     }
 

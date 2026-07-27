@@ -15,8 +15,8 @@ public class DoorControl : MonoBehaviour
             return;
         }
 
-        Character character = GameManager.Instance.GetCharacter(other);
-        character.ReachNewStage(GameManager.Instance.stageList[stageIndex]);
+        Character character = LevelManager.Instance.GetCharacter(other);
+        character.ReachNewStage(LevelManager.Instance.GetStage(stageIndex));
         AddColor(character.colorCharacter, character.gameObject.layer);
     }
 

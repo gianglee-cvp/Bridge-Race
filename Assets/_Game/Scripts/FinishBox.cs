@@ -9,7 +9,7 @@ public class FinishBox : MonoBehaviour
     {
         if(other.CompareTag(Constants.CharacterTag))
         {
-            Character ch = GameManager.Instance.GetCharacter(other);
+            Character ch = LevelManager.Instance.GetCharacter(other);
             GameManager.Instance.OnCharacterWin(ch, firstSeed, secondSeed, thirdSeed);
         }
     }

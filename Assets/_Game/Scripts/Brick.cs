@@ -24,7 +24,7 @@ public class Brick : GameUnit, IColor
     {
         if (other.CompareTag(Constants.CharacterTag))
         {
-            Character ch = GameManager.Instance.GetCharacter(other);
+            Character ch = LevelManager.Instance.GetCharacter(other);
             if (ch.colorCharacter == colorBrick)
             {
                 ch.AddBrick(this);

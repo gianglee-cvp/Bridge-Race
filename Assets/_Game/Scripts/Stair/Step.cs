@@ -10,7 +10,7 @@ public class Step : MonoBehaviour, IColor
     {
         if (other.CompareTag(Constants.CharacterTag))
         {
-            Character ch = GameManager.Instance.GetCharacter(other);
+            Character ch = LevelManager.Instance.GetCharacter(other);
 
             if(!ch.CheckCharacterGoUpStair() ) return; 
 
@@ -35,7 +35,7 @@ public class Step : MonoBehaviour, IColor
     {
         if (other.CompareTag(Constants.CharacterTag))
         {
-            Character ch = GameManager.Instance.GetCharacter(other);
+            Character ch = LevelManager.Instance.GetCharacter(other);
             if(ch is Player)
             {
                 ch.CanMoveUp = true; 

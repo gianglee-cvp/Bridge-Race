@@ -2,63 +2,10 @@ using UnityEngine;
 
 public partial class GameManager : Singleton<GameManager>
 {
-    [SerializeField] public ColorDataSO colorDataSO;
-    public Player player;
-    public int currentLevelIndex = 0;
     private void Awake()
     {
         UIManager.Instance.OpenUI<CanvasMainMenu>();
-
-        AddListLevel();
-        foreach (var character in listCharacters)
-        {
-            characterDictionary.Add(character.characterCollider, character);
-        }
-    }
-    public void OnChangeLevel(int levelIndex)
-    {
-        if (currentLevelIndex >= 0 && currentLevelIndex < listLevels.Count)
-        {
-            Level currentLevel = listLevels[currentLevelIndex];
-            currentLevel.Unload();
-        }
-
-        SetTimeScale(1); 
-
-        currentLevelIndex = levelIndex;
-        Level level = listLevels[currentLevelIndex];
-        level.Load();
-
-        stageList = level.stageList;
-        InitCharacters(level.levelDataSO);
-    }
-
-    public void NextLevel()
-    {
-        if (listLevels.Count == 0) return;
-
-        int nextLevel = currentLevelIndex + 1;
-        if (nextLevel >= listLevels.Count)
-        {
-            nextLevel = 0; 
-        }
-
-        currentLevelIndex = nextLevel;
-        UIManager.Instance.GetUI<CanvasMainMenu>().UpdateLevelText(currentLevelIndex);
-    }
-
-    public void PrevLevel()
-    {
-        if (listLevels.Count == 0) return;
-
-        int prevLevel = currentLevelIndex - 1;
-        if (prevLevel < 0)
-        {
-            prevLevel = listLevels.Count - 1; 
-        }
-        
-        currentLevelIndex = prevLevel;
-        UIManager.Instance.GetUI<CanvasMainMenu>().UpdateLevelText(currentLevelIndex);
+        LevelManager.Instance.OnInit();
     }
 
 
@@ -70,9 +17,9 @@ public partial class GameManager : Singleton<GameManager>
         Character secondPlace = null;
         Character thirdPlace = null;
 
-        for (int i = 0; i < listCharacters.Count; i++)
+        for (int i = 0; i < LevelManager.Instance.Characters.Count; i++)
         {
-            Character c = listCharacters[i];
+            Character c = LevelManager.Instance.Characters[i];
             if (c == character) continue;
 
             if (secondPlace == null || c.Point > secondPlace.Point)
@@ -98,10 +45,11 @@ public partial class GameManager : Singleton<GameManager>
     }   
     public void OnPlayGame()
     {
-        foreach (var character in listCharacters)
-        {
-            character.OnPlay();
-        }
+        LevelManager.Instance.OnPlay();
+    }
+    public void OnChangeLevel(int levelIndex)
+    {
+        LevelManager.Instance.ChangeLevel(levelIndex);
     }
     public void SetTimeScale(int t)
     {
@@ -109,24 +57,6 @@ public partial class GameManager : Singleton<GameManager>
     }
     public void OnEnd()
     {
-        Level level = listLevels[currentLevelIndex]; 
-        level.Unload();
-
-        foreach(var ch in listCharacters)
-        {
-            ch.OnExitGame();
-        }
-    }
-
-    private void InitCharacters(LevelDataSO levelData)
-    {
-        Vector3 pos = levelData.player.position;
-        player.OnInit(pos);
-
-        for (int i = 1; i < listCharacters.Count; i++)
-        {
-            pos = levelData.listEnemy[i - 1].position;
-            listCharacters[i].OnInit(pos);
-        }
+        LevelManager.Instance.OnEnd();
     }
 }
