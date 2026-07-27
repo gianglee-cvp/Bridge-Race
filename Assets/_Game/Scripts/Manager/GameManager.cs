@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using TMPro.Examples;
 using UnityEngine;
 
 public partial class GameManager : Singleton<GameManager>
 {
+    [SerializeField] private CameraFollow camMain;
     private void Awake()
     {
         UIManager.Instance.OpenUI<CanvasMainMenu>();
@@ -49,5 +51,13 @@ public partial class GameManager : Singleton<GameManager>
     public void SetTimeScale(int t)
     {
         Time.timeScale = t ; 
+    }
+    public void SetCameraWin()
+    {
+        camMain.OnWin(); 
+    }
+    public void InitCamera()
+    {
+        camMain.OnInit(); 
     }
 }

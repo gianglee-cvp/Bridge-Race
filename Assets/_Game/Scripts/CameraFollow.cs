@@ -1,18 +1,36 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
     public Transform target;
     public Vector3 offset;
-    public float smoothSpeed = 5f;
+    [SerializeField] private CinemachineCamera camWin;
+    [SerializeField] private CinemachineOrbitalFollow orbitalFollow;
+    [SerializeField] private CinemachineCamera camGamePlay;
+    private float rotateSpeed = 10f;
+    private bool isWin = false;
+    public void OnWin()
+    {
+        camWin.transform.position = camGamePlay.transform.position;
 
+        camGamePlay.Priority = 0; 
+        camWin.Priority = 20; 
+        isWin = true ; 
+    }
+    public void OnInit()
+    {
+        camGamePlay.Priority = 20; 
+        camWin.Priority = 0;
+        isWin = false; 
+    }
     void LateUpdate()
     {
-        Vector3 move = target.position + offset;
-        transform.position = Vector3.Lerp(
-            transform.position,
-            move,
-            smoothSpeed * Time.deltaTime
-        );
+        if (isWin)
+        {
+            orbitalFollow.HorizontalAxis.Value += rotateSpeed * Time.deltaTime;
+        }
     }
+
+
 }

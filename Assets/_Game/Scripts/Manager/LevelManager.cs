@@ -52,6 +52,7 @@ public class LevelManager : Singleton<LevelManager>
     public void ChangeLevel(int levelIndex)
     {
         OnEnd();
+        GameManager.Instance.InitCamera(); 
         // if (currentLevelIndex >= 0 && currentLevelIndex < listLevels.Count)
         // {
         //     listLevels[currentLevelIndex].Unload();
