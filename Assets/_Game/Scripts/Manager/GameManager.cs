@@ -28,6 +28,7 @@ public partial class GameManager : Singleton<GameManager>
 
             rank[i].OnWin(i + 1); 
         }
+        rank[3].OnLose(); 
         
         if(rank[3] is Player)
         {
