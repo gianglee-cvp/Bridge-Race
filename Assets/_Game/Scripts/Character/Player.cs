@@ -84,7 +84,7 @@ public class Player : Character
         UIManager.Instance.GetUI<CanvasGamePlay>().UpdateCoin(Point); 
         SoundManager.Instance.PlaySfx(ENUM_SOUND.PickBrick);
     }
-    public override void OnWin(Transform Seed)
+    public override void OnWin(int Seed)
     {
         base.OnWin(Seed);
         GameManager.Instance.SetCameraWin(); 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro.Examples;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public partial class GameManager : Singleton<GameManager>
@@ -15,22 +16,20 @@ public partial class GameManager : Singleton<GameManager>
 
     public void OnCharacterWin(Character character, Transform firstSeed, Transform secondSeed, Transform thirdSeed)
     {
-        character.OnWin(firstSeed);
-
         List<Character> rank = new List<Character>(LevelManager.Instance.Characters);
-
-        rank.Remove(character); 
-        rank.Sort((a,b) => b.Point.CompareTo(a.Point));
-
-        rank[0].OnWin(secondSeed); 
-        rank.RemoveAt(0); 
-
-        rank[0].OnWin(thirdSeed);
-        rank.RemoveAt(0); 
-
-        rank[0].OnLose(); 
+        rank.Sort((a,b) =>  
+        {
+            if(a == character) return -1; 
+            return b.Point.CompareTo(a.Point); 
+        });
         
-        if(rank[0] is Player)
+        for( int i = 0 ; i < 3 ; i++)
+        {
+
+            rank[i].OnWin(i + 1); 
+        }
+        
+        if(rank[3] is Player)
         {
             UIManager.Instance.OpenUI<CanvasFail>(); 
         }

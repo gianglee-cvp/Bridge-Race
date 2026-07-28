@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using NUnit.Framework;
 
 [CreateAssetMenu(menuName = "Game/Level Data")]
 public class LevelDataSO : ScriptableObject
@@ -7,6 +8,7 @@ public class LevelDataSO : ScriptableObject
     public List<StageData> stages = new();
     public PlayerData player = new PlayerData(); 
     public List<EnemyData> listEnemy = new List<EnemyData>();
+    public List<WinPos> winPos = new List<WinPos>(); 
 
     public void Clear()
     {
@@ -16,6 +18,15 @@ public class LevelDataSO : ScriptableObject
     public void AddStage(StageData stage)
     {
         stages.Add(stage);
+    }
+    public WinPos GetPosAndRot(int seed)
+    {
+        int index = seed - 1; 
+        if(index < 0 || index > winPos.Count)
+        {
+            Debug.LogError("winPos"); 
+        }
+        return winPos[index]; 
     }
 }
 
@@ -42,4 +53,10 @@ public class EnemyData
 {
     public ENUM_COLOR color; 
     public Vector3 position;
+}
+[System.Serializable]
+public class WinPos
+{
+    public Vector3 position; 
+    public Vector3 rotation;
 }

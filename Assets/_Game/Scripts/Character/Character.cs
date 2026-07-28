@@ -120,13 +120,31 @@ public class Character : MonoBehaviour,IColor
     public virtual void OnFinishLevel()
     {
     }   
-    public virtual void OnWin(Transform Seed)
+    public virtual void OnWin(int seed)
     {
         OnFinishLevel();
         ClearAllBrick(); 
-        transform.SetPositionAndRotation(Seed.position, Seed.rotation);
+        // transform.SetPositionAndRotation(Seed.position, Seed.rotation);
+
+        SetWinPos(seed); 
         rotatePart.localRotation = Quaternion.Euler(Vector3.zero); 
         SetAnim(ENUM_ANIMATOR_TRIGGER.WIN);
+    }
+    public virtual void SetWinPos(int seed)
+    {
+        Level level = LevelManager.Instance.GetCurrentLevel();
+        Transform root = level.TF; 
+
+        WinPos winPos = level.levelDataSO.GetPosAndRot(seed); 
+        Vector3 localTF = winPos.position; 
+        Vector3 localRT = winPos.rotation;
+
+
+        Vector3 worldPos = root.TransformPoint(localTF); 
+        Quaternion worldRot = root.rotation * Quaternion.Euler(localRT); 
+
+        transform.SetPositionAndRotation(worldPos, worldRot); 
+
     }
     public virtual void OnLose()
     {

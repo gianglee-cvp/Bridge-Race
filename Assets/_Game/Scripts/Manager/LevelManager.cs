@@ -158,4 +158,8 @@ public class LevelManager : Singleton<LevelManager>
         ChangeLevel(nextLevel);
         GameManager.Instance.OnPlayGame(); 
     }
+    public Level GetCurrentLevel()
+    {
+        return listLevels[currentLevelIndex]; 
+    }
 }
