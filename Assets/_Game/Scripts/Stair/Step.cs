@@ -19,7 +19,6 @@ public class Step : MonoBehaviour, IColor
             {   
                 if(ch.colorCharacter != colorStep)
                 {
-                    
                     SetColor(ch.colorCharacter);
                     stairHolder.stage.OnRemainBrick(ch.colorCharacter);
                     ch.RemoveBrick();

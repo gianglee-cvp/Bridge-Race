@@ -89,10 +89,4 @@ public class Player : Character
         base.OnWin(Seed);
         GameManager.Instance.SetCameraWin(); 
     }
-    public override void OnLose()
-    {
-        base.OnLose();
-        moveAction.Disable(); 
-    }
-
 }

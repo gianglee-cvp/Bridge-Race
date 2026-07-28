@@ -128,9 +128,4 @@ public class EnemyAI : Character
         base.OnFinishLevel();
         ChangeState(new IdleState()); 
     }
-    public override void OnLose()
-    {
-        base.OnLose();
-        ChangeState(new IdleState()); 
-    }
 }

@@ -114,6 +114,10 @@ public class LevelManager : Singleton<LevelManager>
     {
         if (currentLevelIndex >= 0 && currentLevelIndex < listLevels.Count)
         {
+            if (!listLevels[currentLevelIndex].gameObject.activeSelf)
+            {
+                return;
+            }
             listLevels[currentLevelIndex].Unload();
         }
 

@@ -38,7 +38,6 @@ public partial class GameManager : Singleton<GameManager>
         {
             UIManager.Instance.OpenUI<CanvasVictory>();           
         }
-
     }   
     public void OnPlayGame()
     {

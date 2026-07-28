@@ -61,6 +61,17 @@ public class Character : MonoBehaviour,IColor
 
         point ++;
     }
+    public void RemoveBrick()
+    {
+        if (listBricks.Count > 0)
+        {
+            int index = listBricks.Count - 1;
+            CharacterBrick chBrick = listBricks[index]; 
+            SimplePool.DesSpawn(chBrick); 
+            listBricks.RemoveAt(index); 
+            
+        }
+    }
     public void ClearAllBrick()
     {
         foreach (var brick in listBricks)
@@ -77,21 +88,19 @@ public class Character : MonoBehaviour,IColor
     {
         ((IColor)this).ISetColor(colorPart,ref colorCharacter , color); 
     }
-    public void RemoveBrick()
-    {
-        if (listBricks.Count > 0)
-        {
-            int index = listBricks.Count - 1;
-            CharacterBrick chBrick = listBricks[index]; 
-            SimplePool.DesSpawn(chBrick); 
-            listBricks.RemoveAt(index); 
-            
-        }
-    }
+
     public virtual void ReachNewStage(Stage newStage)
     {
         if(currentStage == newStage) return ;
         OnChangeStage(newStage);
+    }
+    public virtual void OnChangeStage(Stage newStage)
+    {
+        if(currentStage == null || currentStage != newStage)
+        {
+            currentStage = newStage;
+            newStage.SpawnBrick(colorCharacter);
+        }
     }
     public virtual void ReachLastStep(Step st)
     {
@@ -110,27 +119,20 @@ public class Character : MonoBehaviour,IColor
 
     public virtual void OnFinishLevel()
     {
-        ClearAllBrick();
     }   
     public virtual void OnWin(Transform Seed)
     {
         OnFinishLevel();
+        ClearAllBrick(); 
         transform.SetPositionAndRotation(Seed.position, Seed.rotation);
         rotatePart.localRotation = Quaternion.Euler(Vector3.zero); 
         SetAnim(ENUM_ANIMATOR_TRIGGER.WIN);
     }
     public virtual void OnLose()
     {
-        
+        OnFinishLevel(); 
     }
-    public virtual void OnChangeStage(Stage newStage)
-    {
-        if(currentStage == null || currentStage != newStage)
-        {
-            currentStage = newStage;
-            newStage.SpawnBrick(colorCharacter);
-        }
-    }
+
     public virtual void OnExitGame()
     {
         ClearAllBrick();
