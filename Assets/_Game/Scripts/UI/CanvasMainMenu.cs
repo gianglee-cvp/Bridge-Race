@@ -7,6 +7,9 @@ public class CanvasMainMenu : UICanvas
     {
         base.Setup();
         SoundManager.Instance.PlayBgm(ENUM_SOUND.MenuBgm);
+
+        int level = LevelManager.Instance.CurrentLevelIndex;
+        UpdateLevelText(level); 
     }
 
     public void SettingButton()

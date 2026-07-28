@@ -10,7 +10,7 @@ public class LevelManager : Singleton<LevelManager>
     private  Dictionary<Collider, Character> characterDictionary = new Dictionary<Collider, Character>();
     private  List<Level> listLevels = new List<Level>();
     private List<Stage> stageList = new List<Stage>();
-    private int currentLevelIndex;
+    private int currentLevelIndex = 0;
 
     public List<Character> Characters => listCharacters;
     public Player Player => player;
