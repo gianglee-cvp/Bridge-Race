@@ -14,7 +14,7 @@ public partial class GameManager : Singleton<GameManager>
     }
 
 
-    public void OnCharacterWin(Character character, Transform firstSeed, Transform secondSeed, Transform thirdSeed)
+    public void OnCharacterWin(Character character)
     {
         List<Character> rank = new List<Character>(LevelManager.Instance.Characters);
         rank.Sort((a,b) =>  

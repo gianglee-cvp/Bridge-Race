@@ -50,8 +50,10 @@ public class BrickSpawner : MonoBehaviour
                 Vector3 spawnPoint = root.TransformPoint(localSpawnPos);
 
                 NavMeshHit hit;
+                Debug.Log("a"); 
                 if(NavMesh.SamplePosition(spawnPoint, out hit, 0.5f, NavMesh.AllAreas))
                 {
+                    Debug.Log("b"); 
                     ColorRatio selectedRatio = GetRandomColorByRatio();
 
                     Brick unit = Instantiate(prefabBase, spawnPoint, prefabBase.transform.rotation);
@@ -61,8 +63,15 @@ public class BrickSpawner : MonoBehaviour
 
                 }
                 j++;
+                // Debug.Log("i : " + i + " j: " + j ); 
             }
             i++;
+        }
+        Debug.Log("Save Stage"); 
+        var l = stageData.bricks; 
+        foreach ( var br in l)
+        {
+            Debug.Log(br.position); 
         }
         SaveStageData();
 
@@ -137,6 +146,11 @@ public class BrickSpawner : MonoBehaviour
 
     public void SaveStageData()
     {
+        var l = stageData.bricks; 
+        foreach ( var br in l)
+        {
+            Debug.Log(br.position); 
+        }
         levelData.AddStage(stageData);
 
         UnityEditor.EditorUtility.SetDirty(levelData);

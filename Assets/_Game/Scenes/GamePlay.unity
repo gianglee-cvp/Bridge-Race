@@ -1280,6 +1280,9 @@ MonoBehaviour:
   - prefab: {fileID: 770137199229521788, guid: 9e2f2e37f19b3e645b73ee01f9ca9dad, type: 3}
     amount: 1
     parent: {fileID: 0}
+  - prefab: {fileID: 8932710895791222247, guid: 286d770a14ca4c64b83e2dddb1edfafd, type: 3}
+    amount: 1
+    parent: {fileID: 0}
 --- !u!4 &1005159979
 Transform:
   m_ObjectHideFlags: 0
@@ -1678,12 +1681,13 @@ MonoBehaviour:
   stageList:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   prefabBase: {fileID: 2580360831205630559, guid: 25be93a33d027d84faedd48c2362b05b, type: 3}
   length: 30
   width: 40
   disX: 3
   disZ: 2
-  levelData: {fileID: 11400000, guid: 48ff33c6041c03d4ca8fc5347146a442, type: 2}
+  levelData: {fileID: 11400000, guid: bcd5bc8d551e5ab4990136397594522c, type: 2}
   colorRatios:
   - color: 0
     ratio: 0
@@ -1712,7 +1716,7 @@ Transform:
   m_GameObject: {fileID: 1580878875}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.74833, y: -1.42429, z: -0.14464}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

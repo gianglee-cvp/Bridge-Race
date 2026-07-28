@@ -21,6 +21,10 @@ public class Stage : MonoBehaviour
             AddBrickToRemain(unit, brickData.color);
             unit.stage = this;
         }
+        if(door != null)
+        {
+            door.OnInit(LevelManager.Instance.Characters); 
+        }
     }
 
     public void OnRemainBrick(ENUM_COLOR color)
@@ -99,10 +103,10 @@ public class Stage : MonoBehaviour
     }
     public void OnEnd()
     {      
-        if(door != null)
-        {
-            door.OnEnd(); 
-        }
+        // if(door != null)
+        // {
+        //     door.OnEnd(); 
+        // }
 
         foreach( var q in inactive.Values)
         {
