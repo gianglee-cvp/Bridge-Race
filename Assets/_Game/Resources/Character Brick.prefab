@@ -58,7 +58,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1a23a567d56908944b6b92f72b4e510c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,15 +112,15 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 0.47058824}
+      key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 25957
+      ctime0: 0
       ctime1: 65535
       ctime2: 0
       ctime3: 0
@@ -209,7 +209,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1a23a567d56908944b6b92f72b4e510c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -263,16 +263,16 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 0.47058824}
+      key1: {r: 1, g: 1, b: 1, a: 0}
+      key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 25957
-      ctime1: 65407
+      ctime0: 0
+      ctime1: 65535
       ctime2: 0
       ctime3: 0
       ctime4: 0
@@ -331,7 +331,7 @@ Transform:
   m_GameObject: {fileID: 8020609629457718009}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.215, y: -1.4, z: -1}
+  m_LocalPosition: {x: -1.328, y: -1.4, z: -0.442}
   m_LocalScale: {x: 0.35, y: 0.15, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -372,7 +372,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a4adce12e6f5dd646a18d7f8d576d2d7, type: 2}
+  - {fileID: 2100000, guid: 1a23a567d56908944b6b92f72b4e510c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -432,5 +432,5 @@ MonoBehaviour:
   poolType: 1
   meshRenderer: {fileID: 5708177104337892517}
   smoke:
-  - {fileID: 1103251084858557310}
-  - {fileID: 176805084793129793}
+  - {fileID: 4125763661558662070}
+  - {fileID: 6202723249020895150}

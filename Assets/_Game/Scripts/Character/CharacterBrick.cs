@@ -4,7 +4,8 @@ using System.Collections;
 public class CharacterBrick : GameUnit
 {
     [SerializeField] private MeshRenderer meshRenderer;
-    [SerializeField] private GameObject[] smoke;
+    [SerializeField] private TrailRenderer[] smoke;
+    private ColorType colorBrick; 
     public void OnCollect(ColorType color, Character character, Vector3 startPos, Quaternion startRot)
     {
         meshRenderer.material = LevelManager.Instance.GetMaterial(color);
@@ -18,16 +19,20 @@ public class CharacterBrick : GameUnit
         transform.SetParent(null);
         transform.position = startPos;
         transform.rotation = startRot;
+        // colorBrick = color; 
 
         StopAllCoroutines();
-        StartCoroutine(FlyToCharacter(targetHolder, targetLocalPos, startPos, startRot));
+        StartCoroutine(FlyToCharacter(targetHolder, targetLocalPos, startPos, startRot , color));
     }
 
-    private IEnumerator FlyToCharacter(Transform targetHolder, Vector3 targetLocalPos, Vector3 startPos, Quaternion startRot)
+    private IEnumerator FlyToCharacter(Transform targetHolder, Vector3 targetLocalPos, Vector3 startPos, Quaternion startRot , ColorType color)
     {
-        foreach(var p in smoke)
+        foreach(TrailRenderer p in smoke)
         {
-            p.SetActive(true);
+            p.Clear();
+            p.emitting = true;  
+            p.material = LevelManager.Instance.GetMaterial(color);
+            p.enabled = true;
         }
 
         float t = 0f;
@@ -49,9 +54,11 @@ public class CharacterBrick : GameUnit
             yield return null;
         }
 
-        foreach(var p in smoke)
+        foreach(TrailRenderer p in smoke)
         {
-            p.SetActive(false);
+            p.enabled = false;
+            p.Clear(); 
+            p.emitting =false;
         }
 
         transform.SetParent(targetHolder);
