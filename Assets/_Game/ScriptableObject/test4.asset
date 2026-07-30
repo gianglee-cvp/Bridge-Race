@@ -567,7 +567,7 @@ MonoBehaviour:
   - color: 5
     position: {x: 4.5, y: 0, z: 0}
   winPos:
-  - position: {x: 0, y: 23.49, z: 75.97}
+  - position: {x: 0, y: 21.733, z: 75.97}
     rotation: {x: 0, y: 0, z: 0}
   - position: {x: -2, y: 21.595, z: 75.97}
     rotation: {x: 0, y: 0, z: 0}
