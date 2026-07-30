@@ -20,10 +20,11 @@ public class UIManager : Singleton<UIManager>
     // mo canvas 
     public T OpenUI<T>() where T : UICanvas
     {
-        T canvas = GetUI<T>() ; 
+        T canvas = GetUI<T>() ;
+
 
         canvas.Setup();
-        canvas.Open(); 
+        canvas.Open();  
 
         return canvas as T ; 
     }
