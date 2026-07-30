@@ -7314,7 +7314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3940eceb1c7f85a43986f47867fd423e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorControl
-  blockColider:
+  blockCollider:
   - {fileID: 1958287185207403756}
   - {fileID: 2516744361816022885}
   - {fileID: 4193699028421637871}
@@ -8219,7 +8219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3940eceb1c7f85a43986f47867fd423e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorControl
-  blockColider:
+  blockCollider:
   - {fileID: 8113942127966933864}
   - {fileID: 1069017683235383558}
   stageIndex: 2
@@ -15822,9 +15822,7 @@ MonoBehaviour:
   - {fileID: 8124162148466591712}
   - {fileID: 4793320906866373042}
   - {fileID: 6272604891075177194}
-  stopPoints: []
   stage: {fileID: 5997036151794689362}
-  stopPoint: {fileID: 0}
 --- !u!1 &8927821189332846761
 GameObject:
   m_ObjectHideFlags: 0
