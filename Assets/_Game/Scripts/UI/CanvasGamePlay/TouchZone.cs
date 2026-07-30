@@ -8,10 +8,15 @@ public class TouchZone : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
     [SerializeField] RectTransform canvasRect;
     [SerializeField] GameObject stick;
 
+    private void Awake()
+    {
+        SetStickVisible(false);
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         Vector2 localPoint;
-        stickCanvasGroup.alpha = 1; 
+        SetStickVisible(true);
 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvasRect,
@@ -45,8 +50,19 @@ public class TouchZone : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
             eventData,
             ExecuteEvents.pointerUpHandler
         );
-        
-        // Ẩn joystick bằng alpha thay vì SetActive
-        stickCanvasGroup.alpha = 0; 
+
+        SetStickVisible(false);
+    }
+
+    public void SetStickVisible(bool isVisible)
+    {
+        if (stickCanvasGroup == null)
+        {
+            return;
+        }
+
+        stickCanvasGroup.alpha = isVisible ? 1f : 0f;
+        stickCanvasGroup.interactable = isVisible;
+        stickCanvasGroup.blocksRaycasts = isVisible;
     }
 }

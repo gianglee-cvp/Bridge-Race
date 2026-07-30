@@ -2,7 +2,11 @@ using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
-
+[System.Serializable]
+public class TransformList
+{
+    public List<Transform> transforms;
+}
 public class BrickSpawner : MonoBehaviour
 {
     [SerializeField] private Transform root;
@@ -15,7 +19,8 @@ public class BrickSpawner : MonoBehaviour
 
     [SerializeField] private LevelDataSO levelData;
 
-    private StageData stageData;
+    [SerializeField] private StageData stageData;
+    [SerializeField] public List<TransformList> listTF;
     private bool isSpawningAll = false;
 
     [System.Serializable]
@@ -77,6 +82,32 @@ public class BrickSpawner : MonoBehaviour
 
         ClearNavMesh(); 
     }
+    public void CollectData()
+    {
+        // foreach(var st in stageList)
+        // {
+        //     if (st == null)
+        //     {
+        //         continue;
+        //     }
+        // }
+        int cnt = stageList.Count; 
+        for(int i = 0 ; i < cnt ; i++)
+        {
+            stageData = new StageData();
+            int j = 0; 
+            while(j < listTF[i].transforms.Count)
+            {
+                ColorRatio selectedRatio = GetRandomColorByRatio();
+                Vector3 spawnPoint = listTF[i].transforms[j].position;
+                stageData.bricks.Add(new BrickData { color = selectedRatio.color, position = spawnPoint });
+
+                j++; 
+            }
+            SaveStageData(); 
+        }
+    }
+
 
     public void SpawnAllStage()
     {

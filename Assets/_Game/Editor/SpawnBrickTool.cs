@@ -16,5 +16,9 @@ public class BrickSpawnerEditor : Editor
         {
             spawner.SpawnAllStage();
         }
+        if (GUILayout.Button("Collect Brick"))
+        {
+            spawner.CollectData();
+        }
     }
 }

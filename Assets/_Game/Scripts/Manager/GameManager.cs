@@ -9,6 +9,8 @@ public partial class GameManager : Singleton<GameManager>
     [SerializeField] private CameraFollow camMain;
     private void Awake()
     {
+        UIManager.Instance.OnInit(); 
+        
         UIManager.Instance.OpenUI<CanvasMainMenu>();
         LevelManager.Instance.OnInit();
     }
@@ -20,23 +22,28 @@ public partial class GameManager : Singleton<GameManager>
         rank.Sort((a,b) =>  
         {
             if(a == character) return -1; 
+            if(b == character) return 1; 
             return b.Point.CompareTo(a.Point); 
         });
         
-        for( int i = 0 ; i < 3 ; i++)
+        // for( int i = 0 ; i < 3 ; i++)
+        // {
+        //     rank[i].OnWin(i + 1); 
+        // }
+        // for(int i = 3 ; i < rank.Count ; i++)
+        // {
+        //     rank[i].OnLose();
+        // }
+        int i = 0; 
+        int cnt = rank.Count;
+        while(i < cnt)
         {
-
-            rank[i].OnWin(i + 1); 
-        }
-        rank[3].OnLose(); 
-        
-        if(rank[3] is Player)
-        {
-            UIManager.Instance.OpenUI<CanvasFail>(); 
-        }
-        else
-        {
-            UIManager.Instance.OpenUI<CanvasVictory>();           
+            if( i < 3)
+            {
+                rank[i].OnWin(i+1); 
+            }
+            else rank[i].OnLose(); 
+            i++; 
         }
     }   
     public void OnPlayGame()

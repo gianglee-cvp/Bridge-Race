@@ -120,7 +120,7 @@ public class Pool
     // thu thap tat ca phan tu ve pool 
     public void Collect()
     {
-        while(inactive.Count > 0)
+        while(active.Count > 0)
         {
             DesSpawn(active[0]);
         }

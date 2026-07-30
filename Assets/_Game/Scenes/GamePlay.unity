@@ -1283,6 +1283,9 @@ MonoBehaviour:
   - prefab: {fileID: 8932710895791222247, guid: 286d770a14ca4c64b83e2dddb1edfafd, type: 3}
     amount: 1
     parent: {fileID: 0}
+  - prefab: {fileID: 2686888055609252666, guid: 914ed842ee3b1a14c80d3f4d93136b6f, type: 3}
+    amount: 1
+    parent: {fileID: 0}
 --- !u!4 &1005159979
 Transform:
   m_ObjectHideFlags: 0
@@ -1687,7 +1690,391 @@ MonoBehaviour:
   width: 40
   disX: 3
   disZ: 2
-  levelData: {fileID: 11400000, guid: bcd5bc8d551e5ab4990136397594522c, type: 2}
+  levelData: {fileID: 11400000, guid: e87ae6fdf82301f4ebc4c4ce8563cb10, type: 2}
+  stageData:
+    bricks:
+    - color: 5
+      position: {x: -8.75, y: 32, z: 117.75}
+    - color: 3
+      position: {x: -8.75, y: 32, z: 120.25}
+    - color: 3
+      position: {x: -8.75, y: 32, z: 127.75}
+    - color: 3
+      position: {x: -8.75, y: 32, z: 130.25}
+    - color: 1
+      position: {x: -6.25, y: 32, z: 115.25}
+    - color: 3
+      position: {x: -6.25, y: 32, z: 117.75}
+    - color: 1
+      position: {x: -6.25, y: 32, z: 120.25}
+    - color: 1
+      position: {x: -6.25, y: 32, z: 122.75}
+    - color: 3
+      position: {x: -6.25, y: 32, z: 125.25}
+    - color: 3
+      position: {x: -6.25, y: 32, z: 127.75}
+    - color: 2
+      position: {x: -6.25, y: 32, z: 130.25}
+    - color: 1
+      position: {x: -6.25, y: 32, z: 132.75}
+    - color: 1
+      position: {x: -3.75, y: 32, z: 115.25}
+    - color: 3
+      position: {x: -3.75, y: 32, z: 117.75}
+    - color: 1
+      position: {x: -3.75, y: 32, z: 120.25}
+    - color: 2
+      position: {x: -3.75, y: 32, z: 122.75}
+    - color: 5
+      position: {x: -3.75, y: 32, z: 125.25}
+    - color: 1
+      position: {x: -3.75, y: 32, z: 127.75}
+    - color: 2
+      position: {x: -3.75, y: 32, z: 130.25}
+    - color: 5
+      position: {x: -3.75, y: 32, z: 132.75}
+    - color: 3
+      position: {x: -1.25, y: 32, z: 115.25}
+    - color: 2
+      position: {x: -1.25, y: 32, z: 117.75}
+    - color: 5
+      position: {x: -1.25, y: 32, z: 120.25}
+    - color: 1
+      position: {x: -1.25, y: 32, z: 122.75}
+    - color: 3
+      position: {x: -1.25, y: 32, z: 125.25}
+    - color: 1
+      position: {x: -1.25, y: 32, z: 127.75}
+    - color: 1
+      position: {x: -1.25, y: 32, z: 130.25}
+    - color: 1
+      position: {x: 1.25, y: 32, z: 115.25}
+    - color: 3
+      position: {x: 1.25, y: 32, z: 117.75}
+    - color: 3
+      position: {x: 1.25, y: 32, z: 120.25}
+    - color: 5
+      position: {x: 1.25, y: 32, z: 122.75}
+    - color: 1
+      position: {x: 1.25, y: 32, z: 125.25}
+    - color: 3
+      position: {x: 1.25, y: 32, z: 127.75}
+    - color: 5
+      position: {x: 1.25, y: 32, z: 130.25}
+    - color: 5
+      position: {x: 3.75, y: 32, z: 115.25}
+    - color: 3
+      position: {x: 3.75, y: 32, z: 117.75}
+    - color: 5
+      position: {x: 3.75, y: 32, z: 120.25}
+    - color: 5
+      position: {x: 3.75, y: 32, z: 122.75}
+    - color: 1
+      position: {x: 3.75, y: 32, z: 125.25}
+    - color: 2
+      position: {x: 3.75, y: 32, z: 127.75}
+    - color: 2
+      position: {x: 3.75, y: 32, z: 130.25}
+    - color: 3
+      position: {x: 3.75, y: 32, z: 132.75}
+    - color: 1
+      position: {x: 6.25, y: 32, z: 115.25}
+    - color: 3
+      position: {x: 6.25, y: 32, z: 117.75}
+    - color: 5
+      position: {x: 6.25, y: 32, z: 120.25}
+    - color: 2
+      position: {x: 6.25, y: 32, z: 122.75}
+    - color: 3
+      position: {x: 6.25, y: 32, z: 125.25}
+    - color: 1
+      position: {x: 6.25, y: 32, z: 127.75}
+    - color: 2
+      position: {x: 6.25, y: 32, z: 130.25}
+    - color: 1
+      position: {x: 6.25, y: 32, z: 132.75}
+    - color: 1
+      position: {x: 8.75, y: 32, z: 117.75}
+    - color: 3
+      position: {x: 8.75, y: 32, z: 120.25}
+    - color: 3
+      position: {x: 8.75, y: 32, z: 127.75}
+    - color: 1
+      position: {x: 8.75, y: 32, z: 130.25}
+  listTF:
+  - transforms:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - transforms:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - transforms:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   colorRatios:
   - color: 0
     ratio: 0

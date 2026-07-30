@@ -1934,7 +1934,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3940eceb1c7f85a43986f47867fd423e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorControl
-  blockColider: {fileID: 5370260555332962946}
+  blockColider:
+  - {fileID: 5370260555332962946}
   stageIndex: 1
 --- !u!1 &1705411397301055298
 GameObject:

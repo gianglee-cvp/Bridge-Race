@@ -8,7 +8,7 @@ public class UIManager : Singleton<UIManager>
     Dictionary<System.Type , UICanvas> canvasPrefabs  = new Dictionary<System.Type, UICanvas>() ;
     [SerializeField] Transform parent;
 
-    private void Awake()
+    public void OnInit()
     {
         UICanvas[] prefabs = Resources.LoadAll<UICanvas>("UI/");
         Debug.Log("Load UI Prefabs : " + prefabs.Length);

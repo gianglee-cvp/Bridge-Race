@@ -88,5 +88,11 @@ public class Player : Character
     {
         base.OnWin(Seed);
         GameManager.Instance.SetCameraWin(); 
+        UIManager.Instance.OpenUI<CanvasVictory>();
+    }
+    public override void OnLose()
+    {
+        base.OnLose();
+        UIManager.Instance.OpenUI<CanvasFail>();
     }
 }

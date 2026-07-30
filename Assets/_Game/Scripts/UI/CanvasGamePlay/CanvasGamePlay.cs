@@ -11,9 +11,14 @@ public class CanvasGamePlay : UICanvas
     {
         base.Setup();
         UpdateCoin(0); 
-        
-  
-        stickCanvasGroup.alpha = 0;
+
+        if (stickCanvasGroup != null)
+        {
+            stickCanvasGroup.alpha = 0;
+            stickCanvasGroup.interactable = false;
+            stickCanvasGroup.blocksRaycasts = false;
+        }
+
         joinStick.gameObject.SetActive(true); 
     }
 
