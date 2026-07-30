@@ -1480,15 +1480,7 @@ MonoBehaviour:
   - {fileID: 4889908972054690543}
   - {fileID: 4781373629723819373}
   - {fileID: 3548870710012599742}
-  stopPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   stage: {fileID: 4622046838837628641}
-  stopPoint: {fileID: 0}
 --- !u!1 &845140901935120135
 GameObject:
   m_ObjectHideFlags: 0
@@ -3138,7 +3130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3940eceb1c7f85a43986f47867fd423e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorControl
-  blockColider:
+  blockCollider:
   - {fileID: 7325742324321884642}
   stageIndex: 2
 --- !u!1 &1744791712600521597
@@ -4234,15 +4226,7 @@ MonoBehaviour:
   - {fileID: 8341942947475637480}
   - {fileID: 1443219574745543066}
   - {fileID: 3660454978896409968}
-  stopPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   stage: {fileID: 5912816632174099840}
-  stopPoint: {fileID: 0}
 --- !u!1 &2309324781815154427
 GameObject:
   m_ObjectHideFlags: 0
@@ -9709,7 +9693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3940eceb1c7f85a43986f47867fd423e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorControl
-  blockColider:
+  blockCollider:
   - {fileID: 5644620852478323491}
   stageIndex: 1
 --- !u!1 &5342997390464721428
@@ -11367,15 +11351,7 @@ MonoBehaviour:
   - {fileID: 6813782019875946634}
   - {fileID: 7570674128034628233}
   - {fileID: 8073827844004006484}
-  stopPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   stage: {fileID: 6188441308052104917}
-  stopPoint: {fileID: 0}
 --- !u!1 &5547581928416807342
 GameObject:
   m_ObjectHideFlags: 0
@@ -11841,15 +11817,7 @@ MonoBehaviour:
   - {fileID: 1863347547808851792}
   - {fileID: 8063078221700349737}
   - {fileID: 5731896054199008782}
-  stopPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   stage: {fileID: 4622046838837628641}
-  stopPoint: {fileID: 0}
 --- !u!1 &5754576101258947197
 GameObject:
   m_ObjectHideFlags: 0
@@ -16093,15 +16061,7 @@ MonoBehaviour:
   - {fileID: 3099768381776761076}
   - {fileID: 7460497261328119093}
   - {fileID: 6035246280401247981}
-  stopPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   stage: {fileID: 5912816632174099840}
-  stopPoint: {fileID: 0}
 --- !u!1 &8256303499454483800
 GameObject:
   m_ObjectHideFlags: 0
@@ -16180,15 +16140,7 @@ MonoBehaviour:
   - {fileID: 3240945084028497059}
   - {fileID: 5833167372090610143}
   - {fileID: 4124877829862010970}
-  stopPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   stage: {fileID: 4622046838837628641}
-  stopPoint: {fileID: 0}
 --- !u!1 &8301733911234673909
 GameObject:
   m_ObjectHideFlags: 0
@@ -17645,15 +17597,7 @@ MonoBehaviour:
   - {fileID: 3910451126131436863}
   - {fileID: 3673946347869430635}
   - {fileID: 6881868977544779686}
-  stopPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   stage: {fileID: 5912816632174099840}
-  stopPoint: {fileID: 0}
 --- !u!1 &9164979227029917965
 GameObject:
   m_ObjectHideFlags: 0

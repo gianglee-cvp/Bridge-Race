@@ -5,7 +5,7 @@ public class CharacterBrick : GameUnit
 {
     [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private GameObject[] smoke;
-    public void OnCollect(ENUM_COLOR color, Character character, Vector3 startPos, Quaternion startRot)
+    public void OnCollect(ColorType color, Character character, Vector3 startPos, Quaternion startRot)
     {
         meshRenderer.material = LevelManager.Instance.GetMaterial(color);
         gameObject.layer = LayerMask.NameToLayer(

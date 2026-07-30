@@ -3,7 +3,7 @@ using UnityEngine;
 public class PoolControl : MonoBehaviour
 {
     [SerializeField] PoolAmount[] poolAmounts;
-    void Awake()
+    public void OnInit()
     {
         GameUnit[] gameUnits = Resources.LoadAll<GameUnit>("Pool/");
         for(int i =0 ; i < poolAmounts.Length ; i++)

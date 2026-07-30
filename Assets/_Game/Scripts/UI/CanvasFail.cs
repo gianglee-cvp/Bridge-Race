@@ -13,9 +13,4 @@ public class CanvasFail : UICanvas
         int score = LevelManager.Instance.Player.Point;
         SetBestScore(score, coinText); 
     }
-
-    public override void PlayButton()
-    {
-        base.PlayButton();
-    }
 }

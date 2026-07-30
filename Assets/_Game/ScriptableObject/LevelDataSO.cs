@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using NUnit.Framework;
 
 [CreateAssetMenu(menuName = "Game/Level Data")]
 public class LevelDataSO : ScriptableObject
@@ -22,10 +21,6 @@ public class LevelDataSO : ScriptableObject
     public WinPos GetPosAndRot(int seed)
     {
         int index = seed - 1; 
-        if(index < 0 || index > winPos.Count)
-        {
-            Debug.LogError("winPos"); 
-        }
         return winPos[index]; 
     }
 }
@@ -39,19 +34,19 @@ public class StageData
 [System.Serializable]
 public class BrickData
 {
-    public ENUM_COLOR color;
+    public ColorType color;
     public Vector3 position;
 }
 [System.Serializable]
 public class PlayerData
 {
-    public ENUM_COLOR color;
+    public ColorType color;
     public Vector3 position;
 }
 [System.Serializable]
 public class EnemyData
 {
-    public ENUM_COLOR color; 
+    public ColorType color; 
     public Vector3 position;
 }
 [System.Serializable]

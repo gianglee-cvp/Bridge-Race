@@ -1,3 +1,4 @@
+using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,6 +12,7 @@ public class Player : Character
     private float speed = 5f;
     private float rotateAngle; 
     private bool isMove ; 
+    [SerializeField]private Rigidbody rb;
 
     public override void OnInit(Vector3 pos)
     {
@@ -48,20 +50,21 @@ public class Player : Character
             if (!isMove)
             {
                 isMove = true;
-                SetAnim(ENUM_ANIMATOR_TRIGGER.RUN);
+                SetAnim(AnimatorTrigger.RUN);
             }
 
             rotatePart.rotation = Quaternion.LookRotation(move);
-            transform.Translate(
-                move * speed * Time.fixedDeltaTime
-            );
+            // transform.Translate(
+            //     move * speed * Time.fixedDeltaTime
+            // );
+            rb.MovePosition(rb.position + move * speed * Time.fixedDeltaTime); 
         }
         else
         {
             if (isMove)
             {
                 isMove = false;
-                SetAnim(ENUM_ANIMATOR_TRIGGER.IDLE);
+                SetAnim(AnimatorTrigger.IDLE);
             }
         }
     }

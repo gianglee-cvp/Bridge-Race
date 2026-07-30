@@ -1,4 +1,3 @@
-using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,7 +9,7 @@ public interface IEnemyState
 }
 public class EnemyAI : Character
 {
-    [SerializeField] private IEnemyState currentState;
+    private IEnemyState currentState;
     [SerializeField] public NavMeshAgent agent;
 
 
@@ -66,7 +65,7 @@ public class EnemyAI : Character
     }
     public Stair ChooseStrategy()
     {
-        float random = Random.Range(0,2); 
+        float random = Random.Range(0f,2f); 
         if(random < 1)
         {
             return GetStairLeastOpponent(); 
@@ -78,7 +77,7 @@ public class EnemyAI : Character
     }
     public Stair GetStairLeastOpponent()
     {
-        Stair choosenStair = null;
+        Stair chosenStair = null;
         int st = int.MaxValue;
 
         foreach (Stair stair in currentStage.listStair)
@@ -87,13 +86,13 @@ public class EnemyAI : Character
             if (opponentCount < st)
             {
                 st = opponentCount;
-                choosenStair = stair;
+                chosenStair = stair;
             }
         }
 
-        return choosenStair;
+        return chosenStair;
     }
-    public Stair GetStairMostPoint(ENUM_COLOR color)
+    public Stair GetStairMostPoint(ColorType color)
     {
         Stair mostPointStair = null;
         int mostPointCount = -1;

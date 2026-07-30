@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
-using TMPro.Examples;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public partial class GameManager : Singleton<GameManager>
+public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private CameraFollow camMain;
+    [SerializeField] private PoolControl poolControl;
     private void Awake()
     {
+        poolControl.OnInit(); 
         UIManager.Instance.OnInit(); 
         
         UIManager.Instance.OpenUI<CanvasMainMenu>();
@@ -25,15 +25,6 @@ public partial class GameManager : Singleton<GameManager>
             if(b == character) return 1; 
             return b.Point.CompareTo(a.Point); 
         });
-        
-        // for( int i = 0 ; i < 3 ; i++)
-        // {
-        //     rank[i].OnWin(i + 1); 
-        // }
-        // for(int i = 3 ; i < rank.Count ; i++)
-        // {
-        //     rank[i].OnLose();
-        // }
         int i = 0; 
         int cnt = rank.Count;
         while(i < cnt)

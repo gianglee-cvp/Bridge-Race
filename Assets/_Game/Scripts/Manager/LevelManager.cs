@@ -39,7 +39,7 @@ public class LevelManager : Singleton<LevelManager>
         return characterDictionary[collider];
     }
 
-    public Material GetMaterial(ENUM_COLOR color)
+    public Material GetMaterial(ColorType color)
     {
         return colorDataSO.GetMaterial(color);
     }
@@ -138,6 +138,7 @@ public class LevelManager : Singleton<LevelManager>
 
     private void InitCharacters(LevelDataSO levelData)
     {
+        //TODO đổi màu character
         Vector3 pos = levelData.player.position;
         player.OnInit(pos);
 
@@ -161,5 +162,15 @@ public class LevelManager : Singleton<LevelManager>
     public Level GetCurrentLevel()
     {
         return listLevels[currentLevelIndex]; 
+    }
+    public void PlaceAtWinPosition(Character character, int seed)
+    {
+        Level level = listLevels[currentLevelIndex];
+        WinPos win = level.levelDataSO.GetPosAndRot(seed);
+
+        Transform root = level.transform;
+        character.transform.SetPositionAndRotation(
+            root.TransformPoint(win.position),
+            root.rotation * Quaternion.Euler(win.rotation));
     }
 }

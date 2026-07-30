@@ -3,12 +3,10 @@ using System.Collections.Generic;
 public class Stair : MonoBehaviour
 {
     public List<Step> listStep = new List<Step>(); 
-    [SerializeField] public List<GameObject> stopPoints = new List<GameObject>(); // so in dex trung voi index cua ENUM_COLOR 
     [SerializeField] public Stage stage;
-    public Transform stopPoint;
-    public int GetOpponentCount(ENUM_COLOR color)
+    public int GetOpponentCount(ColorType color)
     {
-        HashSet<ENUM_COLOR> colorSet = new HashSet<ENUM_COLOR>();
+        HashSet<ColorType> colorSet = new HashSet<ColorType>();
 
         foreach (Step st in listStep)
         {
@@ -20,7 +18,7 @@ public class Stair : MonoBehaviour
 
         return colorSet.Count;
     }
-    public int GetMaxPointCount(ENUM_COLOR color)
+    public int GetMaxPointCount(ColorType color)
     {
         int maxCount = 0;
         foreach(Step st in listStep)
@@ -48,7 +46,7 @@ public class Stair : MonoBehaviour
     {
         foreach(var step in listStep)
         {
-            step.SetColor(ENUM_COLOR.Stair);
+            step.SetColor(ColorType.Stair);
         }
     }
 }

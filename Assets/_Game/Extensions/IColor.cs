@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IColor
 {
-    public void ISetColor(Renderer mesh, ref ENUM_COLOR selfcolor , ENUM_COLOR color)
+    public void ISetColor(Renderer mesh, ref ColorType selfcolor , ColorType color)
     {
         selfcolor = color;
         Material mat = LevelManager.Instance.GetMaterial(color);

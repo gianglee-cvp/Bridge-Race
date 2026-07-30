@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SoundManager : Singleton<SoundManager>
 {
+    //TODO pool audio source
     [SerializeField] private SoundLibrarySO library;
     [SerializeField] private AudioSource bgmSource;
     [SerializeField] private AudioSource sfxSource;

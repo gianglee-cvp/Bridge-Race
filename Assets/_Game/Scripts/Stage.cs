@@ -1,10 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Rendering;
 public class Stage : MonoBehaviour
 {
-    private Dictionary<ENUM_COLOR, Queue<Brick>> inactive = new Dictionary<ENUM_COLOR, Queue<Brick>>(); 
-    private Dictionary<ENUM_COLOR, List<Brick>> active = new Dictionary<ENUM_COLOR, List<Brick>>() ; 
+    private Dictionary<ColorType, Queue<Brick>> inactive = new Dictionary<ColorType, Queue<Brick>>(); 
+    private Dictionary<ColorType, List<Brick>> active = new Dictionary<ColorType, List<Brick>>() ; 
     public int stageIndex; 
     [SerializeField] public List<Stair> listStair = new List<Stair>();
     [SerializeField] private DoorControl door ; 
@@ -27,7 +26,7 @@ public class Stage : MonoBehaviour
         }
     }
 
-    public void OnRemainBrick(ENUM_COLOR color)
+    public void OnRemainBrick(ColorType color)
     {
         if(!inactive.ContainsKey(color) || inactive[color].Count == 0)
         {
@@ -55,7 +54,7 @@ public class Stage : MonoBehaviour
         inactive[brick.colorBrick].Enqueue(brick);
         brick.OnCollect(); 
     }
-    public void AddBrickToRemain(Brick brick , ENUM_COLOR color)
+    public void AddBrickToRemain(Brick brick , ColorType color)
     {
         if (!inactive.ContainsKey(color))
         {
@@ -65,7 +64,7 @@ public class Stage : MonoBehaviour
         inactive[color].Enqueue(brick); 
         brick.OnCollect();  
     }
-    public int CountActiveBricks(ENUM_COLOR color) 
+    public int CountActiveBricks(ColorType color) 
     {
         if(active.ContainsKey(color))
         {
@@ -78,13 +77,13 @@ public class Stage : MonoBehaviour
         }
     }
     
-    public Transform GetActiveBrick(ENUM_COLOR color)
+    public Transform GetActiveBrick(ColorType color)
     {
         int cnt = active[color].Count;
         int randomIndex = Random.Range(0, cnt);
         return active[color][randomIndex].transform;
     }
-    public void SpawnBrick(ENUM_COLOR color)
+    public void SpawnBrick(ColorType color)
     {
         if(inactive.ContainsKey(color) && inactive[color].Count > 0)
         {
@@ -113,7 +112,7 @@ public class Stage : MonoBehaviour
             while(q.Count > 0)
             {
                 Brick br = q.Dequeue(); 
-                SimplePool.DesSpawn(br); 
+                SimplePool.DeSpawn(br); 
             }
         }
 
@@ -122,7 +121,7 @@ public class Stage : MonoBehaviour
         {
             foreach(var br in listBrick)
             {
-                SimplePool.DesSpawn(br); 
+                SimplePool.DeSpawn(br); 
             }
         }
         active.Clear();

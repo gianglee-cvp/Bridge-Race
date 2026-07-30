@@ -26,7 +26,7 @@ public class BrickSpawner : MonoBehaviour
     [System.Serializable]
     public struct ColorRatio
     {
-        public ENUM_COLOR color;
+        public ColorType color;
         public int ratio; 
         public Material material;
     }

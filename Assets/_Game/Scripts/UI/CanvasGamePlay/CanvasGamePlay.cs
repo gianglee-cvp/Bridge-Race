@@ -4,7 +4,7 @@ using UnityEngine;
 public class CanvasGamePlay : UICanvas
 {
     [SerializeField] TextMeshProUGUI coinText;
-    [SerializeField] RectTransform joinStick;
+    [SerializeField] RectTransform joystick;
     [SerializeField] CanvasGroup stickCanvasGroup;
 
     public override void Setup()
@@ -19,7 +19,7 @@ public class CanvasGamePlay : UICanvas
             stickCanvasGroup.blocksRaycasts = false;
         }
 
-        joinStick.gameObject.SetActive(true); 
+        joystick.gameObject.SetActive(true); 
     }
 
     public void UpdateCoin(int coin)

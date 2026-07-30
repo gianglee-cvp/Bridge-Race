@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class TouchZone : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
-    [SerializeField] RectTransform joinStick;
+    [SerializeField] RectTransform joystick;
     [SerializeField] CanvasGroup stickCanvasGroup;
     [SerializeField] RectTransform canvasRect;
     [SerializeField] GameObject stick;
@@ -24,7 +24,7 @@ public class TouchZone : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
             eventData.pressEventCamera,
             out localPoint);
 
-        joinStick.anchoredPosition = localPoint;
+        joystick.anchoredPosition = localPoint;
 
         // Truyền event xuống cho OnScreenStick
         ExecuteEvents.Execute<IPointerDownHandler>(

@@ -2155,6 +2155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   camMain: {fileID: 330585548}
+  poolControl: {fileID: 1005159978}
 --- !u!4 &2051746140
 Transform:
   m_ObjectHideFlags: 0
@@ -2188,12 +2189,24 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.69
       objectReference: {fileID: 0}
+    - target: {fileID: 2245317029936699414, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3563436526515037105, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
       propertyPath: parentBrick
       value: 
       objectReference: {fileID: 1697796663}
     - target: {fileID: 3714745294818630081, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040530592901105396, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7040530592901105396, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
+      propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7348974784525884571, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}

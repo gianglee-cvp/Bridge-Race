@@ -1,5 +1,5 @@
 using UnityEngine;
-public enum ENUM_COLOR
+public enum ColorType
 {
     None = 0 ,
     Blue = 1,
@@ -14,7 +14,7 @@ public enum ENUM_COLOR
 public class ColorDataSO : ScriptableObject
 {
     [SerializeField] private Material[] material;
-    public Material GetMaterial(ENUM_COLOR color)
+    public Material GetMaterial(ColorType color)
     {
         return material[(int)color ];
     }

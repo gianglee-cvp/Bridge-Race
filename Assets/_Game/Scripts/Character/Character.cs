@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-public enum ENUM_ANIMATOR_TRIGGER
+public enum AnimatorTrigger
 {
     IDLE = 0,
     RUN = 1,
@@ -12,15 +12,15 @@ public enum ENUM_ANIMATOR_TRIGGER
 public class Character : MonoBehaviour,IColor
 {
     [SerializeField] public Transform parentBrick;
-    [SerializeField] public ENUM_COLOR colorCharacter;
+    [SerializeField] public ColorType colorCharacter;
     [SerializeField] public Collider characterCollider;
-    [SerializeField] public Transform rotatePart;
+    [SerializeField] protected Transform rotatePart;
     [SerializeField] private Animator animator;
-    [SerializeField] public CharacterBrick chBrickPrefab;
+    [SerializeField] private CharacterBrick chBrickPrefab;
     [SerializeField] private Renderer colorPart;
     public List<CharacterBrick> listBricks = new List<CharacterBrick>();
     public Stage currentStage;
-    private ENUM_ANIMATOR_TRIGGER currentAnim ;
+    private AnimatorTrigger currentAnim ;
     private int point; 
     public int Point { get => point;}
     public bool canMoveUp = true;
@@ -39,7 +39,7 @@ public class Character : MonoBehaviour,IColor
     }
     public virtual void OnPlay()
     {
-        SetAnim(ENUM_ANIMATOR_TRIGGER.IDLE);
+        SetAnim(AnimatorTrigger.IDLE);
         OnChangeStage(LevelManager.Instance.GetStage(0));
         point = 0 ; 
     }
@@ -67,7 +67,7 @@ public class Character : MonoBehaviour,IColor
         {
             int index = listBricks.Count - 1;
             CharacterBrick chBrick = listBricks[index]; 
-            SimplePool.DesSpawn(chBrick); 
+            SimplePool.DeSpawn(chBrick); 
             listBricks.RemoveAt(index); 
             
         }
@@ -76,7 +76,7 @@ public class Character : MonoBehaviour,IColor
     {
         foreach (var brick in listBricks)
         {
-            SimplePool.poolInstance[PoolType.CharacterBrick].DesSpawn(brick);
+            SimplePool.poolInstance[PoolType.CharacterBrick].DeSpawn(brick);
         }
         listBricks.Clear();
     }
@@ -84,7 +84,7 @@ public class Character : MonoBehaviour,IColor
     {
         return false;
     }
-    public void SetColor(ENUM_COLOR color)
+    public void SetColor(ColorType color)
     {
         ((IColor)this).ISetColor(colorPart,ref colorCharacter , color); 
     }
@@ -105,7 +105,7 @@ public class Character : MonoBehaviour,IColor
     public virtual void ReachLastStep(Step st)
     {
     }
-    public void SetAnim(ENUM_ANIMATOR_TRIGGER anim)
+    public void SetAnim(AnimatorTrigger anim)
     {
         if(currentAnim != anim)
         {
@@ -128,23 +128,23 @@ public class Character : MonoBehaviour,IColor
 
         SetWinPos(seed); 
         rotatePart.localRotation = Quaternion.Euler(Vector3.zero); 
-        SetAnim(ENUM_ANIMATOR_TRIGGER.WIN);
+        SetAnim(AnimatorTrigger.WIN);
     }
     public virtual void SetWinPos(int seed)
     {
-        Level level = LevelManager.Instance.GetCurrentLevel();
-        Transform root = level.TF; 
+        // Level level = LevelManager.Instance.GetCurrentLevel();
+        // Transform root = level.TF; 
 
-        WinPos winPos = level.levelDataSO.GetPosAndRot(seed); 
-        Vector3 localTF = winPos.position; 
-        Vector3 localRT = winPos.rotation;
+        // WinPos winPos = level.levelDataSO.GetPosAndRot(seed); 
+        // Vector3 localTF = winPos.position; 
+        // Vector3 localRT = winPos.rotation;
 
 
-        Vector3 worldPos = root.TransformPoint(localTF); 
-        Quaternion worldRot = root.rotation * Quaternion.Euler(localRT); 
+        // Vector3 worldPos = root.TransformPoint(localTF); 
+        // Quaternion worldRot = root.rotation * Quaternion.Euler(localRT); 
 
-        transform.SetPositionAndRotation(worldPos, worldRot); 
-
+        // transform.SetPositionAndRotation(worldPos, worldRot); 
+        LevelManager.Instance.PlaceAtWinPosition(this, seed);
     }
     public virtual void OnLose()
     {

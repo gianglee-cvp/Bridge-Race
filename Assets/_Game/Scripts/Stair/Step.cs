@@ -4,7 +4,7 @@ using UnityEngine;
 public class Step : MonoBehaviour, IColor
 {
     public Stair stairHolder; // TODO khong keo inspector nua cho vafo 1 dic<step, stair>
-    public ENUM_COLOR colorStep = ENUM_COLOR.None;
+    public ColorType colorStep = ColorType.None;
     public Renderer meshRenderer;
     public bool isLastStep = false; // neu la step cuoi cung thi se khong cho character di len nua
     public void OnTriggerEnter(Collider other)
@@ -62,7 +62,7 @@ public class Step : MonoBehaviour, IColor
                 return true;
         }   
     }
-    public void SetColor(ENUM_COLOR color)
+    public void SetColor(ColorType color)
     {
         ((IColor)this).ISetColor(meshRenderer , ref colorStep , color); 
         meshRenderer.material.SetFloat("_Flash",0);

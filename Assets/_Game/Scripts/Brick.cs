@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class Brick : GameUnit, IColor
 {
-    [SerializeField] public ENUM_COLOR colorBrick;
+    [SerializeField] public ColorType colorBrick;
     [SerializeField] private Renderer meshRenderer;
     [SerializeField] public Collider colliderBrick;
     [SerializeField] public Stage stage;
-    public void SetColor(ENUM_COLOR newColor)
+    public void SetColor(ColorType newColor)
     {
         ((IColor)this).ISetColor(meshRenderer, ref colorBrick, newColor);
     }
     public void OnCollect()
     {
         colliderBrick.enabled = false; 
-        SetColor(ENUM_COLOR.None); 
+        SetColor(ColorType.None); 
     }
-    public void OnRemain(ENUM_COLOR color)
+    public void OnRemain(ColorType color)
     {
         colliderBrick.enabled = true;
         SetColor(color); 

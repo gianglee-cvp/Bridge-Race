@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class BuildState : IEnemyState
 {
-    private Stair choosenStair;
+    private Stair chosenStair;
 
     public void OnEnter(EnemyAI enemy)
     {
-        choosenStair = enemy.ChooseStrategy();
-        Vector3 destination = choosenStair.GetLastStepPosition();
+        chosenStair = enemy.ChooseStrategy();
+        Vector3 destination = chosenStair.GetLastStepPosition();
         enemy.SetAgentDestination(destination);
 
-        enemy.SetAnim(ENUM_ANIMATOR_TRIGGER.RUN);
+        enemy.SetAnim(AnimatorTrigger.RUN);
     }
 
     public void OnExecute(EnemyAI enemy)

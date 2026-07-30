@@ -1,4 +1,3 @@
-using System.Xml.Serialization;
 using UnityEngine;
 using TMPro;
 
@@ -68,6 +67,7 @@ public class UICanvas : MonoBehaviour
 
         UIManager.Instance.CloseAllUI(); 
         UIManager.Instance.OpenUI<CanvasMainMenu>(); 
+        GameManager.Instance.SetTimeScale(1);
     }
     public virtual void PlayNextLevel()
     {

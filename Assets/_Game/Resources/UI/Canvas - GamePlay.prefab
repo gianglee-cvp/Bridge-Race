@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7f800e3bbb1c74fb3abef530af449e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TouchZone
-  joinStick: {fileID: 48173518672795493}
+  joystick: {fileID: 48173518672795493}
   stickCanvasGroup: {fileID: 228059039829652742}
   canvasRect: {fileID: 8044038101761995251}
   stick: {fileID: 3988502788243127371}
@@ -666,7 +666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CanvasGamePlay
   isDestroyOnClose: 0
   coinText: {fileID: 1193070191074020635}
-  joinStick: {fileID: 48173518672795493}
+  joystick: {fileID: 6575980887738693077}
   stickCanvasGroup: {fileID: 228059039829652742}
 --- !u!1 &6989754047751440054
 GameObject:

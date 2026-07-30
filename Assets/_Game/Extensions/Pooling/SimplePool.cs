@@ -32,13 +32,13 @@ public static class SimplePool
         }
         return poolInstance[poolType].Spawn(pos, rot, parent) as T ;
     }
-    public static void DesSpawn(GameUnit unit)
+    public static void DeSpawn(GameUnit unit)
     {
         if (!poolInstance.ContainsKey(unit.poolType))
         {
             Debug.LogError(unit.poolType + "Is not preload");
         }
-        poolInstance[unit.poolType].DesSpawn(unit); 
+        poolInstance[unit.poolType].DeSpawn(unit); 
     }
     public static void Collect(PoolType poolType)
     {
@@ -84,7 +84,7 @@ public class Pool
         this.prefab = prefab; 
         for(int i= 0 ; i < amount ; i++)
         {
-            DesSpawn(GameObject.Instantiate(prefab, parent));
+            DeSpawn(GameObject.Instantiate(prefab, parent));
         }
     }
     // lay phan tu trong pool 
@@ -108,7 +108,7 @@ public class Pool
         return unit;
     }
     // tra phan tu ve pool 
-    public void DesSpawn(GameUnit unit)
+    public void DeSpawn(GameUnit unit)
     {
         if (unit != null && unit.gameObject.activeSelf)
         {
@@ -122,7 +122,7 @@ public class Pool
     {
         while(active.Count > 0)
         {
-            DesSpawn(active[0]);
+            DeSpawn(active[0]);
         }
     }
     // destroy tat ca phan tu 

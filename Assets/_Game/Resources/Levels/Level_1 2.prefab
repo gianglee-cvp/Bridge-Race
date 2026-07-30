@@ -1172,15 +1172,7 @@ MonoBehaviour:
   - {fileID: 7018587920671919565}
   - {fileID: 7407972447507296668}
   - {fileID: 3494884084192729942}
-  stopPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   stage: {fileID: 6209395328620858634}
-  stopPoint: {fileID: 0}
 --- !u!1 &1263278681497118278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,7 +1926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3940eceb1c7f85a43986f47867fd423e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorControl
-  blockColider:
+  blockCollider:
   - {fileID: 5370260555332962946}
   stageIndex: 1
 --- !u!1 &1705411397301055298
@@ -8024,15 +8016,7 @@ MonoBehaviour:
   - {fileID: 2465083644694671036}
   - {fileID: 6594605321976982441}
   - {fileID: 6201344140607860668}
-  stopPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   stage: {fileID: 2261671023446434045}
-  stopPoint: {fileID: 0}
 --- !u!1 &6851101345017605879
 GameObject:
   m_ObjectHideFlags: 0
@@ -8111,15 +8095,7 @@ MonoBehaviour:
   - {fileID: 4766887472496293189}
   - {fileID: 6544829107380174190}
   - {fileID: 4611789965113349675}
-  stopPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   stage: {fileID: 2261671023446434045}
-  stopPoint: {fileID: 0}
 --- !u!1 &6937562784377339522
 GameObject:
   m_ObjectHideFlags: 0
@@ -10793,15 +10769,7 @@ MonoBehaviour:
   - {fileID: 6833829121160180196}
   - {fileID: 8986364419975439094}
   - {fileID: 5230070609528522209}
-  stopPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   stage: {fileID: 2261671023446434045}
-  stopPoint: {fileID: 0}
 --- !u!1 &9185732508899222137
 GameObject:
   m_ObjectHideFlags: 0
