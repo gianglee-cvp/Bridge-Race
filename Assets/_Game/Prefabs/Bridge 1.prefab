@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7875076321862857932, guid: 5dacd7d9715011a4c98e0fa5bc8645ad, type: 3}
+  - {fileID: 2100000, guid: 17ed7e146ac1d60419ed4f74e0271142, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,6 +135,8 @@ GameObject:
   - component: {fileID: 7178283487933229152}
   - component: {fileID: 2614738936544573256}
   - component: {fileID: 96638244285072389}
+  - component: {fileID: 8301618436417573093}
+  - component: {fileID: 4585857533175418202}
   m_Layer: 0
   m_Name: Bridge Floor
   m_TagString: Untagged
@@ -214,6 +216,48 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8301618436417573093
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449668950305385057}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &4585857533175418202
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449668950305385057}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1989508977793115298
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +324,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4797370577606449383, guid: 5dacd7d9715011a4c98e0fa5bc8645ad, type: 3}
+  - {fileID: 2100000, guid: 16342bd1fc2c0c649a871ae889ecd340, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -370,7 +414,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7875076321862857932, guid: 5dacd7d9715011a4c98e0fa5bc8645ad, type: 3}
+  - {fileID: 2100000, guid: 17ed7e146ac1d60419ed4f74e0271142, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -488,6 +532,8 @@ GameObject:
   - component: {fileID: 7643136477525142369}
   - component: {fileID: 8885368527796906210}
   - component: {fileID: 9110901773240375094}
+  - component: {fileID: 4476700576746571655}
+  - component: {fileID: 3109097557834917487}
   m_Layer: 0
   m_Name: Bridge Floor
   m_TagString: Untagged
@@ -567,6 +613,48 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4476700576746571655
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4436061634273530775}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: -0.0000038146973, z: 0.00000047683716}
+--- !u!65 &3109097557834917487
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4436061634273530775}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: -0.0000038146973, z: 0.00000047683716}
 --- !u!1 &4674381126961411950
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,7 +721,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4797370577606449383, guid: 5dacd7d9715011a4c98e0fa5bc8645ad, type: 3}
+  - {fileID: 2100000, guid: 16342bd1fc2c0c649a871ae889ecd340, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -756,7 +844,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7875076321862857932, guid: 5dacd7d9715011a4c98e0fa5bc8645ad, type: 3}
+  - {fileID: 2100000, guid: 17ed7e146ac1d60419ed4f74e0271142, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -846,7 +934,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4797370577606449383, guid: 5dacd7d9715011a4c98e0fa5bc8645ad, type: 3}
+  - {fileID: 2100000, guid: 16342bd1fc2c0c649a871ae889ecd340, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -970,7 +1058,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4797370577606449383, guid: 5dacd7d9715011a4c98e0fa5bc8645ad, type: 3}
+  - {fileID: 2100000, guid: 16342bd1fc2c0c649a871ae889ecd340, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1131,7 +1219,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7875076321862857932, guid: 5dacd7d9715011a4c98e0fa5bc8645ad, type: 3}
+  - {fileID: 2100000, guid: 17ed7e146ac1d60419ed4f74e0271142, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
