@@ -16,11 +16,10 @@ public class DoorControl : MonoBehaviour
         } 
         foreach(Character ch in listCharacter)
         {
-            foreach(var col in blockCollider)
+            foreach(Collider col in blockCollider)
             {
                 Physics.IgnoreCollision(ch.characterCollider , col , true); 
             }
-
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -35,7 +34,6 @@ public class DoorControl : MonoBehaviour
 
             Character character = LevelManager.Instance.GetCharacter(other);
             character.ReachNewStage(LevelManager.Instance.GetStage(stageIndex));
-            Debug.Log("2");
         }
     }
 }

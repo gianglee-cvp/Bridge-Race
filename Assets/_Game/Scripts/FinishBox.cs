@@ -7,7 +7,7 @@ public class FinishBox : MonoBehaviour
         if(other.CompareTag(Constants.CharacterTag))
         {
             Character ch = LevelManager.Instance.GetCharacter(other);
-            GameManager.Instance.OnCharacterWin(ch);
+            GameManager.Instance.HandleCharacterRank(ch);
         }
     }
 

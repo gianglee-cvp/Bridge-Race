@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Step : MonoBehaviour, IColor
 {
-    public Stair stairHolder; // TODO khong keo inspector nua cho vafo 1 dic<step, stair>
+    public Stair stairHolder;
     public ColorType colorStep = ColorType.None;
     public Renderer meshRenderer;
-    public bool isLastStep = false; // neu la step cuoi cung thi se khong cho character di len nua
+    public bool isLastStep = false; 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(Constants.CharacterTag))

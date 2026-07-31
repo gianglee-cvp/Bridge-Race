@@ -7,7 +7,11 @@ public class DeathZone : MonoBehaviour
     {
         if (other.CompareTag(Constants.CharacterTag))
         {
-            UIManager.Instance.OpenUI<CanvasFail>(); 
+            Character character = LevelManager.Instance.GetCharacter(other);
+            if(character is Player)
+            {
+                GameManager.Instance.ChangeState(new LoseState());
+            }
         }   
     }
 }

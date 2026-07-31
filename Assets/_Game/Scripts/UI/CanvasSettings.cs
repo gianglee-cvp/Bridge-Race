@@ -5,7 +5,10 @@ public class CanvasSettings : UICanvas
     [SerializeField] GameObject[] buttons; 
     public override void Setup()
     {
-        GameManager.Instance.SetTimeScale(0); 
+        if (GameManager.Instance.IsInState<PlayingState>())
+        {
+            GameManager.Instance.PauseGame();
+        }
     }
     public void SetState(UICanvas canvas)
     {
@@ -26,7 +29,7 @@ public class CanvasSettings : UICanvas
 
     public void ContinueButton()
     {
-        GameManager.Instance.SetTimeScale(1); 
+        GameManager.Instance.ResumeGame();
         Close(0);
     }
 

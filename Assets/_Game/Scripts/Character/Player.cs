@@ -90,12 +90,12 @@ public class Player : Character
     public override void OnWin(int Seed)
     {
         base.OnWin(Seed);
-        GameManager.Instance.SetCameraWin(); 
-        UIManager.Instance.OpenUI<CanvasVictory>();
+        GameManager.Instance.ChangeState(new WinState());
+
     }
     public override void OnLose()
     {
         base.OnLose();
-        UIManager.Instance.OpenUI<CanvasFail>();
+        GameManager.Instance.ChangeState(new LoseState());
     }
 }

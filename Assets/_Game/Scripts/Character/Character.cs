@@ -16,7 +16,6 @@ public class Character : MonoBehaviour,IColor
     [SerializeField] public Collider characterCollider;
     [SerializeField] protected Transform rotatePart;
     [SerializeField] private Animator animator;
-    [SerializeField] private CharacterBrick chBrickPrefab;
     [SerializeField] private Renderer colorPart;
     public List<CharacterBrick> listBricks = new List<CharacterBrick>();
     public Stage currentStage;
@@ -50,7 +49,7 @@ public class Character : MonoBehaviour,IColor
         Quaternion spawnWorldRot = brick.transform.rotation;
 
         CharacterBrick chBrick = SimplePool.Spawn<CharacterBrick>(
-            chBrickPrefab.poolType, 
+            PoolType.CharacterBrick, 
             spawnWorldPos, 
             spawnWorldRot, 
             null
@@ -124,27 +123,10 @@ public class Character : MonoBehaviour,IColor
     {
         OnFinishLevel();
         ClearAllBrick(); 
-        // transform.SetPositionAndRotation(Seed.position, Seed.rotation);
 
-        SetWinPos(seed); 
+        LevelManager.Instance.PlaceAtWinPosition(this, seed);
         rotatePart.localRotation = Quaternion.Euler(Vector3.zero); 
         SetAnim(AnimatorTrigger.WIN);
-    }
-    public virtual void SetWinPos(int seed)
-    {
-        // Level level = LevelManager.Instance.GetCurrentLevel();
-        // Transform root = level.TF; 
-
-        // WinPos winPos = level.levelDataSO.GetPosAndRot(seed); 
-        // Vector3 localTF = winPos.position; 
-        // Vector3 localRT = winPos.rotation;
-
-
-        // Vector3 worldPos = root.TransformPoint(localTF); 
-        // Quaternion worldRot = root.rotation * Quaternion.Euler(localRT); 
-
-        // transform.SetPositionAndRotation(worldPos, worldRot); 
-        LevelManager.Instance.PlaceAtWinPosition(this, seed);
     }
     public virtual void OnLose()
     {

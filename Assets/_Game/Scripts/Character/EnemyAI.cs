@@ -12,7 +12,6 @@ public class EnemyAI : Character
     private IEnemyState currentState;
     [SerializeField] public NavMeshAgent agent;
 
-
     public override void OnInit(Vector3 pos)
     {
         base.OnInit(pos);

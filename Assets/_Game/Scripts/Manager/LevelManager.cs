@@ -57,9 +57,6 @@ public class LevelManager : Singleton<LevelManager>
         // {
         //     listLevels[currentLevelIndex].Unload();
         // }
-
-        GameManager.Instance.SetTimeScale(1);
-
         currentLevelIndex = levelIndex;
         Level level = listLevels[currentLevelIndex];
         level.Load();
@@ -157,7 +154,7 @@ public class LevelManager : Singleton<LevelManager>
         }
 
         ChangeLevel(nextLevel);
-        GameManager.Instance.OnPlayGame(); 
+        GameManager.Instance.StartGame(); 
     }
     public Level GetCurrentLevel()
     {

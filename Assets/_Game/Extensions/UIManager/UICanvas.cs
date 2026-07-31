@@ -59,15 +59,11 @@ public class UICanvas : MonoBehaviour
 
         int index = LevelManager.Instance.CurrentLevelIndex; 
         LevelManager.Instance.ChangeLevel(index);
-        GameManager.Instance.OnPlayGame();
+        GameManager.Instance.StartGame();
     }
     public virtual void MainMenuButton()
     {
-        LevelManager.Instance.OnEnd(); 
-
-        UIManager.Instance.CloseAllUI(); 
-        UIManager.Instance.OpenUI<CanvasMainMenu>(); 
-        GameManager.Instance.SetTimeScale(1);
+        GameManager.Instance.EnterMainMenu();
     }
     public virtual void PlayNextLevel()
     {

@@ -6,7 +6,7 @@ public class InputManager : Singleton<InputManager>
     private InputSystem_Actions inputActions;
     public InputAction MoveAction { get; private set; }
 
-    private void Awake()
+    public void OnInit()
     {
         if (inputActions == null)
         {
@@ -21,7 +21,6 @@ public class InputManager : Singleton<InputManager>
         if (inputActions != null)
         {
             inputActions.Disable();
-            inputActions.Dispose();
         }
     }
 }

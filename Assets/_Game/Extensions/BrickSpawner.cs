@@ -68,7 +68,6 @@ public class BrickSpawner : MonoBehaviour
 
                 }
                 j++;
-                // Debug.Log("i : " + i + " j: " + j ); 
             }
             i++;
         }
@@ -84,13 +83,6 @@ public class BrickSpawner : MonoBehaviour
     }
     public void CollectData()
     {
-        // foreach(var st in stageList)
-        // {
-        //     if (st == null)
-        //     {
-        //         continue;
-        //     }
-        // }
         int cnt = stageList.Count; 
         for(int i = 0 ; i < cnt ; i++)
         {
