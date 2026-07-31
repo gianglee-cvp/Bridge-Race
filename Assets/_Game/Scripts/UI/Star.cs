@@ -11,7 +11,7 @@ public class Star : MonoBehaviour
     }
     private IEnumerator PlayStar(int rate)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         for(int  i = 0 ; i < rate && i < clip.Length ; i++)
         {
             clip[i].SetTrigger("Show");

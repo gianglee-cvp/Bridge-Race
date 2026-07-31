@@ -15,11 +15,14 @@ public class CanvasVictory : UICanvas
     public override void Open()
     {
         base.Open();
-        star.PlayAnim(1); 
     }
     public override void Close(float time)
     {
         base.Close(time);
         star.OnClose(); 
+    }
+    public void StarRise(int seed)
+    {
+        star.PlayAnim(seed);
     }
 }

@@ -87,10 +87,12 @@ public class Player : Character
         UIManager.Instance.GetUI<CanvasGamePlay>().UpdateCoin(Point); 
         SoundManager.Instance.PlaySfx(ENUM_SOUND.PickBrick);
     }
-    public override void OnWin(int Seed)
+    public override void OnWin(int seed)
     {
-        base.OnWin(Seed);
-        GameManager.Instance.ChangeState(new WinState());
+        base.OnWin(seed);
+        GameManager.Instance.ChangeState(new WinState());   
+        CanvasVictory cv = UIManager.Instance.GetUI<CanvasVictory>();
+        cv.StarRise(seed);
 
     }
     public override void OnLose()
