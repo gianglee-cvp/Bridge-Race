@@ -85,6 +85,10 @@ public class GameManager : Singleton<GameManager>
         {
             if( i < 3)
             {
+                if(rank[i] is Player)
+                {
+                    UIManager.Instance.GetUI<CanvasVictory>().seed = i+1;
+                }
                 rank[i].OnWin(i+1); 
             }
             else rank[i].OnLose(); 

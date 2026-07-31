@@ -91,8 +91,8 @@ public class Player : Character
     {
         base.OnWin(seed);
         GameManager.Instance.ChangeState(new WinState());   
-        CanvasVictory cv = UIManager.Instance.GetUI<CanvasVictory>();
-        cv.StarRise(seed);
+        // CanvasVictory cv = UIManager.Instance.GetUI<CanvasVictory>();
+        // cv.StarRise(seed);
 
     }
     public override void OnLose()

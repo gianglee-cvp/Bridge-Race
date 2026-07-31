@@ -263,9 +263,7 @@ MonoBehaviour:
   - {fileID: 7487307883191885440}
   - {fileID: 3717461076649953755}
   - {fileID: 5013092062503007268}
-  stopPoints: []
   stage: {fileID: 0}
-  stopPoint: {fileID: 0}
 --- !u!1 &2053331672295474091
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,7 +707,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5263732981817581678}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 64e2837a621a8564ebbf25b43db0d0e3, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -821,7 +819,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5873277424265055594}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 64e2837a621a8564ebbf25b43db0d0e3, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

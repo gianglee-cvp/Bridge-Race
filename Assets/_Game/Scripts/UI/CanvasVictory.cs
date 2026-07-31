@@ -5,6 +5,7 @@ public class CanvasVictory : UICanvas
 {
     [SerializeField] private TextMeshProUGUI coinText; 
     [SerializeField] private Star star;
+    public int seed;
     public override void Setup()
     {
         base.Setup();
@@ -15,14 +16,12 @@ public class CanvasVictory : UICanvas
     public override void Open()
     {
         base.Open();
+        star.PlayAnim(seed);
+        // Debug.Log(seed);
     }
     public override void Close(float time)
     {
         base.Close(time);
         star.OnClose(); 
-    }
-    public void StarRise(int seed)
-    {
-        star.PlayAnim(seed);
     }
 }
