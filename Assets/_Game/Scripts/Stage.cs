@@ -5,7 +5,7 @@ public class Stage : MonoBehaviour
     private Dictionary<ColorType, Queue<Brick>> inactive = new Dictionary<ColorType, Queue<Brick>>(); 
     private Dictionary<ColorType, List<Brick>> active = new Dictionary<ColorType, List<Brick>>() ; 
     public int stageIndex; 
-    [SerializeField] public List<Stair> listStair = new List<Stair>();
+    [SerializeField] public List<Bridge> listStair = new List<Bridge>();
     [SerializeField] private DoorControl door ; 
     public void Load(StageData stageData)
     {
@@ -100,12 +100,12 @@ public class Stage : MonoBehaviour
             }
         }
     }
-    public Stair GetStairMostPoint(ColorType color)
+    public Bridge GetStairMostPoint(ColorType color)
     {
-        Stair mostPointStair = null;
+        Bridge mostPointStair = null;
         int mostPointCount = -1;
 
-        foreach (Stair stair in this.listStair)
+        foreach (Bridge stair in this.listStair)
         {
             int pointCount = stair.GetMaxPointCount(color);
             if (pointCount > mostPointCount)
@@ -117,12 +117,12 @@ public class Stage : MonoBehaviour
 
         return mostPointStair;
     }
-    public Stair GetStairLeastOpponent(ColorType color)
+    public Bridge GetStairLeastOpponent(ColorType color)
     {
-        Stair chosenStair = null;
+        Bridge chosenStair = null;
         int st = int.MaxValue;
 
-        foreach (Stair stair in this.listStair)
+        foreach (Bridge stair in this.listStair)
         {
             int opponentCount = stair.GetOpponentCount(color);
             if (opponentCount < st)

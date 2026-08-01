@@ -5,7 +5,7 @@ public class BuildState : IEnemyState
     public void OnEnter(EnemyAI enemy)
     {
         enemy.StopAgent();
-        Stair chosenStair;
+        Bridge chosenStair;
         chosenStair = enemy.ChooseStrategy();
         Vector3 destination = chosenStair.GetLastStepPosition();
         enemy.SetAgentDestination(destination);

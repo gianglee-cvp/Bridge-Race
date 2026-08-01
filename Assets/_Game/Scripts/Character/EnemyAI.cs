@@ -90,7 +90,7 @@ public class EnemyAI : Character
             currentState.OnEnter(this);
         }
     }
-    public Stair ChooseStrategy()
+    public Bridge ChooseStrategy()
     {
         float random = Random.Range(0f,2f); 
         if(random < 1f)

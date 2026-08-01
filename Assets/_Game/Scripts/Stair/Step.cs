@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Step : MonoBehaviour, IColor
 {
-    public Stair stairHolder;
+    public Bridge stairHolder;
     public ColorType colorStep = ColorType.None;
     public Renderer meshRenderer;
     public bool isLastStep = false; 

@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-public class Stair : MonoBehaviour
+public class Bridge : MonoBehaviour
 {
     public List<Step> listStep = new List<Step>(); 
     [SerializeField] public Stage stage;
