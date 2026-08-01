@@ -50,7 +50,7 @@ public class Player : Character
             if (!isMove)
             {
                 isMove = true;
-                SetAnim(AnimatorTrigger.RUN);
+                ChangeAnim(AnimatorTrigger.RUN);
             }
 
             rotatePart.rotation = Quaternion.LookRotation(move);
@@ -64,7 +64,7 @@ public class Player : Character
             if (isMove)
             {
                 isMove = false;
-                SetAnim(AnimatorTrigger.IDLE);
+                ChangeAnim(AnimatorTrigger.IDLE);
             }
         }
     }

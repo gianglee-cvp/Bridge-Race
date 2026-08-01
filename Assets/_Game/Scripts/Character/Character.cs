@@ -38,7 +38,7 @@ public class Character : MonoBehaviour,IColor
     }
     public virtual void OnPlay()
     {
-        SetAnim(AnimatorTrigger.IDLE);
+        ChangeAnim(AnimatorTrigger.IDLE);
         OnChangeStage(LevelManager.Instance.GetStage(0));
         point = 0 ; 
     }
@@ -104,7 +104,7 @@ public class Character : MonoBehaviour,IColor
     public virtual void ReachLastStep(Step st)
     {
     }
-    public void SetAnim(AnimatorTrigger anim)
+    public void ChangeAnim(AnimatorTrigger anim)
     {
         if(currentAnim != anim)
         {
@@ -126,7 +126,7 @@ public class Character : MonoBehaviour,IColor
 
         LevelManager.Instance.PlaceAtWinPosition(this, seed);
         rotatePart.localRotation = Quaternion.Euler(Vector3.zero); 
-        SetAnim(AnimatorTrigger.WIN);
+        ChangeAnim(AnimatorTrigger.WIN);
     }
     public virtual void OnLose()
     {
