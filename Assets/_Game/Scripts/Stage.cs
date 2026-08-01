@@ -100,6 +100,40 @@ public class Stage : MonoBehaviour
             }
         }
     }
+    public Stair GetStairMostPoint(ColorType color)
+    {
+        Stair mostPointStair = null;
+        int mostPointCount = -1;
+
+        foreach (Stair stair in this.listStair)
+        {
+            int pointCount = stair.GetMaxPointCount(color);
+            if (pointCount > mostPointCount)
+            {
+                mostPointCount = pointCount;
+                mostPointStair = stair;
+            }
+        }
+
+        return mostPointStair;
+    }
+    public Stair GetStairLeastOpponent(ColorType color)
+    {
+        Stair chosenStair = null;
+        int st = int.MaxValue;
+
+        foreach (Stair stair in this.listStair)
+        {
+            int opponentCount = stair.GetOpponentCount(color);
+            if (opponentCount < st)
+            {
+                st = opponentCount;
+                chosenStair = stair;
+            }
+        }
+
+        return chosenStair;
+    }
     public void OnEnd()
     {      
         foreach( var q in inactive.Values)

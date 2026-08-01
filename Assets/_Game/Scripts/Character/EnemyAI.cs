@@ -95,47 +95,15 @@ public class EnemyAI : Character
         float random = Random.Range(0f,2f); 
         if(random < 1f)
         {
-            return GetStairLeastOpponent(); 
+            return currentStage.GetStairLeastOpponent(colorCharacter); 
         }
         else
         {
-            return GetStairMostPoint(colorCharacter); 
+            return currentStage.GetStairMostPoint(colorCharacter); 
         }
     }
-    public Stair GetStairLeastOpponent()
-    {
-        Stair chosenStair = null;
-        int st = int.MaxValue;
 
-        foreach (Stair stair in currentStage.listStair)
-        {
-            int opponentCount = stair.GetOpponentCount(this.colorCharacter);
-            if (opponentCount < st)
-            {
-                st = opponentCount;
-                chosenStair = stair;
-            }
-        }
 
-        return chosenStair;
-    }
-    public Stair GetStairMostPoint(ColorType color)
-    {
-        Stair mostPointStair = null;
-        int mostPointCount = -1;
-
-        foreach (Stair stair in currentStage.listStair)
-        {
-            int pointCount = stair.GetMaxPointCount(color);
-            if (pointCount > mostPointCount)
-            {
-                mostPointCount = pointCount;
-                mostPointStair = stair;
-            }
-        }
-
-        return mostPointStair;
-    }
     public override void ReachNewStage(Stage newStage)
     {
         base.ReachNewStage(newStage);
