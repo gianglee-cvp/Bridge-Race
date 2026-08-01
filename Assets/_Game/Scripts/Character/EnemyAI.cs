@@ -11,20 +11,31 @@ public class EnemyAI : Character
 {
     private IEnemyState currentState;
     [SerializeField] public NavMeshAgent agent;
-
+    public bool isGoingToDes = false;
+    public Vector2? curDestination;
+    protected float timer;
+    protected float randomTime;
     public override void OnInit(Vector3 pos)
     {
         base.OnInit(pos);
-        agent.enabled = false;
+        EnableAgent();
+        StopAgent();
     }
     public override void OnPlay()
     {
         base.OnPlay();
-        agent.enabled = true;
+        // agent.enabled = true;
         ChangeState(new PatrolState());
     }
     private void Update()
     {
+        if (isGoingToDes && curDestination != null)
+        {
+            if(Vector2.Distance(curDestination.Value , GetVector2XZ(transform.position)) < 0.1)
+            {
+                StopAgent();    
+            }
+        }
         if(currentState != null)
         {
             currentState.OnExecute(this);
@@ -43,9 +54,26 @@ public class EnemyAI : Character
         }
         return true;
     }
+    public void EnableAgent()
+    {
+        agent.enabled = true;
+    }
     public void SetAgentDestination(Vector3 destination)
     {
+        curDestination = GetVector2XZ(destination);
         agent.SetDestination(destination);
+        isGoingToDes = true;
+    }
+    public void StopAgent()
+    {
+        agent.SetDestination(transform.position);
+        agent.velocity = Vector3.zero;
+        isGoingToDes = false;
+        curDestination = null;
+    }
+    public void DisableAgent()
+    {
+        agent.enabled = false;
     }
     public void ChangeState(IEnemyState newState)
     {
@@ -65,7 +93,7 @@ public class EnemyAI : Character
     public Stair ChooseStrategy()
     {
         float random = Random.Range(0f,2f); 
-        if(random < 1)
+        if(random < 1f)
         {
             return GetStairLeastOpponent(); 
         }
@@ -122,8 +150,35 @@ public class EnemyAI : Character
     }
     public override void OnFinishLevel()
     {   
-        agent.enabled = false;
         base.OnFinishLevel();
         ChangeState(new IdleState()); 
+    }
+    public Vector2 GetVector2XZ(Vector3 position)
+    {
+        return new Vector2(position.x, position.z);
+    }
+    public void InitPatrolState()
+    {
+        StopAgent();
+        timer = 0f;
+        randomTime = Random.Range(5f, 18f); 
+        ChangeAnim(AnimatorTrigger.RUN);
+        CanMoveUp = true; 
+    }
+    public void ExecutePatrol()
+    {
+        if (timer >= randomTime ||currentStage.CountActiveBricks(colorCharacter) == 0)
+        {
+            ChangeState(new BuildState());
+            timer = 0f;
+            return;
+        }
+        if(!isGoingToDes)
+        {
+            Vector3 des = currentStage.GetActiveBrick(colorCharacter);  
+            SetAgentDestination(des);
+        }
+        timer += Time.deltaTime;
+
     }
 }

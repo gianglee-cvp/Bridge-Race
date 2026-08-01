@@ -28,7 +28,7 @@ public class Character : MonoBehaviour,IColor
         get => canMoveUp;
         set => canMoveUp = value;
     }
-    public int currentBrickCount => listBricks.Count;
+    public int CurrentBrickCount => listBricks.Count;
     public virtual void OnInit(Vector3 pos)
     {
         gameObject.SetActive(true); 
@@ -121,10 +121,10 @@ public class Character : MonoBehaviour,IColor
     }   
     public virtual void OnWin(int seed)
     {
-        OnFinishLevel();
         ClearAllBrick(); 
-
+        OnFinishLevel();
         LevelManager.Instance.PlaceAtWinPosition(this, seed);
+
         rotatePart.localRotation = Quaternion.Euler(Vector3.zero); 
         ChangeAnim(AnimatorTrigger.WIN);
     }

@@ -14,7 +14,7 @@ public class CharacterBrick : GameUnit
         );
 
         Transform targetHolder = character.parentBrick;
-        Vector3 targetLocalPos = new Vector3(0, character.currentBrickCount * 0.15f, 0);
+        Vector3 targetLocalPos = new Vector3(0, character.CurrentBrickCount * 0.15f, 0);
 
         transform.SetParent(null);
         transform.position = startPos;

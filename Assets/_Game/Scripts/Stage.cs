@@ -77,11 +77,11 @@ public class Stage : MonoBehaviour
         }
     }
     
-    public Transform GetActiveBrick(ColorType color)
+    public Vector3 GetActiveBrick(ColorType color)
     {
         int cnt = active[color].Count;
         int randomIndex = Random.Range(0, cnt);
-        return active[color][randomIndex].transform;
+        return active[color][randomIndex].transform.position;
     }
     public void SpawnBrick(ColorType color)
     {
@@ -102,11 +102,6 @@ public class Stage : MonoBehaviour
     }
     public void OnEnd()
     {      
-        // if(door != null)
-        // {
-        //     door.OnEnd(); 
-        // }
-
         foreach( var q in inactive.Values)
         {
             while(q.Count > 0)
@@ -116,7 +111,6 @@ public class Stage : MonoBehaviour
             }
         }
 
-
         foreach(var listBrick in active.Values)
         {
             foreach(var br in listBrick)
@@ -124,9 +118,9 @@ public class Stage : MonoBehaviour
                 SimplePool.DeSpawn(br); 
             }
         }
+
         active.Clear();
         inactive.Clear();
-
 
         foreach( var stair in listStair)
         {

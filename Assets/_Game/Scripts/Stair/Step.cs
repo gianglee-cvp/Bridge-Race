@@ -45,7 +45,7 @@ public class Step : MonoBehaviour, IColor
     public bool SetStopPoint(Character ch)
     {
         // gia tri tra ve la true neu character co the di len step 
-        int brickCount = ch.currentBrickCount;
+        int brickCount = ch.CurrentBrickCount;
         int brickColor = (int)ch.colorCharacter;
         if(brickColor != (int) colorStep && brickCount == 0)
         {

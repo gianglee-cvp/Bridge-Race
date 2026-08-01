@@ -4,6 +4,7 @@ public class BuildState : IEnemyState
 {
     public void OnEnter(EnemyAI enemy)
     {
+        enemy.StopAgent();
         Stair chosenStair;
         chosenStair = enemy.ChooseStrategy();
         Vector3 destination = chosenStair.GetLastStepPosition();
@@ -14,7 +15,7 @@ public class BuildState : IEnemyState
 
     public void OnExecute(EnemyAI enemy)
     {
-        if(enemy.listBricks.Count == 0 && !enemy.CanMoveUp){
+        if(enemy.CurrentBrickCount == 0 && !enemy.CanMoveUp){
             enemy.ChangeState(new PatrolState());
         }        
         
@@ -22,6 +23,7 @@ public class BuildState : IEnemyState
 
     public void OnExit(EnemyAI enemy)
     {
-        enemy.agent.velocity = Vector3.zero;    
+        // enemy.agent.velocity = Vector3.zero;    
+        enemy.StopAgent();
     }
 }
