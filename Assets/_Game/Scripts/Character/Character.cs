@@ -79,8 +79,12 @@ public class Character : MonoBehaviour,IColor
         }
         listBricks.Clear();
     }
-    public virtual bool CheckCharacterGoUpStair()
+    public virtual bool CheckCharacterGoUpStair(Vector3 stepForward)
     {
+        if(Vector3.Dot(rotatePart.forward , stepForward) > 0f)
+        {
+            return true;
+        }
         return false;
     }
     public void SetColor(ColorType color)

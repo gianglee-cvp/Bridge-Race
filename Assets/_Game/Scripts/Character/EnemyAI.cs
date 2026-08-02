@@ -41,19 +41,6 @@ public class EnemyAI : Character
             currentState.OnExecute(this);
         }
     }
-    public override bool CheckCharacterGoUpStair()
-    {
-        if (currentState is BuildState)
-        {
-            return true;
-        }
-
-        if(transform.forward.z < 0)
-        {
-            return false;
-        }
-        return true;
-    }
     public void EnableAgent()
     {
         agent.enabled = true;

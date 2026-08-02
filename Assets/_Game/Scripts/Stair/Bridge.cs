@@ -10,7 +10,7 @@ public class Bridge : MonoBehaviour
 
         foreach (Step st in listStep)
         {
-            if (st.colorStep == color)
+            if (st.colorStep == color || st.colorStep == ColorType.None)
                 continue;
 
             colorSet.Add(st.colorStep);

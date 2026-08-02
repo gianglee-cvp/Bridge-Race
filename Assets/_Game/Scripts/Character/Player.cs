@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -67,14 +68,6 @@ public class Player : Character
                 ChangeAnim(AnimatorTrigger.IDLE);
             }
         }
-    }
-    public override bool CheckCharacterGoUpStair()
-    {
-        if(rotatePart.forward.z < 0)
-        {
-            return false;
-        }
-        return true;
     }
     public override void OnFinishLevel()
     {

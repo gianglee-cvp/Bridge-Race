@@ -8,7 +8,6 @@ public class CanvasFail : UICanvas
     public override void Setup()
     {
         base.Setup();
-        GameManager.Instance.SetLose();
         SoundManager.Instance.PlaySfx(ENUM_SOUND.Fail);
         int score = LevelManager.Instance.Player.Point;
         SetBestScore(score, coinText); 

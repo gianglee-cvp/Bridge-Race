@@ -13,7 +13,7 @@ public class Step : MonoBehaviour, IColor
         {
             Character ch = LevelManager.Instance.GetCharacter(other);
 
-            if(!ch.CheckCharacterGoUpStair() ) return; 
+            if(!ch.CheckCharacterGoUpStair(transform.forward)) return; 
 
             if ( SetStopPoint(ch))
             {   
