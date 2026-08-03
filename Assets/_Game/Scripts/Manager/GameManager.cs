@@ -1,12 +1,25 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+public enum GameStateType 
+{
+    Lose = 0,
+    MainMenu = 1,
+    Pause = 2,
+    Playing = 3, 
+    Win = 4 
+}
 
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private CameraFollow camMain;
     [SerializeField] private PoolControl poolControl;
     private IGameState currentState;
+    protected static IGameState Lose = new LoseState();
+    protected static IGameState MainMenu = new MainMenuState();
+    protected static IGameState Pause = new PausedState();
+    protected static IGameState Playing = new PlayingState();
+    protected static IGameState Win = new WinState();
+    protected static List<IGameState> states = new List<IGameState> { Lose, MainMenu, Pause, Playing, Win };
 
     public IGameState CurrentState => currentState;
 
@@ -29,15 +42,20 @@ public class GameManager : Singleton<GameManager>
         currentState = newState;
         currentState.OnChange(this);
     }
+    public void ChangeState(int index)
+    {
+        IGameState newStage = states[index];
+        ChangeState(newStage);
+    }
 
     public void EnterMainMenu()
     {
-        ChangeState(new MainMenuState());
+        ChangeState(MainMenu);
     }
 
     public void StartGame()
     {
-        ChangeState(new PlayingState());
+        ChangeState(Playing);
         LevelManager.Instance.OnPlay();
     }
 
@@ -48,7 +66,7 @@ public class GameManager : Singleton<GameManager>
             return;
         }
 
-        ChangeState(new PausedState());
+        ChangeState(Pause);
     }
 
     public void ResumeGame()
@@ -58,11 +76,11 @@ public class GameManager : Singleton<GameManager>
             return;
         }
 
-        ChangeState(new PlayingState());
+        ChangeState(Playing);
     }
     public void SetLose()
     {
-        ChangeState(new LoseState());
+        ChangeState(Lose);
     }
 
     public bool IsInState<T>() where T : class, IGameState

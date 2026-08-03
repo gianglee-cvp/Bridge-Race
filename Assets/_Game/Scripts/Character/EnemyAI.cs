@@ -15,9 +15,9 @@ public class EnemyAI : Character
     public Vector2? curDestination;
     protected float timer;
     protected float randomTime;
-    public static IEnemyState Idle = new IdleState();
-    public static IEnemyState Patrol = new PatrolState();
-    public static IEnemyState Build = new BuildState();
+    protected static IEnemyState Idle = new IdleState();
+    protected static IEnemyState Patrol = new PatrolState();
+    protected static IEnemyState Build = new BuildState();
 
     public override void OnInit(Vector3 pos)
     {
@@ -93,8 +93,6 @@ public class EnemyAI : Character
             return currentStage.GetStairMostPoint(colorCharacter); 
         }
     }
-
-
     public override void ReachNewStage(Stage newStage)
     {
         base.ReachNewStage(newStage);
@@ -123,6 +121,10 @@ public class EnemyAI : Character
         randomTime = Random.Range(5f, 18f); 
         ChangeAnim(AnimatorTrigger.RUN);
         CanMoveUp = true; 
+    }
+    public void SetPatrolState()
+    {
+        ChangeState(Patrol);
     }
     public void ExecutePatrol()
     {

@@ -10,7 +10,7 @@ public class DeathZone : MonoBehaviour
             Character character = LevelManager.Instance.GetCharacter(other);
             if(character is Player)
             {
-                GameManager.Instance.ChangeState(new LoseState());
+                GameManager.Instance.ChangeState((int)GameStateType.Lose);
             }
         }   
     }

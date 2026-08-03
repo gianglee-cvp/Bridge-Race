@@ -83,7 +83,7 @@ public class Player : Character
     public override void OnWin(int seed)
     {
         base.OnWin(seed);
-        GameManager.Instance.ChangeState(new WinState());   
+        GameManager.Instance.ChangeState((int)GameStateType.Win);   
         // CanvasVictory cv = UIManager.Instance.GetUI<CanvasVictory>();
         // cv.StarRise(seed);
 
@@ -91,6 +91,6 @@ public class Player : Character
     public override void OnLose()
     {
         base.OnLose();
-        GameManager.Instance.ChangeState(new LoseState());
+        GameManager.Instance.ChangeState((int)GameStateType.Lose);
     }
 }
