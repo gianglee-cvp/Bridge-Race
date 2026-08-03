@@ -15,6 +15,10 @@ public class EnemyAI : Character
     public Vector2? curDestination;
     protected float timer;
     protected float randomTime;
+    public static IEnemyState Idle = new IdleState();
+    public static IEnemyState Patrol = new PatrolState();
+    public static IEnemyState Build = new BuildState();
+
     public override void OnInit(Vector3 pos)
     {
         base.OnInit(pos);
@@ -25,7 +29,7 @@ public class EnemyAI : Character
     {
         base.OnPlay();
         // agent.enabled = true;
-        ChangeState(new PatrolState());
+        ChangeState(Patrol);
     }
     private void Update()
     {
@@ -94,7 +98,7 @@ public class EnemyAI : Character
     public override void ReachNewStage(Stage newStage)
     {
         base.ReachNewStage(newStage);
-        ChangeState(new PatrolState()); 
+        ChangeState(Patrol); 
     }
     
     public override void ReachLastStep(Step st)
@@ -106,7 +110,7 @@ public class EnemyAI : Character
     public override void OnFinishLevel()
     {   
         base.OnFinishLevel();
-        ChangeState(new IdleState()); 
+        ChangeState(Idle); 
     }
     public Vector2 GetVector2XZ(Vector3 position)
     {
@@ -124,7 +128,7 @@ public class EnemyAI : Character
     {
         if (timer >= randomTime ||currentStage.CountActiveBricks(colorCharacter) == 0)
         {
-            ChangeState(new BuildState());
+            ChangeState(Build);
             timer = 0f;
             return;
         }

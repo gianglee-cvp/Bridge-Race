@@ -16,7 +16,7 @@ public class BuildState : IEnemyState
     public void OnExecute(EnemyAI enemy)
     {
         if(enemy.CurrentBrickCount == 0 && !enemy.CanMoveUp){
-            enemy.ChangeState(new PatrolState());
+            enemy.ChangeState(EnemyAI.Patrol);
         }        
         
     }
