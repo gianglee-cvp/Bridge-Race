@@ -44,5 +44,14 @@ public class DataManager : MonoBehaviour
         gameData.currentLevelIndex = index; 
         Save();
     }
+    public void SaveSoundOn(bool sound)
+    {
+        gameData.musicOn = sound;
+        Save();
+    }
+    public bool GetMusic()
+    {
+        return gameData.musicOn;
+    }
 }
 

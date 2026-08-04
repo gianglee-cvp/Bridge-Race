@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 public enum GameStateType 
 {
@@ -13,7 +14,7 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private CameraFollow camMain;
     [SerializeField] private PoolControl poolControl;
-    [SerializeField] private DataManager dataManager;
+    [SerializeField] public DataManager dataManager;
     private IGameState currentState;
     protected static IGameState Lose = new LoseState();
     protected static IGameState MainMenu = new MainMenuState();
@@ -28,12 +29,20 @@ public class GameManager : Singleton<GameManager>
     {
         poolControl.OnInit(); 
         dataManager.OnInit();
+        SoundManager.Instance.OnInit();
         UIManager.Instance.OnInit(); 
         LevelManager.Instance.OnInit();
         InputManager.Instance.OnInit();
         EnterMainMenu();
     }
-
+    public void OnEnable()
+    {
+        CanvasSettings.OnSoundButton += SaveSoundOn;
+    }
+    public void OnDisable()
+    {
+        CanvasSettings.OnSoundButton -= SaveSoundOn;
+    }
     public void ChangeState(IGameState newState)
     {
         if (currentState != null && currentState.GetType() == newState.GetType())
@@ -132,5 +141,10 @@ public class GameManager : Singleton<GameManager>
     public void SaveChangeLevel(int index)
     {
         dataManager.ChangeLevel(index);
+    }
+    public void SaveSoundOn()
+    {
+        bool sound = SoundManager.Instance.SoundButton();
+        dataManager.SaveSoundOn(sound);
     }
 }

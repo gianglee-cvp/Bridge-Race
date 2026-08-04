@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class CanvasSettings : UICanvas
 {
     [SerializeField] GameObject[] buttons; 
+    public static event Action OnSoundButton;
     public override void Setup()
     {
         if (GameManager.Instance.IsInState<PlayingState>())
@@ -32,5 +34,8 @@ public class CanvasSettings : UICanvas
         GameManager.Instance.ResumeGame();
         Close(0);
     }
-
+    public void SoundButton()
+    {
+        OnSoundButton?.Invoke();   
+    }
 }

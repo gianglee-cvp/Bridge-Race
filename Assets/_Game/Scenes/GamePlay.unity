@@ -186,6 +186,50 @@ MonoBehaviour:
   - {fileID: 1664969821}
   - {fileID: 905343741}
   - {fileID: 452864446}
+--- !u!1 &218508230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 218508232}
+  - component: {fileID: 218508231}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &218508231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218508230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f9a4613b3cc3046b0d73f337863a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DataManager
+--- !u!4 &218508232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218508230}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2051746140}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &277363570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,8 +1267,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   library: {fileID: 11400000, guid: b84d4ceff04326a4e910ee19e0bb7043, type: 2}
-  bgmSource: {fileID: 844420411}
-  sfxSource: {fileID: 844420410}
+  listAudio:
+  - {fileID: 844420411}
+  - {fileID: 844420410}
   musicVolume: 1
   sfxVolume: 1
 --- !u!114 &905343741 stripped
@@ -2156,6 +2201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   camMain: {fileID: 330585548}
   poolControl: {fileID: 1005159978}
+  dataManager: {fileID: 218508231}
 --- !u!4 &2051746140
 Transform:
   m_ObjectHideFlags: 0
@@ -2171,6 +2217,7 @@ Transform:
   m_Children:
   - {fileID: 844420409}
   - {fileID: 100824459}
+  - {fileID: 218508232}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1893580819680048560
