@@ -23,15 +23,15 @@ public class DataManager : MonoBehaviour
     public void Save()
     {
         string json = JsonUtility.ToJson(gameData);
-        PlayerPrefs.SetString("GAME_DATA", json);
+        PlayerPrefs.SetString(Constants.GAMEDATA, json);
         PlayerPrefs.Save();
     } 
 
     public void Load()
     {
-        if (PlayerPrefs.HasKey("GAME_DATA"))
+        if (PlayerPrefs.HasKey(Constants.GAMEDATA))
         {
-            gameData = JsonUtility.FromJson<GameData>(PlayerPrefs.GetString("GAME_DATA"));
+            gameData = JsonUtility.FromJson<GameData>(PlayerPrefs.GetString(Constants.GAMEDATA));
         }
         else
         {

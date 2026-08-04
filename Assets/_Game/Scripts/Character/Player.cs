@@ -25,9 +25,6 @@ public class Player : Character
         isMove = false;
         IsFalling = false;
     }
-
-
-
     private void Update()
     {
         if(moveAction.enabled){

@@ -39,4 +39,5 @@ public static class Constants
         LayerGreen,
         LayerBlack
     };
+    public const string GAMEDATA = "GAME_DATA";
 }
