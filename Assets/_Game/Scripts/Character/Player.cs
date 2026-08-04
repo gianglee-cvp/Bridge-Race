@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,9 +9,13 @@ public class Player : Character
     private Vector2 moveAmount;
 
     private float speed = 5f;
-    private float rotateAngle; 
     private bool isMove ; 
-    [SerializeField]private Rigidbody rb;
+    [SerializeField] protected Vector3 boxSize = new Vector3(0.5f, 0.1f, 0.5f); 
+    [SerializeField] protected float boxDistance = 0.5f; 
+    [SerializeField] protected LayerMask groundLayer;
+    public bool IsGrounded { get; private set; }
+    protected bool IsFalling = false;
+    [SerializeField] private Rigidbody rb;
 
     public override void OnInit(Vector3 pos)
     {
@@ -21,6 +23,7 @@ public class Player : Character
         moveAction = InputManager.Instance.MoveAction;
         moveAction.Enable();
         isMove = false;
+        IsFalling = false;
     }
 
 
@@ -36,6 +39,8 @@ public class Player : Character
                     moveAmount.y = 0; 
                 }
             }
+            CheckGround();
+
         }
     }
     private void FixedUpdate()
@@ -55,9 +60,6 @@ public class Player : Character
             }
 
             rotatePart.rotation = Quaternion.LookRotation(move);
-            // transform.Translate(
-            //     move * speed * Time.fixedDeltaTime
-            // );
             rb.MovePosition(rb.position + move * speed * Time.fixedDeltaTime); 
         }
         else
@@ -84,13 +86,28 @@ public class Player : Character
     {
         base.OnWin(seed);
         GameManager.Instance.ChangeState((int)GameStateType.Win);   
-        // CanvasVictory cv = UIManager.Instance.GetUI<CanvasVictory>();
-        // cv.StarRise(seed);
-
     }
     public override void OnLose()
     {
         base.OnLose();
         GameManager.Instance.ChangeState((int)GameStateType.Lose);
+    }
+    public void CheckGround()
+    {
+        Vector3 center = transform.position + Vector3.down * boxDistance; 
+        IsGrounded = Physics.CheckBox( center, boxSize * 0.5f, Quaternion.identity, groundLayer );
+        bool fall = (!IsGrounded) && (rb.linearVelocity.y < -0.1f);
+        if (!IsFalling && fall)
+        {
+            ChangeAnim(AnimatorTrigger.FALL);
+            moveAction.Disable();
+
+        }
+    }
+    public void OnDrawGizmosSelected()
+    {
+        Gizmos.color = IsGrounded ? Color.green : Color.red; 
+        Vector3 center = transform.position + Vector3.down * boxDistance; 
+        Gizmos.DrawWireCube(center, boxSize);
     }
 }

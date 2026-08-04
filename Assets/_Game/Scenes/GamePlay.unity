@@ -2241,9 +2241,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3563436526515037105, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
+      propertyPath: boxSize.x
+      value: 1.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563436526515037105, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
+      propertyPath: boxSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563436526515037105, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
+      propertyPath: boxSize.z
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563436526515037105, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
+      propertyPath: boxDistance
+      value: 1.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563436526515037105, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
       propertyPath: parentBrick
       value: 
       objectReference: {fileID: 1697796663}
+    - target: {fileID: 3563436526515037105, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3714745294818630081, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
       propertyPath: m_Enabled
       value: 0
