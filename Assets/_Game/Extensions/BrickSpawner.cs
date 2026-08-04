@@ -55,10 +55,8 @@ public class BrickSpawner : MonoBehaviour
                 Vector3 spawnPoint = root.TransformPoint(localSpawnPos);
 
                 NavMeshHit hit;
-                Debug.Log("a"); 
                 if(NavMesh.SamplePosition(spawnPoint, out hit, 0.5f, NavMesh.AllAreas))
                 {
-                    Debug.Log("b"); 
                     ColorRatio selectedRatio = GetRandomColorByRatio();
 
                     Brick unit = Instantiate(prefabBase, spawnPoint, prefabBase.transform.rotation);

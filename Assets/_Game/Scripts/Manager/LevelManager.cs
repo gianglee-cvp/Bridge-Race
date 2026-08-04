@@ -14,14 +14,18 @@ public class LevelManager : Singleton<LevelManager>
 
     public List<Character> Characters => listCharacters;
     public Player Player => player;
-    public int CurrentLevelIndex => currentLevelIndex;
+    public int CurrentLevelIndex
+    {
+       get => currentLevelIndex;
+       set => currentLevelIndex = value;  
+    } 
 
     public void OnInit()
     {
         characterDictionary.Clear();
         listLevels.Clear();
         stageList.Clear();
-        currentLevelIndex = 0;
+        // currentLevelIndex = 0;
 
         AddListLevel();
 
@@ -52,11 +56,10 @@ public class LevelManager : Singleton<LevelManager>
     public void ChangeLevel(int levelIndex)
     {
         OnEnd();
+
         GameManager.Instance.InitCamera(); 
-        // if (currentLevelIndex >= 0 && currentLevelIndex < listLevels.Count)
-        // {
-        //     listLevels[currentLevelIndex].Unload();
-        // }
+        GameManager.Instance.SaveChangeLevel(levelIndex);
+
         currentLevelIndex = levelIndex;
         Level level = listLevels[currentLevelIndex];
         level.Load();

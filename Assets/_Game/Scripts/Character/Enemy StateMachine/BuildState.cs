@@ -23,7 +23,6 @@ public class BuildState : IEnemyState
 
     public void OnExit(EnemyAI enemy)
     {
-        // enemy.agent.velocity = Vector3.zero;    
         enemy.StopAgent();
     }
 }

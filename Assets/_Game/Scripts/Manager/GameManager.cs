@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private CameraFollow camMain;
     [SerializeField] private PoolControl poolControl;
+    [SerializeField] private DataManager dataManager;
     private IGameState currentState;
     protected static IGameState Lose = new LoseState();
     protected static IGameState MainMenu = new MainMenuState();
@@ -20,12 +21,13 @@ public class GameManager : Singleton<GameManager>
     protected static IGameState Playing = new PlayingState();
     protected static IGameState Win = new WinState();
     protected static List<IGameState> states = new List<IGameState> { Lose, MainMenu, Pause, Playing, Win };
-
+    
     public IGameState CurrentState => currentState;
 
     private void Awake()
     {
         poolControl.OnInit(); 
+        dataManager.OnInit();
         UIManager.Instance.OnInit(); 
         LevelManager.Instance.OnInit();
         InputManager.Instance.OnInit();
@@ -126,5 +128,9 @@ public class GameManager : Singleton<GameManager>
     public void InitCamera()
     {
         camMain.OnInit(); 
+    }
+    public void SaveChangeLevel(int index)
+    {
+        dataManager.ChangeLevel(index);
     }
 }
