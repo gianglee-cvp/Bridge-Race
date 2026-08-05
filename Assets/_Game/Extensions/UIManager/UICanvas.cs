@@ -53,12 +53,11 @@ public class UICanvas : MonoBehaviour
     public virtual void PlayButton()
     {
         Close(0); 
-
-        UIManager.Instance.OpenUI<CanvasGamePlay>();
         SoundManager.Instance.PlayBgm(ENUM_SOUND.GameplayBgm);
 
         int index = LevelManager.Instance.CurrentLevelIndex; 
         LevelManager.Instance.ChangeLevel(index);
+        UIManager.Instance.OpenUI<CanvasGamePlay>();
         GameManager.Instance.StartGame();
     }
     public virtual void MainMenuButton()

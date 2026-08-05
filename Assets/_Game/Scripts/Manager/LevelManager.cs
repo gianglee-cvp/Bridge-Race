@@ -175,6 +175,7 @@ public class LevelManager : Singleton<LevelManager>
         }
 
         ChangeLevel(nextLevel);
+        UIManager.Instance.OpenUI<CanvasGamePlay>();
         GameManager.Instance.StartGame();
     }
     public Level GetCurrentLevel()

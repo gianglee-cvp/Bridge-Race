@@ -35,9 +35,11 @@ public class Character : MonoBehaviour,IColor
         transform.position = pos;
         transform.rotation = Quaternion.identity;
         canMoveUp = true; 
+        characterCollider.enabled = false;
     }
     public virtual void OnPlay()
     {
+        characterCollider.enabled = true;
         ChangeAnim(AnimatorTrigger.IDLE);
         OnChangeStage(LevelManager.Instance.GetStage(0));
         point = 0 ; 
@@ -141,6 +143,7 @@ public class Character : MonoBehaviour,IColor
     {
         ClearAllBrick();
         currentStage = null; 
+        characterCollider.enabled = false;
         gameObject.SetActive(false); 
     }
 }

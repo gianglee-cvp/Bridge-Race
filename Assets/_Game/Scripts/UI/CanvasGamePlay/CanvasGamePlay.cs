@@ -6,11 +6,13 @@ public class CanvasGamePlay : UICanvas
     [SerializeField] TextMeshProUGUI coinText;
     [SerializeField] RectTransform joystick;
     [SerializeField] CanvasGroup stickCanvasGroup;
+    [SerializeField] CountdownUI countdownUI;
 
     public override void Setup()
     {
         base.Setup();
-        UpdateCoin(0); 
+        UpdateCoin(0);
+        countdownUI.gameObject.SetActive(true);
 
         if (stickCanvasGroup != null)
         {
@@ -19,7 +21,13 @@ public class CanvasGamePlay : UICanvas
             stickCanvasGroup.blocksRaycasts = false;
         }
 
-        joystick.gameObject.SetActive(true); 
+        joystick.gameObject.SetActive(true);
+    }
+
+    public override void Open()
+    {
+        base.Open();
+        countdownUI.PlayCountdown(GameManager.Instance.StartGameplayAfterCountdown);
     }
 
     public void UpdateCoin(int coin)

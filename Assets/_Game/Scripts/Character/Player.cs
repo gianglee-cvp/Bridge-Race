@@ -21,9 +21,18 @@ public class Player : Character
     {
         base.OnInit(pos);
         moveAction = InputManager.Instance.MoveAction;
-        moveAction.Enable();
+        moveAction.Disable();
+        rb.position = pos;
+        rb.linearVelocity = Vector3.zero;
+        rb.useGravity = false;
         isMove = false;
         IsFalling = false;
+    }
+    public override void OnPlay()
+    {
+        base.OnPlay();
+        rb.useGravity = true;
+        moveAction.Enable();
     }
     private void Update()
     {
@@ -37,7 +46,7 @@ public class Player : Character
                 }
             }
             CheckGround();
-
+    
         }
     }
     private void FixedUpdate()
@@ -71,6 +80,7 @@ public class Player : Character
     public override void OnFinishLevel()
     {
         base.OnFinishLevel();
+        rb.useGravity = false;
         moveAction.Disable();
     }
 

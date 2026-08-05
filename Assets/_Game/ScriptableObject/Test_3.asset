@@ -360,7 +360,7 @@ MonoBehaviour:
       position: {x: -8.000009, y: 14.505, z: 80.64001}
   player:
     color: 1
-    position: {x: -2, y: 0.6, z: -7.6}
+    position: {x: -2, y: 0, z: -7.6}
   listEnemy:
   - color: 2
     position: {x: -6, y: 0.6, z: -7.6}

@@ -67,6 +67,10 @@ public class GameManager : Singleton<GameManager>
     public void StartGame()
     {
         ChangeState(Playing);
+    }
+
+    public void StartGameplayAfterCountdown()
+    {
         LevelManager.Instance.OnPlay();
     }
 
