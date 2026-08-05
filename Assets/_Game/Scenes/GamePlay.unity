@@ -186,6 +186,7 @@ MonoBehaviour:
   - {fileID: 1664969821}
   - {fileID: 905343741}
   - {fileID: 452864446}
+  levelParent: {fileID: 0}
 --- !u!1 &218508230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,18 +1320,6 @@ MonoBehaviour:
   - prefab: {fileID: 6426189225144788868, guid: 22e6f7c85015e3b458d71969914afae0, type: 3}
     amount: 20
     parent: {fileID: 1005159979}
-  - prefab: {fileID: 770137199229521788, guid: 0b0a39b0832d4cb4aad9a77894ac61d4, type: 3}
-    amount: 1
-    parent: {fileID: 0}
-  - prefab: {fileID: 770137199229521788, guid: 9e2f2e37f19b3e645b73ee01f9ca9dad, type: 3}
-    amount: 1
-    parent: {fileID: 0}
-  - prefab: {fileID: 8932710895791222247, guid: 286d770a14ca4c64b83e2dddb1edfafd, type: 3}
-    amount: 1
-    parent: {fileID: 0}
-  - prefab: {fileID: 2686888055609252666, guid: 914ed842ee3b1a14c80d3f4d93136b6f, type: 3}
-    amount: 1
-    parent: {fileID: 0}
 --- !u!4 &1005159979
 Transform:
   m_ObjectHideFlags: 0
@@ -2262,7 +2251,7 @@ PrefabInstance:
       objectReference: {fileID: 1697796663}
     - target: {fileID: 3563436526515037105, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
       propertyPath: groundLayer.m_Bits
-      value: 1
+      value: 129
       objectReference: {fileID: 0}
     - target: {fileID: 3714745294818630081, guid: 7bc8ab9600f08c044bc23ea8ee1d46cb, type: 3}
       propertyPath: m_Enabled

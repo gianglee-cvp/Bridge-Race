@@ -17,11 +17,6 @@ public static class SimplePool
             p.Preload(prefab, amount, parent); 
             poolInstance[prefab.poolType] = p ;
         }
-        else if(prefab.poolType == PoolType.Level && poolInstance.ContainsKey(PoolType.Level))
-        {
-            Pool p = poolInstance[PoolType.Level];
-            p.Preload(prefab, amount, parent);
-        }
     }
     public static T Spawn<T>(PoolType poolType , Vector3 pos , Quaternion rot , Transform parent) where T : GameUnit
     {

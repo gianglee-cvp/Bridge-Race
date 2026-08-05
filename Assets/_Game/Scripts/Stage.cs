@@ -141,7 +141,7 @@ public class Stage : MonoBehaviour
             while(q.Count > 0)
             {
                 Brick br = q.Dequeue(); 
-                SimplePool.DeSpawn(br); 
+                ReturnBrickToPool(br); 
             }
         }
 
@@ -149,7 +149,7 @@ public class Stage : MonoBehaviour
         {
             foreach(var br in listBrick)
             {
-                SimplePool.DeSpawn(br); 
+                ReturnBrickToPool(br); 
             }
         }
 
@@ -160,6 +160,16 @@ public class Stage : MonoBehaviour
         {
             stair.OnEnd(); 
         }
+    }
+
+    private void ReturnBrickToPool(Brick brick)
+    {
+        if (brick == null)
+        {
+            return;
+        }
+        SimplePool.DeSpawn(brick);
+        brick.transform.SetParent(null);
     }
 }
     

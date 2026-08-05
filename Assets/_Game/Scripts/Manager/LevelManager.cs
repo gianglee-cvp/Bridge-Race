@@ -6,10 +6,12 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] public ColorDataSO colorDataSO;
     [SerializeField] public Player player;
     [SerializeField] public List<Character> listCharacters = new List<Character>();
+    [SerializeField] private Transform levelParent;
 
     private  Dictionary<Collider, Character> characterDictionary = new Dictionary<Collider, Character>();
-    private  List<Level> listLevels = new List<Level>();
+    private  List<Level> levelPrefabs = new List<Level>();
     private List<Stage> stageList = new List<Stage>();
+    private Level currentLevel;
     private int currentLevelIndex = 0;
 
     public List<Character> Characters => listCharacters;
@@ -23,11 +25,12 @@ public class LevelManager : Singleton<LevelManager>
     public void OnInit()
     {
         characterDictionary.Clear();
-        listLevels.Clear();
+        levelPrefabs.Clear();
         stageList.Clear();
-        // currentLevelIndex = 0;
 
-        AddListLevel();
+        LoadLevelPrefabs();
+        currentLevel = null;
+        currentLevelIndex = Mathf.Clamp(currentLevelIndex, 0, Mathf.Max(0, levelPrefabs.Count - 1));
 
         foreach (Character character in listCharacters)
         {
@@ -55,28 +58,36 @@ public class LevelManager : Singleton<LevelManager>
 
     public void ChangeLevel(int levelIndex)
     {
+        if (levelPrefabs.Count == 0)
+        {
+            Debug.LogError("LevelManager: no level prefabs found in Resources/Levels.");
+            return;
+        }
+
         OnEnd();
 
         GameManager.Instance.InitCamera(); 
+
+        levelIndex = Mathf.Clamp(levelIndex, 0, levelPrefabs.Count - 1);
         GameManager.Instance.SaveChangeLevel(levelIndex);
 
         currentLevelIndex = levelIndex;
-        Level level = listLevels[currentLevelIndex];
-        level.Load();
+        currentLevel = SpawnLevel(levelPrefabs[currentLevelIndex]);
+        currentLevel.Load();
 
-        stageList = level.stageList;
-        InitCharacters(level.levelDataSO);
+        stageList = currentLevel.stageList;
+        InitCharacters(currentLevel.levelDataSO);
     }
 
     public void NextLevel()
     {
-        if (listLevels.Count == 0)
+        if (levelPrefabs.Count == 0)
         {
             return;
         }
 
         int nextLevel = currentLevelIndex + 1;
-        if (nextLevel >= listLevels.Count)
+        if (nextLevel >= levelPrefabs.Count)
         {
             nextLevel = 0;
         }
@@ -87,7 +98,7 @@ public class LevelManager : Singleton<LevelManager>
 
     public void PrevLevel()
     {
-        if (listLevels.Count == 0)
+        if (levelPrefabs.Count == 0)
         {
             return;
         }
@@ -95,7 +106,7 @@ public class LevelManager : Singleton<LevelManager>
         int prevLevel = currentLevelIndex - 1;
         if (prevLevel < 0)
         {
-            prevLevel = listLevels.Count - 1;
+            prevLevel = levelPrefabs.Count - 1;
         }
 
         currentLevelIndex = prevLevel;
@@ -112,13 +123,15 @@ public class LevelManager : Singleton<LevelManager>
 
     public void OnEnd()
     {
-        if (currentLevelIndex >= 0 && currentLevelIndex < listLevels.Count)
+        if (currentLevel != null)
         {
-            if (!listLevels[currentLevelIndex].gameObject.activeSelf)
+            if (currentLevel.gameObject.activeSelf)
             {
-                return;
+                CollectBrickPool();
+                currentLevel.Unload();
             }
-            listLevels[currentLevelIndex].Unload();
+            Destroy(currentLevel.gameObject);
+            currentLevel = null;
         }
 
         foreach (Character character in listCharacters)
@@ -127,12 +140,13 @@ public class LevelManager : Singleton<LevelManager>
         }
     }
 
-    private void AddListLevel()
+    private void LoadLevelPrefabs()
     {
-        Queue<GameUnit> levelQueue = SimplePool.poolInstance[PoolType.Level].GetInactive();
-        foreach (GameUnit level in levelQueue)
+        levelPrefabs = new List<Level>(Resources.LoadAll<Level>("Levels"));
+
+        if (levelPrefabs.Count == 0)
         {
-            listLevels.Add((Level)level);
+            Debug.LogError("Load Level Error");
         }
     }
 
@@ -150,8 +164,13 @@ public class LevelManager : Singleton<LevelManager>
     }
     public void PlayNextLevel()
     {
+        if (levelPrefabs.Count == 0)
+        {
+            return;
+        }
+
         int nextLevel = currentLevelIndex + 1;
-        if (nextLevel >= listLevels.Count)
+        if (nextLevel >= levelPrefabs.Count)
         {
             nextLevel = 0;
         }
@@ -161,16 +180,38 @@ public class LevelManager : Singleton<LevelManager>
     }
     public Level GetCurrentLevel()
     {
-        return listLevels[currentLevelIndex]; 
+        return currentLevel; 
     }
     public void PlaceAtWinPosition(Character character, int seed)
     {
-        Level level = listLevels[currentLevelIndex];
-        WinPos win = level.levelDataSO.GetPosAndRot(seed);
+        if (currentLevel == null)
+        {
+            return;
+        }
 
-        Transform root = level.transform;
+        WinPos win = currentLevel.levelDataSO.GetPosAndRot(seed);
+
+        Transform root = currentLevel.transform;
         character.transform.SetPositionAndRotation(
             root.TransformPoint(win.position),
             root.rotation * Quaternion.Euler(win.rotation));
+    }
+
+    private Level SpawnLevel(Level levelPrefab)
+    {
+        Transform parent = levelParent != null ? levelParent : transform;
+        return Instantiate(
+            levelPrefab,
+            levelPrefab.transform.position,
+            levelPrefab.transform.rotation,
+            parent);
+    }
+
+    private void CollectBrickPool()
+    {
+        if (SimplePool.poolInstance.ContainsKey(PoolType.Brick))
+        {
+            SimplePool.Collect(PoolType.Brick);
+        }
     }
 }
