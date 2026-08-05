@@ -4386,7 +4386,6 @@ GameObject:
   - component: {fileID: 6608774366394629036}
   - component: {fileID: 6811784837693015160}
   - component: {fileID: 2222616200966935753}
-  - component: {fileID: 854985866062689569}
   m_Layer: 0
   m_Name: Bridge Floor
   m_TagString: Untagged
@@ -4474,27 +4473,6 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118996751425814745}
   m_Material: {fileID: 13400000, guid: 64e2837a621a8564ebbf25b43db0d0e3, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: -0.0000038146973, z: 0.00000047683716}
---- !u!65 &854985866062689569
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118996751425814745}
-  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5926,7 +5904,6 @@ GameObject:
   - component: {fileID: 338145908484121606}
   - component: {fileID: 2427278727948392267}
   - component: {fileID: 6038618087034274731}
-  - component: {fileID: 2259685499118935572}
   m_Layer: 0
   m_Name: Bridge Floor
   m_TagString: Untagged
@@ -6014,27 +5991,6 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2793838547123321135}
   m_Material: {fileID: 13400000, guid: 64e2837a621a8564ebbf25b43db0d0e3, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &2259685499118935572
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2793838547123321135}
-  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -12509,7 +12465,6 @@ GameObject:
   - component: {fileID: 1192215690805297763}
   - component: {fileID: 1564119783314947511}
   - component: {fileID: 6189315018305694982}
-  - component: {fileID: 4675028343565126894}
   m_Layer: 0
   m_Name: Bridge Floor
   m_TagString: Untagged
@@ -12597,27 +12552,6 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6220804579852892438}
   m_Material: {fileID: 13400000, guid: 64e2837a621a8564ebbf25b43db0d0e3, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: -0.0000038146973, z: 0.00000047683716}
---- !u!65 &4675028343565126894
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6220804579852892438}
-  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -16352,7 +16286,6 @@ GameObject:
   - component: {fileID: 5732477002930380233}
   - component: {fileID: 7679729984374156932}
   - component: {fileID: 1797490096687888996}
-  - component: {fileID: 6080017151788689371}
   m_Layer: 0
   m_Name: Bridge Floor
   m_TagString: Untagged
@@ -16440,27 +16373,6 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7924428537180995808}
   m_Material: {fileID: 13400000, guid: 64e2837a621a8564ebbf25b43db0d0e3, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6080017151788689371
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7924428537180995808}
-  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

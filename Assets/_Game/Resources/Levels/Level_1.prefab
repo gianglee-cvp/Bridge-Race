@@ -4471,18 +4471,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 2437136298737141878}
     m_Modifications:
     - target: {fileID: 8536756620516099440, guid: 2b9667dfe8b5d38418c6ba8b7b1fefe5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8536756620516099440, guid: 2b9667dfe8b5d38418c6ba8b7b1fefe5, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8536756620516099440, guid: 2b9667dfe8b5d38418c6ba8b7b1fefe5, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8536756620516099440, guid: 2b9667dfe8b5d38418c6ba8b7b1fefe5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.98
       objectReference: {fileID: 0}
@@ -4525,10 +4513,6 @@ PrefabInstance:
     - target: {fileID: 9021684522401652682, guid: 2b9667dfe8b5d38418c6ba8b7b1fefe5, type: 3}
       propertyPath: m_Name
       value: tower_003
-      objectReference: {fileID: 0}
-    - target: {fileID: 9021684522401652682, guid: 2b9667dfe8b5d38418c6ba8b7b1fefe5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

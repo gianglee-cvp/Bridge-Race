@@ -23,6 +23,7 @@ public class Player : Character
         moveAction = InputManager.Instance.MoveAction;
         moveAction.Disable();
         rb.position = pos;
+        transform.rotation = Quaternion.identity;
         rb.linearVelocity = Vector3.zero;
         rb.useGravity = false;
         isMove = false;

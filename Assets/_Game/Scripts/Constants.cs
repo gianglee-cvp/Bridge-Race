@@ -14,13 +14,15 @@ public static class Constants
     public const string AnimatorFall = "Fall";
     public const string AnimatorWin = "Win";
     public const string AnimatorLose = "Lose";
+    public const string AnimatorDance = "Dance";
     public static List<string> listTriggerAnimator = new()
     {
         AnimatorIdle,
         AnimatorRun,
         AnimatorFall,
         AnimatorWin,
-        AnimatorLose
+        AnimatorLose,
+        AnimatorDance
     };
 
 

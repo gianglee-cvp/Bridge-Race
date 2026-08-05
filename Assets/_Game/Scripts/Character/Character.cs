@@ -6,7 +6,8 @@ public enum AnimatorTrigger
     RUN = 1,
     FALL = 2,
     WIN = 3,
-    LOSE = 4
+    LOSE = 4,
+    Dance = 5
 }
 
 public class Character : MonoBehaviour,IColor
@@ -36,6 +37,8 @@ public class Character : MonoBehaviour,IColor
         transform.rotation = Quaternion.identity;
         canMoveUp = true; 
         characterCollider.enabled = false;
+        ChangeAnim(AnimatorTrigger.Dance);
+        Debug.Log(gameObject.name+ " name");
     }
     public virtual void OnPlay()
     {
