@@ -73,6 +73,12 @@ public class Player : Character
         base.OnFinishLevel();
         moveAction.Disable();
     }
+
+    public override void ReachNewStage(Stage newStage)
+    {
+        base.ReachNewStage(newStage);
+        SoundManager.Instance.PlaySfx(ENUM_SOUND.ReachStage);
+    }
     public override void AddBrick(Brick brick)
     {
         base.AddBrick(brick);

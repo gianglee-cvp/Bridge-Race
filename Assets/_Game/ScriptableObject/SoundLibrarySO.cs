@@ -14,6 +14,7 @@ public enum ENUM_SOUND
 
     ButtonClick = 7,
     PopupOpen = 8,
+    ReachStage = 9,
 }
 
 
@@ -36,4 +37,3 @@ public class SoundEntry
     [Range(-3f, 3f)] public float pitch = 1f;
     public bool loop = false;
 }
-

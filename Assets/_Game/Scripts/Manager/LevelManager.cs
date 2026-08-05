@@ -65,7 +65,6 @@ public class LevelManager : Singleton<LevelManager>
         }
 
         OnEnd();
-
         GameManager.Instance.InitCamera(); 
 
         levelIndex = Mathf.Clamp(levelIndex, 0, levelPrefabs.Count - 1);
@@ -176,7 +175,7 @@ public class LevelManager : Singleton<LevelManager>
         }
 
         ChangeLevel(nextLevel);
-        GameManager.Instance.StartGame(); 
+        GameManager.Instance.StartGame();
     }
     public Level GetCurrentLevel()
     {
@@ -200,11 +199,7 @@ public class LevelManager : Singleton<LevelManager>
     private Level SpawnLevel(Level levelPrefab)
     {
         Transform parent = levelParent != null ? levelParent : transform;
-        return Instantiate(
-            levelPrefab,
-            levelPrefab.transform.position,
-            levelPrefab.transform.rotation,
-            parent);
+        return Instantiate(levelPrefab,levelPrefab.transform.position,levelPrefab.transform.rotation,parent);
     }
 
     private void CollectBrickPool()

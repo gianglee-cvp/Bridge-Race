@@ -24,6 +24,7 @@ public class EnemyAI : Character
         base.OnInit(pos);
         EnableAgent();
         StopAgent();
+        currentState = null;
     }
     public override void OnPlay()
     {
@@ -128,6 +129,11 @@ public class EnemyAI : Character
     }
     public void ExecutePatrol()
     {
+        if (currentStage == null)
+        {
+            return;
+        }
+
         if (timer >= randomTime ||currentStage.CountActiveBricks(colorCharacter) == 0)
         {
             ChangeState(Build);
