@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
-public static class Constants
+public class Constants
 {
     public const string CharacterTag = "Character";
     

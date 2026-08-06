@@ -70,10 +70,7 @@ public class EnemyAI : Character
     public void ChangeState(IEnemyState newState)
     {
         Debug.Log("EnemyAI: Changing state from " + (currentState != null ? currentState.GetType().Name : "null") + " to " + (newState != null ? newState.GetType().Name : "null"));
-        if(currentState != null)
-        {
-            currentState.OnExit(this);
-        }
+        currentState?.OnExit(this);
 
         currentState = newState;
 
