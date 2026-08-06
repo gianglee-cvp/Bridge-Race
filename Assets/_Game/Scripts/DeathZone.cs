@@ -5,13 +5,11 @@ public class DeathZone : MonoBehaviour
     //TODO phan biet enemy va player 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(Constants.CharacterTag))
+        Character character = CacheComponent<Collider,Character>.Get(other);
+        if(character == null) return;
+        if(character is Player)
         {
-            Character character = LevelManager.Instance.GetCharacter(other);
-            if(character is Player)
-            {
-                GameManager.Instance.ChangeState((int)GameStateType.Lose);
-            }
-        }   
+            GameManager.Instance.ChangeState((int)GameStateType.Lose);
+        }
     }
 }

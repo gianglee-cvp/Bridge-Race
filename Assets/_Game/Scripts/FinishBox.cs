@@ -4,11 +4,9 @@ public class FinishBox : MonoBehaviour
 {
     public void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag(Constants.CharacterTag))
-        {
-            Character ch = LevelManager.Instance.GetCharacter(other);
-            GameManager.Instance.HandleCharacterRank(ch);
-        }
+        Character ch = CacheComponent<Collider, Character>.Get(other);
+        if(ch == null) return;
+        GameManager.Instance.HandleCharacterRank(ch);
     }
 
 }   

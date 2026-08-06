@@ -41,9 +41,21 @@ public class Player : Character
             moveAmount = moveAction.ReadValue<Vector2>().normalized;
             if (!canMoveUp)
             {
-                if(moveAmount.y > 0)
+                Vector3 blockedForward = BlockedStepForward;
+                blockedForward.y = 0f;
+
+                if (blockedForward.sqrMagnitude > 0.0001f)
                 {
-                    moveAmount.y = 0; 
+                    blockedForward.Normalize();
+
+                    Vector3 horizontalMove = new Vector3(moveAmount.x, 0f, moveAmount.y);
+                    float blockedAmount = Vector3.Dot(horizontalMove, blockedForward);
+
+                    if (blockedAmount > 0f)
+                    {
+                        horizontalMove -= blockedForward * blockedAmount;
+                        moveAmount = new Vector2(horizontalMove.x, horizontalMove.z);
+                    }
                 }
             }
             CheckGround();
@@ -54,9 +66,13 @@ public class Player : Character
     {
         if(!moveAction.enabled)
         {
+            Vector3 stoppedVelocity = rb.linearVelocity;
+            stoppedVelocity.x = 0f;
+            stoppedVelocity.z = 0f;
+            rb.linearVelocity = stoppedVelocity;
             return;
         }
-        Vector3 move = new Vector3(moveAmount.x, 0, moveAmount.y);
+        Vector3 move = new Vector3(moveAmount.x, 0 , moveAmount.y);
 
         if(move.sqrMagnitude   > 0.01f)
         {
@@ -67,10 +83,18 @@ public class Player : Character
             }
 
             rotatePart.rotation = Quaternion.LookRotation(move);
-            rb.MovePosition(rb.position + move * speed * Time.fixedDeltaTime); 
+            Vector3 velocity = rb.linearVelocity;
+            velocity.x = move.x * speed;
+            velocity.z = move.z * speed;
+            rb.linearVelocity = velocity;
         }
         else
         {
+            Vector3 stoppedVelocity = rb.linearVelocity;
+            stoppedVelocity.x = 0f;
+            stoppedVelocity.z = 0f;
+            rb.linearVelocity = stoppedVelocity;
+
             if (isMove)
             {
                 isMove = false;
@@ -78,9 +102,50 @@ public class Player : Character
             }
         }
     }
+    public override bool CheckCharacterGoUpStair(Vector3 stepForward)
+    {
+        Vector3 horizontalMove = new Vector3(moveAmount.x, 0f, moveAmount.y);
+
+        if (horizontalMove.sqrMagnitude <= 0.0001f)
+        {
+            horizontalMove = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        }
+
+        if (horizontalMove.sqrMagnitude <= 0.0001f)
+        {
+            return base.CheckCharacterGoUpStair(stepForward);
+        }
+
+        return Vector3.Dot(horizontalMove.normalized, stepForward) > 0f;
+    }
+    public override void OnBlockedByStep(Vector3 stepForward)
+    {
+        Vector3 blockedForward = stepForward;
+        blockedForward.y = 0f;
+
+        if (blockedForward.sqrMagnitude <= 0.0001f)
+        {
+            return;
+        }
+
+        blockedForward.Normalize();
+
+        Vector3 velocity = rb.linearVelocity;
+        Vector3 horizontalVelocity = new Vector3(velocity.x, 0f, velocity.z);
+        float blockedAmount = Vector3.Dot(horizontalVelocity, blockedForward);
+
+        if (blockedAmount > 0f)
+        {
+            horizontalVelocity -= blockedForward * blockedAmount;
+            velocity.x = horizontalVelocity.x;
+            velocity.z = horizontalVelocity.z;
+            rb.linearVelocity = velocity;
+        }
+    }
     public override void OnFinishLevel()
     {
         base.OnFinishLevel();
+        rb.linearVelocity = Vector3.zero;
         rb.useGravity = false;
         moveAction.Disable();
     }

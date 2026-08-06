@@ -24,16 +24,15 @@ public class DoorControl : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(Constants.CharacterTag))
-        {
-            //Physics.IgnoreCollision(other , blockColider , false); 
-            foreach(var col in blockCollider)
-            {
-                Physics.IgnoreCollision(other , col , false); 
-            }
+        Character ch = CacheComponent<Collider,Character>.Get(other);
+        if(ch == null) return;
 
-            Character character = LevelManager.Instance.GetCharacter(other);
-            character.ReachNewStage(LevelManager.Instance.GetStage(stageIndex));
+        //Physics.IgnoreCollision(other , blockColider , false); 
+        foreach(var col in blockCollider)
+        {
+            Physics.IgnoreCollision(other , col , false); 
         }
+        ch.ReachNewStage(LevelManager.Instance.GetStage(stageIndex));
+    
     }
 }

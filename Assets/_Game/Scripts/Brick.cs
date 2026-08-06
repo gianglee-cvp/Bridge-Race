@@ -22,14 +22,12 @@ public class Brick : GameUnit, IColor
     }
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(Constants.CharacterTag))
+        Character ch = CacheComponent<Collider, Character>.Get(other);
+        if(ch == null) return;
+        if (ch.colorCharacter == colorBrick)
         {
-            Character ch = LevelManager.Instance.GetCharacter(other);
-            if (ch.colorCharacter == colorBrick)
-            {
-                ch.AddBrick(this);
-                stage.AddBrickToRemain(this);
-            }
+            ch.AddBrick(this);
+            stage.AddBrickToRemain(this);
         }
     }
 }

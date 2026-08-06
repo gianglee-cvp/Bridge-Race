@@ -9,36 +9,21 @@ public class Step : MonoBehaviour, IColor
     public bool isLastStep = false; 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(Constants.CharacterTag))
-        {
-            Character ch = LevelManager.Instance.GetCharacter(other);
-
-            if(!ch.CheckCharacterGoUpStair(transform.forward)) return; 
-
-            if ( SetStopPoint(ch))
-            {   
-                if(ch.colorCharacter != colorStep)
-                {
-                    SetColor(ch.colorCharacter);
-                    stairHolder.stage.OnRemainBrick(ch.colorCharacter);
-                    ch.RemoveBrick();
-                    
-                    if(ch is Player)
-                    {
-                        SoundManager.Instance.PlaySfx(ENUM_SOUND.StairStep);
-                    }
-                }
-            }
-        }   
+        ProcessCharacterTrigger(other);
+    }
+    public void OnTriggerStay(Collider other)
+    {
+        ProcessCharacterTrigger(other);
     }
     public void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(Constants.CharacterTag))
         {
-            Character ch = LevelManager.Instance.GetCharacter(other);
+            Character ch = CacheComponent<Collider, Character>.Get(other);
             if(ch is Player)
             {
                 ch.CanMoveUp = true; 
+                ch.BlockedStepForward = Vector3.zero;
             }
         }
     }
@@ -50,17 +35,42 @@ public class Step : MonoBehaviour, IColor
         if(brickColor != (int) colorStep && brickCount == 0)
         {
             ch.CanMoveUp = false; 
+            ch.BlockedStepForward = transform.forward;
+            ch.OnBlockedByStep(transform.forward);
             return false;
         }
         else
         {
                 ch.CanMoveUp = true;
+                ch.BlockedStepForward = Vector3.zero;
                 if(isLastStep)
                 {
                     ch.ReachLastStep(this);
                 }
                 return true;
         }   
+    }
+    private void ProcessCharacterTrigger(Collider other)
+    {
+        Character ch = CacheComponent<Collider, Character>.Get(other);
+        if(ch == null) return ;
+
+        if(!ch.CheckCharacterGoUpStair(transform.forward)) return; 
+
+        if ( SetStopPoint(ch))
+        {   
+            if(ch.colorCharacter != colorStep)
+            {
+                SetColor(ch.colorCharacter);
+                stairHolder.stage.OnRemainBrick(ch.colorCharacter);
+                ch.RemoveBrick();
+                
+                if(ch is Player)
+                {
+                    SoundManager.Instance.PlaySfx(ENUM_SOUND.StairStep);
+                }
+            }
+        }
     }
     public void SetColor(ColorType color)
     {

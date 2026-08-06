@@ -8,7 +8,6 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] public List<Character> listCharacters = new List<Character>();
     [SerializeField] private Transform levelParent;
 
-    private  Dictionary<Collider, Character> characterDictionary = new Dictionary<Collider, Character>();
     private  List<Level> levelPrefabs = new List<Level>();
     private List<Stage> stageList = new List<Stage>();
     private Level currentLevel;
@@ -24,28 +23,13 @@ public class LevelManager : Singleton<LevelManager>
 
     public void OnInit()
     {
-        characterDictionary.Clear();
         levelPrefabs.Clear();
         stageList.Clear();
 
         LoadLevelPrefabs();
         currentLevel = null;
         currentLevelIndex = Mathf.Clamp(currentLevelIndex, 0, Mathf.Max(0, levelPrefabs.Count - 1));
-
-        foreach (Character character in listCharacters)
-        {
-            if (character != null && character.characterCollider != null)
-            {
-                characterDictionary[character.characterCollider] = character;
-            }
-        }
     }
-
-    public Character GetCharacter(Collider collider)
-    {
-        return characterDictionary[collider];
-    }
-
     public Material GetMaterial(ColorType color)
     {
         return colorDataSO.GetMaterial(color);

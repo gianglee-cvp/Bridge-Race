@@ -1,12 +1,30 @@
 using UnityEngine;
 using System.Collections.Generic;
+
+public class BrickBucket
+{
+    public Queue<Brick> Inactive = new Queue<Brick>();
+    public List<Brick> Active = new List<Brick>();
+}
+
 public class Stage : MonoBehaviour
 {
-    private Dictionary<ColorType, Queue<Brick>> inactive = new Dictionary<ColorType, Queue<Brick>>(); 
-    private Dictionary<ColorType, List<Brick>> active = new Dictionary<ColorType, List<Brick>>() ; 
+    private Dictionary<ColorType, BrickBucket> bricksByColor = new Dictionary<ColorType, BrickBucket>();
     public int stageIndex; 
     [SerializeField] public List<Bridge> listStair = new List<Bridge>();
     [SerializeField] private DoorControl door ; 
+
+    private BrickBucket GetBucket(ColorType color)
+    {
+        if (!bricksByColor.TryGetValue(color, out BrickBucket bucket))
+        {
+            bucket = new BrickBucket();
+            bricksByColor[color] = bucket;
+        }
+
+        return bucket;
+    }
+
     public void Load(StageData stageData)
     {
         foreach (var brickData in stageData.bricks)
@@ -28,75 +46,59 @@ public class Stage : MonoBehaviour
 
     public void OnRemainBrick(ColorType color)
     {
-        if(!inactive.ContainsKey(color) || inactive[color].Count == 0)
+        if (!bricksByColor.TryGetValue(color, out BrickBucket bucket) || bucket.Inactive.Count == 0)
         {
             return;
         }
-        Brick br = inactive[color].Dequeue();
-        if (!active.ContainsKey(color))
-        {
-            active[color] = new List<Brick>(); 
-        }
-        active[color].Add(br); 
+
+        Brick br = bucket.Inactive.Dequeue();
+        bucket.Active.Add(br); 
         br.OnRemain(color);  
     }
+
     public void AddBrickToRemain(Brick brick)
     {
-        if (active.ContainsKey(brick.colorBrick))
-        {
-            active[brick.colorBrick].Remove(brick);
-        }
-
-        if (!inactive.ContainsKey(brick.colorBrick))
-        {
-            inactive[brick.colorBrick] = new Queue<Brick>();
-        }
-        inactive[brick.colorBrick].Enqueue(brick);
+        BrickBucket bucket = GetBucket(brick.colorBrick);
+        bucket.Active.Remove(brick);
+        bucket.Inactive.Enqueue(brick);
         brick.OnCollect(); 
     }
+
     public void AddBrickToRemain(Brick brick , ColorType color)
     {
-        if (!inactive.ContainsKey(color))
-        {
-            inactive[color] = new Queue<Brick>(); 
-        }
-        
-        inactive[color].Enqueue(brick); 
+        BrickBucket bucket = GetBucket(color);
+        bucket.Inactive.Enqueue(brick); 
         brick.OnCollect();  
     }
+
     public int CountActiveBricks(ColorType color) 
     {
-        if(active.ContainsKey(color))
+        if (bricksByColor.TryGetValue(color, out BrickBucket bucket))
         {
-            return active[color].Count;
+            return bucket.Active.Count;
         }
-        else
-        {
-            Debug.LogError("count error"); 
-            return 0;
-        }
+
+        Debug.LogError("count error"); 
+        return 0;
     }
     
     public Vector3 GetActiveBrick(ColorType color)
     {
-        int cnt = active[color].Count;
+        BrickBucket bucket = bricksByColor[color];
+        int cnt = bucket.Active.Count;
         int randomIndex = Random.Range(0, cnt);
-        return active[color][randomIndex].transform.position;
+        return bucket.Active[randomIndex].transform.position;
     }
+
     public void SpawnBrick(ColorType color)
     {
-        if(inactive.ContainsKey(color) && inactive[color].Count > 0)
+        if (bricksByColor.TryGetValue(color, out BrickBucket bucket) && bucket.Inactive.Count > 0)
         {
-            while(inactive[color].Count > 0)
+            while (bucket.Inactive.Count > 0)
             {
-                Brick br = inactive[color].Dequeue(); 
+                Brick br = bucket.Inactive.Dequeue(); 
                 br.OnRemain(color);
-
-                if (!active.ContainsKey(color))
-                {
-                    active[color] = new List<Brick>() ;
-                }
-                active[color].Add(br); 
+                bucket.Active.Add(br); 
             }
         }
     }
@@ -136,25 +138,21 @@ public class Stage : MonoBehaviour
     }
     public void OnEnd()
     {      
-        foreach( var q in inactive.Values)
+        foreach (var bucket in bricksByColor.Values)
         {
-            while(q.Count > 0)
+            while (bucket.Inactive.Count > 0)
             {
-                Brick br = q.Dequeue(); 
+                Brick br = bucket.Inactive.Dequeue(); 
                 ReturnBrickToPool(br); 
             }
-        }
 
-        foreach(var listBrick in active.Values)
-        {
-            foreach(var br in listBrick)
+            foreach (var br in bucket.Active)
             {
                 ReturnBrickToPool(br); 
             }
         }
 
-        active.Clear();
-        inactive.Clear();
+        bricksByColor.Clear();
 
         foreach( var stair in listStair)
         {

@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class CacheUnit<TKey, TValue>
-    where TKey : Component
-    where TValue : Component
+public static class CacheComponent<TKey, TValue>
+where TKey : Component
+where TValue : Component
 {
     private static readonly Dictionary<TKey, TValue> cache = new();
 
@@ -21,7 +22,7 @@ public class CacheUnit<TKey, TValue>
 
     public static void Clear()
     {
-        cache.Clear();
+        cache.Clear(); 
     }
 
     public static TValue Get(TKey key)

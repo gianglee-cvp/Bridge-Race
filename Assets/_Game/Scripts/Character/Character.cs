@@ -29,6 +29,7 @@ public class Character : MonoBehaviour,IColor
         get => canMoveUp;
         set => canMoveUp = value;
     }
+    public Vector3 BlockedStepForward { get; set; }
     public int CurrentBrickCount => listBricks.Count;
     public virtual void OnInit(Vector3 pos)
     {
@@ -36,6 +37,7 @@ public class Character : MonoBehaviour,IColor
         transform.position = pos;
         transform.rotation = Quaternion.identity;
         canMoveUp = true; 
+        BlockedStepForward = Vector3.zero;
         characterCollider.enabled = false;
         ChangeAnim(AnimatorTrigger.Dance);
         Debug.Log(gameObject.name+ " name");
@@ -91,6 +93,9 @@ public class Character : MonoBehaviour,IColor
             return true;
         }
         return false;
+    }
+    public virtual void OnBlockedByStep(Vector3 stepForward)
+    {
     }
     public void SetColor(ColorType color)
     {
